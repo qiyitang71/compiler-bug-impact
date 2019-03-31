@@ -1,0 +1,10 @@
+#!/usr/bin/sudo bash
+set -e -x
+id
+echo deb http://people.debian.org/~doko/tmp/gcc-4.8 ./ >> /etc/apt/sources.list
+echo deb http://localhost:9999/debian experimental main >> /etc/apt/sources.list
+echo 'APT::Get::AllowUnauthenticated "1";' > /etc/apt/apt.conf.d/99allow-unauth
+apt-get update
+apt-get -y -t experimental install libc-dev-bin libc6 libc6-dev
+apt-get -y install cpp g++ gcc
+#apt-get -y dist-upgrade

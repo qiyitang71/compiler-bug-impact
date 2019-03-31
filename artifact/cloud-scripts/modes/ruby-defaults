@@ -1,0 +1,7 @@
+#!/usr/bin/sudo bash
+set -e -x
+echo "Customizing ruby version"
+apt-get update
+echo "ruby1.9.1 hold"|dpkg --set-selections
+echo "ruby1.9.1-dev hold"|dpkg --set-selections
+echo "ruby1.9.1-full hold"|dpkg --set-selections

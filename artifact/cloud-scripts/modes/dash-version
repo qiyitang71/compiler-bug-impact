@@ -1,0 +1,9 @@
+#!/usr/bin/sudo bash
+set -e -x
+echo deb http://ftp.debian.org/debian/ experimental main >> /etc/apt/sources.list
+apt-get update
+apt-get install -y dash=0.5.8-1
+echo "dash hold"|dpkg --set-selections  # shouldn't be necessary
+
+echo "Check if new dash is under test"
+ls -l /bin/sh | grep dash  > /dev/null || exit 1

@@ -1,0 +1,8 @@
+#!/usr/bin/sudo bash
+set -e -x
+echo deb http://aws-logs.debian.net/apt sid main >> /etc/apt/sources.list
+echo 'APT::Get::AllowUnauthenticated "1";' > /etc/apt/apt.conf.d/99allow-unauth
+apt-get update
+apt-get -y install dpkg-dev=1.17.10+sps libdpkg-perl=1.17.10+sps
+echo "dpkg-dev hold"|dpkg --set-selections
+echo "libdpkg-perl hold"|dpkg --set-selections

@@ -1,0 +1,31 @@
+#!/usr/bin/sudo bash
+#
+# Made by Mohit Bhakkad <mohit.bhakkad@gmail.com> for "Archive built with asan" GSoC.
+#
+
+set -x
+
+echo "Entering ASan customization script..."
+
+cmnd=$(dpkg-buildflags --get CFLAGS|grep "fsanitize=address -fno-omit-frame-pointer")
+
+if [ cmnd ]
+then
+echo "APPEND CFLAGS -fsanitize=address -fno-omit-frame-pointer" >> /etc/dpkg/buildflags.conf
+fi
+
+cmnd=$(dpkg-buildflags --get CXXFLAGS|grep "fsanitize=address -fno-omit-frame-pointer")
+if [ cmnd ]
+then
+echo "APPEND CXXFLAGS -fsanitize=address -fno-omit-frame-pointer" >> /etc/dpkg/buildflags.conf
+fi
+
+cmnd=$(dpkg-buildflags --get LDFLAGS|grep "fsanitize=address -fno-omit-frame-pointer")
+if [ cmnd ]
+then
+echo "APPEND LDFLAGS -fsanitize=address " >> /etc/dpkg/buildflags.conf
+fi
+
+echo "/etc/dpkg/buildflags.conf content:"
+cat /etc/dpkg/buildflags.conf
+echo ""

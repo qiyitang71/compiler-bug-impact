@@ -1,0 +1,6 @@
+#!/usr/bin/sudo bash
+set -e -x
+echo deb http://localhost:9999/debian experimental main >> /etc/apt/sources.list
+apt-get update
+apt-get -y -t experimental install make=4.0-1
+echo "make hold"|dpkg --set-selections

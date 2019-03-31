@@ -1,0 +1,8 @@
+#!/usr/bin/sudo bash
+set -e -x
+id
+apt-get install -y apt-transport-https
+echo deb https://people.debian.org/~lucas/gcc-unstable ./ >> /etc/apt/sources.list
+echo 'APT::Get::AllowUnauthenticated "1";' > /etc/apt/apt.conf.d/99allow-unauth
+apt-get update
+apt-get -y upgrade

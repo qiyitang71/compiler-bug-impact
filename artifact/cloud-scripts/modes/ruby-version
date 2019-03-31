@@ -1,0 +1,11 @@
+#!/usr/bin/sudo bash
+set -e -x
+echo "Customizing ruby version"
+echo deb http://people.debian.org/~zeha/apt ./ >> /etc/apt/sources.list
+echo 'APT::Get::AllowUnauthenticated "1";' > /etc/apt/apt.conf.d/99allow-unauth
+apt-get update
+apt-get -y install --force-yes ruby=1:2.0.0.1~exp2 ruby-all-dev=1:2.0.0.1~exp2 ruby-dev=1:2.0.0.1~exp2 ri=1:2.0.0.1~exp2 libtcltk=1:2.0.0.1~exp2
+echo "ruby-full hold"|dpkg --set-selections
+echo "ruby-all-dev hold"|dpkg --set-selections
+echo "ruby-dev hold"|dpkg --set-selections
+echo "ri hold"|dpkg --set-selections

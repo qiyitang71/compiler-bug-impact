@@ -1,0 +1,27 @@
+#!/bin/bash
+set -x
+echo "Entering customization script..."
+CLANG_VERSION="3.9"
+
+echo "Install of clang-$CLANG_VERSION"
+apt-get update
+apt-get install --yes --no-install-recommends --force-yes clang-$CLANG_VERSION
+
+echo "Replace gcc, g++ & cpp by clang"
+VERSIONS="4.6 4.7 4.8 4.9 5 6 7"
+cd /usr/bin
+for VERSION in $VERSIONS; do
+    rm -f g++-$VERSION gcc-$VERSION cpp-$VERSION gcc
+    ln -s clang++-$CLANG_VERSION g++-$VERSION
+    ln -s clang-$CLANG_VERSION gcc-$VERSION
+    ln -s clang-$CLANG_VERSION cpp-$VERSION
+    ln -s clang-$CLANG_VERSION gcc
+    echo "gcc-$VERSION hold"|dpkg --set-selections
+    echo "g++-$VERSION hold"|dpkg --set-selections
+done
+cd -
+
+echo "Check if gcc, g++ & cpp are actually clang"
+gcc --version|grep clang > /dev/null || exit 1
+cpp --version|grep clang > /dev/null || exit 1
+g++ --version|grep clang > /dev/null || exit 1

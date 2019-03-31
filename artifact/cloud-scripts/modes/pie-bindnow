@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e -x
+id
+apt-get update
+apt-get -y install apt-transport-https
+echo deb https://people.debian.org/~rbalint/ppa/pie-bindnow/ pie-bindnow-unstable/ > /etc/apt/sources.list.d/pie-bindnow.list
+echo 'APT::Get::AllowUnauthenticated "1";' > /etc/apt/apt.conf.d/99allow-unauth
+apt-get update
+apt-get -y upgrade

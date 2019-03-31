@@ -1,0 +1,9 @@
+#!/usr/bin/sudo bash
+set -e -x
+echo deb http://aws-logs.debian.net/apt sid main >> /etc/apt/sources.list
+echo 'APT::Get::AllowUnauthenticated "1";' > /etc/apt/apt.conf.d/99allow-unauth
+apt-get update
+apt-get install -y default-jdk=2:1.8-52.1 default-jre=2:1.8-52.1 default-jre-headless=2:1.8-52.1
+echo "default-jdk hold"|dpkg --set-selections
+echo "default-jre hold"|dpkg --set-selections
+echo "default-jre-headless hold"|dpkg --set-selections
