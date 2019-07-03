@@ -175,10 +175,6 @@ mkdir "$tasks_folder"
     DIFF_FILE_BINARIES=$tasks_folder/$PACKAGE_NAME/binaries-diff.txt
     diff -r --no-dereference $tasks_folder/$PACKAGE_NAME/buggy-binaries/ $tasks_folder/$PACKAGE_NAME/fixed-binaries/ > $DIFF_FILE_BINARIES 2>&1
 
-    rm -rf $tasks_folder/$PACKAGE_NAME/buggy-binaries/
-    rm -rf $tasks_folder/$PACKAGE_NAME/fixed-binaries/
-
-
     if [[ -s $DIFF_FILE_BINARIES ]]; then 
       binaries_different=$(( binaries_different+1 ))
       echo "    .. the binaries seem different (please check details in "$DIFF_FILE_BINARIES")"
@@ -187,6 +183,8 @@ mkdir "$tasks_folder"
       fi  
     else 
       echo "    .. the binaries are the same"
+      rm -rf $tasks_folder/$PACKAGE_NAME/buggy-binaries/
+      rm -rf $tasks_folder/$PACKAGE_NAME/fixed-binaries/
       rm -rf $tasks_folder/$PACKAGE_NAME/buggy-packages/
       rm -rf $tasks_folder/$PACKAGE_NAME/fixed-packages/
       rm -rf $tasks_folder/$PACKAGE_NAME/buggy-func/
@@ -211,6 +209,16 @@ mkdir "$tasks_folder"
   
     rm -rf $tasks_folder/$PACKAGE_NAME/buggy-packages/
     rm -rf $tasks_folder/$PACKAGE_NAME/fixed-packages/
+
+    # check if the application is phyml, samba or mod-gearman
+    # these three applications are excluded because their symbols are stripped 
+    if [[ $PACKAGE_NAME = 'phyml' || $PACKAGE_NAME = 'samba' || $PACKAGE_NAME = 'mod-gearman' ]]; then
+      rm -rf $tasks_folder/$PACKAGE_NAME/buggy-binaries/
+      rm -rf $tasks_folder/$PACKAGE_NAME/fixed-binaries/
+      rm -rf $tasks_folder/$PACKAGE_NAME/buggy-func/
+      rm -rf $tasks_folder/$PACKAGE_NAME/fixed-func/
+    fi
+
     # Compare test suite runs and report if similar or not
     diff $tasks_folder/$PACKAGE_NAME/tests-buggy.summary $tasks_folder/$PACKAGE_NAME/tests-fixed.summary &> $DIFF_FILE_TESTS
     if ! grep -q -e "PASS" $tasks_folder/$PACKAGE_NAME/tests-buggy.summary || ! grep -q -e "PASS" $tasks_folder/$PACKAGE_NAME/tests-fixed.summary; then

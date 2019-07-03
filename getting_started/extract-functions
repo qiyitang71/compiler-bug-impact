@@ -1,0 +1,174 @@
+#!/bin/bash
+#set -x
+
+bug_id=$1
+
+#w working directory
+dir="/home/user42/$bug_id"
+
+for pkg in $dir/*/; do
+  # check if the application different binaries
+  if [ ! -d "$pkg"/buggy-func ]; then
+    continue
+  fi 
+
+  # name of the application
+  app=$(echo $pkg | rev | cut -d"/" -f2 | rev) 
+
+  # deal with the elfs in the fixed directory
+  fixed_op="$pkg"fixed-binary-QT.csv
+  fixed_nm="$pkg"fixed.nm
+  fixed_disasb="$pkg"fixed.d
+  Fixed_DIR="$pkg"fixed-func/
+  Fixed_bin_DIR="$pkg"fixed-binaries
+  Fixed_DISASB_DIR="$pkg"fixed-disasb
+  rm -f $fixed_op
+  find $Fixed_DIR -type f | while read filename; do
+    #file should be either [(ELF and not stripped) or (.a) ] and should exist in fixed-binaries dir
+    str1=$(file $filename | grep " ELF ")
+    str2=$(file $filename | grep "not stripped")
+    str3=$(echo $filename | grep "\.a$")
+
+    if [[ ((-z "$str1")  ||  (-z "$str2"))  &&  (-z "$str3") ]]; then
+      continue
+    fi
+
+    filename_sim=$(echo $filename | rev | cut -d/ -f1 | rev)
+
+    # check if it is in the final debian distribution directory
+    num_exist=$(find $Fixed_bin_DIR -name $filename_sim| wc -l)
+
+    # there are three special cases
+    if [[ $app = 'tdb' && $filename_sim = 'pytdb.inst.so' ]] || \
+      [[ $app = 'talloc' && $filename_sim = 'pytalloc.so' ]] || \
+      [[ $app = 'clustalw' && $filename_sim = 'clustalw2' ]]; then
+      num_exist=1
+    fi
+
+    if [ "$num_exist" -eq 0 ]; then
+      continue
+    fi
+
+    #output symbols
+    rm -f $fixed_nm
+    nm $filename > tmp
+    sed -n '/.* [tT] /p' tmp > $fixed_nm
+    rm -f tmp
+
+    rm -rf $Fixed_DISASB_DIR
+    mkdir $Fixed_DISASB_DIR
+    pathname=$(echo $filename | sed -n 's/.*fixed-func\///gp')
+    objdump -dj .text --no-show-raw-insn $filename > $fixed_disasb
+
+    # extract disassembled file into functions
+    # Get the first line of every function in lines.tmp
+    grep -n "[0-9a-f]* <.*>:" $fixed_disasb | cut -d: -f1 &> lines.tmp
+    echo $(($(wc -l < $fixed_disasb) + 1)) >> lines.tmp
+    {
+      read -r line0
+      index=1
+      func=$(sed -n $line0'p' $fixed_disasb | cut -d "<" -f2 | cut -d ">" -f1)
+      funcFile=$Fixed_DISASB_DIR"/"$index
+      funcname=$(echo $func | cut -d@ -f1)
+      while IFS='' read -r line || [[ -n "$line" ]]; do
+        # Extract function number i from file by using its first and last line from lines.tmp
+        if grep -q " $funcname$" $fixed_nm; then
+          sed -n $line0','$(($line-1))'p;'$line'q' $fixed_disasb > $funcFile
+          # Remove comments and line numbers (also those in the calls)
+          sed -i 's/[[:space:]]*#.*//g' $funcFile #no comment
+          sed -i 's/[[:space:]]*[0-9a-f][0-9a-f]*:[[:space:]]*//g' $funcFile #no address
+          sed -i 's/[[:space:]]*<.*>//g' $funcFile #no <>
+          sed -i 's/[[:space:]]*[0-9a-zA-Z%:,()\$\*\-]*$//g' $funcFile #no ops
+  
+          #output to a csv file
+          hashvalue=$(md5sum $funcFile | cut -d" " -f1)
+          echo $pathname", "$func", "$hashvalue >> $fixed_op
+        fi
+        # echo $line0"-"$(($line-1))
+        line0=$line
+        func=$(sed -n $line0'p' $fixed_disasb | cut -d "<" -f2 | cut -d ">" -f1)
+        funcname=$(echo $func | cut -d@ -f1)
+        index=$(($index+1))
+        funcFile=$Fixed_DISASB_DIR"/"$index
+      done
+    } < lines.tmp
+  done
+  
+  # deal with the elfs in the buggy directory
+  buggy_op="$pkg"buggy-binary-QT.csv
+  buggy_nm="$pkg"buggy.nm
+  buggy_disasb="$pkg"buggy.d
+  Buggy_DIR="$pkg"buggy-func/
+  Buggy_bin_DIR="$pkg"buggy-binaries
+  Buggy_DISASB_DIR="$pkg"buggy-disasb
+  rm -f $buggy_op
+  find $Buggy_DIR -type f | while read filename; do
+    #file should be either [(ELF and not stripped) or (.a) ] and should exist in fixed-binaries dir
+    str1=$(file $filename | grep " ELF ")
+    str2=$(file $filename | grep "not stripped")
+    str3=$(echo $filename | grep "\.a$")
+  
+    if [[ ((-z "$str1")  ||  (-z "$str2"))  &&  (-z "$str3") ]]; then
+      continue
+    fi
+    
+    filename_sim=$(echo $filename | rev | cut -d/ -f1 | rev)
+    num_exist=$(find $Buggy_bin_DIR -name $filename_sim| wc -l)
+
+    # there are three special cases
+    if [[ $app = 'tdb' && $filename_sim = 'pytdb.inst.so' ]] || \
+      [[ $app = 'talloc' && $filename_sim = 'pytalloc.so' ]] || \
+      [[ $app = 'clustalw' && $filename_sim = 'clustalw2' ]]; then
+      num_exist=1
+    fi
+    if [ "$num_exist" -eq 0 ]; then
+      continue
+    fi
+    
+    #output symbols
+    rm -f $buggy_nm
+    nm $filename > tmp
+    sed -n '/.* [tT] /p' tmp > $buggy_nm
+    #rm -f tmp
+  
+    rm -rf $Buggy_DISASB_DIR
+    mkdir $Buggy_DISASB_DIR
+    pathname=$(echo $filename | sed -n 's/.*buggy-func\///gp')
+    objdump -dj .text --no-show-raw-insn $filename > $buggy_disasb
+    # extract disassembled file into functions
+    # Get the first line of every function in lines.tmp
+    grep -n "[0-9a-f]* <.*>:" $buggy_disasb | cut -d: -f1 &> lines.tmp
+    echo $(($(wc -l < $buggy_disasb) + 1)) >> lines.tmp
+    {
+      read -r line0
+      index=1
+      func=$(sed -n $line0'p' $buggy_disasb | cut -d "<" -f2 | cut -d ">" -f1)
+      funcFile=$Buggy_DISASB_DIR"/"$index
+      funcname=$(echo $func | cut -d@ -f1)
+      while IFS='' read -r line || [[ -n "$line" ]]; do
+        # Extract function number i from file by using its first and last line from lines.tmp
+        if grep -q " $funcname$" $buggy_nm; then
+          sed -n $line0','$(($line-1))'p;'$line'q' $buggy_disasb > $funcFile
+          # Remove comments and line numbers (also those in the calls)
+          sed -i 's/[[:space:]]*#.*//g' $funcFile #no comment
+          sed -i 's/[[:space:]]*[0-9a-f][0-9a-f]*:[[:space:]]*//g' $funcFile #no address
+          sed -i 's/[[:space:]]*<.*>//g' $funcFile #no <>
+          sed -i 's/[[:space:]]*[0-9a-zA-Z%:,()\$\*\-]*$//g' $funcFile #no ops
+
+          #output to a csv file
+          hashvalue=$(md5sum $funcFile | cut -d" " -f1)
+          echo $pathname", "$func", "$hashvalue >> $buggy_op
+        fi
+        # echo $line0"-"$(($line-1))
+        line0=$line
+        func=$(sed -n $line0'p' $buggy_disasb | cut -d "<" -f2 | cut -d ">" -f1)
+        funcname=$(echo $func | cut -d@ -f1)
+        index=$(($index+1))
+        funcFile=$Buggy_DISASB_DIR"/"$index
+      done
+    } < lines.tmp
+  done
+done
+rm -f *.d *.nm *.tmp
+
+
