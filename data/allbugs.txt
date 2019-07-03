@@ -1,0 +1,51 @@
+#Csmith
+11964,enhancement,no
+11977,normal,no
+12189,enhancement,no
+12885,enhancement,no
+12899,enhancement,no
+12901,enhancement,no
+13326,enhancement,no
+17179,normal,no
+17473,release blocker,no
+27392,normal,yes
+#EMI
+24516,normal,yes
+25900,normal,no
+26266,normal,no
+26323,normal,no
+26734,normal,no
+27968,normal,yes
+28610,normal,no
+29031,normal,no
+30841,normal,no
+30935,normal,no
+#Orange
+15940,normal,no
+15959,normal,no
+19636,normal,no
+26407,normal,yes
+28504,normal,no
+#yarpgen
+32830,enhancement,yes
+34381,enhancement,no
+#Alive
+20186,normal,yes
+20189,normal,no
+21242,normal,no
+21243,normal,yes
+21245,normal,yes
+21255,normal,yes
+21256,normal,yes
+21274,normal,yes
+#User
+13547,release blocker,no
+15674,release blocker,yes
+17103,release blocker,no
+24187,normal,yes
+26711,normal,yes
+27575,normal,no
+27903,normal,no
+31808,normal,yes
+33706,normal,no
+37119,normal,no

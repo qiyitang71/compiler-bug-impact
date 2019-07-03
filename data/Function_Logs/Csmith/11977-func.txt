@@ -1,0 +1,62 @@
+afl
+Total num of functions: 118
+Number of different functions are: 1
+bliss
+Total num of functions: 259
+Number of different functions are: 1
+emboss
+Total num of functions: 14766
+Number of different functions are: 9
+flatpak
+Total num of functions: 1578
+Number of different functions are: 1
+foo2zjs
+Total num of functions: 215
+Number of different functions are: 1
+htslib
+Total num of functions: 1063
+Number of different functions are: 2
+libkate
+Total num of functions: 780
+Number of different functions are: 1
+libverilog-perl
+Total num of functions: 248
+Number of different functions are: 1
+mafft
+Total num of functions: 612
+Number of different functions are: 5
+nauty
+Total num of functions: 1954
+Number of different functions are: 1
+onscripter
+Total num of functions: 769
+Number of different functions are: 1
+ostree
+Total num of functions: 1152
+Number of different functions are: 1
+rc
+Total num of functions: 203
+Number of different functions are: 2
+spamassassin
+Total num of functions: 48
+Number of different functions are: 1
+staden-io-lib
+Total num of functions: 1217
+Number of different functions are: 4
+talloc
+Total num of functions: 121
+Number of different functions are: 1
+tigr-glimmer
+Total num of functions: 159
+Number of different functions are: 2
+tracker
+Total num of functions: 3013
+Number of different functions are: 1
+util-linux
+Total num of functions: 2996
+Number of different functions are: 1
+wcstools
+Total num of functions: 1070
+Number of different functions are: 3
+
+total number of diff functions =  40

@@ -1,0 +1,149 @@
+389-ds-base
+Total num of functions: 6259
+Number of different functions are: 9
+amap-align
+Total num of functions: 27
+Number of different functions are: 0
+apache2
+Total num of functions: 3935
+Number of different functions are: 4
+audiocd-kio
+Total num of functions: 223
+Number of different functions are: 1
+bedtools
+Total num of functions: 2057
+Number of different functions are: 4
+emboss
+Total num of functions: 14768
+Number of different functions are: 2
+flatpak
+Total num of functions: 1574
+Number of different functions are: 2
+foo2zjs
+Total num of functions: 214
+Number of different functions are: 1
+gconf
+Total num of functions: 1051
+Number of different functions are: 1
+gdisk
+Total num of functions: 373
+Number of different functions are: 2
+genometools
+Total num of functions: 7660
+Number of different functions are: 1
+gfs2-utils
+Total num of functions: 456
+Number of different functions are: 3
+gjs
+Total num of functions: 945
+Number of different functions are: 3
+glfw3
+Total num of functions: 334
+Number of different functions are: 1
+gutenprint
+Total num of functions: 1275
+Number of different functions are: 1
+gvfs
+Total num of functions: 3727
+Number of different functions are: 0
+haproxy
+Total num of functions: 1738
+Number of different functions are: 4
+htslib
+Total num of functions: 1061
+Number of different functions are: 3
+infernal
+Total num of functions: 1956
+Number of different functions are: 0
+kate4
+Total num of functions: 5828
+Number of different functions are: 70
+libconvert-binary-c-perl
+Total num of functions: 451
+Number of different functions are: 0
+libkate
+Total num of functions: 402
+Number of different functions are: 1
+libproxy
+Total num of functions: 172
+Number of different functions are: 1
+libraw
+Total num of functions: 660
+Number of different functions are: 5
+libsfml
+Total num of functions: 1226
+Number of different functions are: 1
+libverilog-perl
+Total num of functions: 256
+Number of different functions are: 1
+libvncserver
+Total num of functions: 846
+Number of different functions are: 0
+libyaml-libyaml-perl
+Total num of functions: 138
+Number of different functions are: 2
+nemo
+Total num of functions: 4020
+Number of different functions are: 2
+nftables
+Total num of functions: 631
+Number of different functions are: 1
+open-isns
+Total num of functions: 1029
+Number of different functions are: 1
+ostree
+Total num of functions: 1149
+Number of different functions are: 2
+pgagent
+Total num of functions: 47
+Number of different functions are: 2
+probcons
+Total num of functions: 43
+Number of different functions are: 0
+radvd
+Total num of functions: 115
+Number of different functions are: 1
+rate4site
+Total num of functions: 801
+Number of different functions are: 9
+sim4
+Total num of functions: 107
+Number of different functions are: 0
+smalt
+Total num of functions: 418
+Number of different functions are: 0
+staden-io-lib
+Total num of functions: 1218
+Number of different functions are: 5
+svn-all-fast-export
+Total num of functions: 124
+Number of different functions are: 2
+tdb
+Total num of functions: 247
+Number of different functions are: 1
+tigr-glimmer
+Total num of functions: 171
+Number of different functions are: 3
+tmate
+Total num of functions: 1255
+Number of different functions are: 4
+tracker
+Total num of functions: 2996
+Number of different functions are: 1
+util-linux
+Total num of functions: 2983
+Number of different functions are: 6
+uudeview
+Total num of functions: 135
+Number of different functions are: 0
+vcftools
+Total num of functions: 350
+Number of different functions are: 2
+vsftpd
+Total num of functions: 537
+Number of different functions are: 1
+yapet
+Total num of functions: 860
+Number of different functions are: 1
+
+total number of diff functions =  167

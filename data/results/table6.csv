@@ -1,0 +1,4 @@
+severity, userBugs, successful, reached, triggered, packages, functions, test diffs
+enhancement, 8, 2457, 2061 (83.8%), 971 (39.5%), 83 (3.3%), .04% [280], 0 (0%)
+normal, 33, 10157, 5612 (55.2%), 1943 (19.1%), 611 (6.0%), .34% [8327], 0 (0%)
+release, 4, 1228, 1193 (97.1%), 295 (24.0%), 10 (.8%), 0% [16], 0 (0%)

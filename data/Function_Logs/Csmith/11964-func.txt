@@ -1,0 +1,8 @@
+s3ql
+Total num of functions: 141
+Number of different functions are: 34
+simplejson
+Total num of functions: 59
+Number of different functions are: 18
+
+total number of diff functions =  52

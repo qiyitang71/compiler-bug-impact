@@ -1,0 +1,374 @@
+389-ds-base
+Total num of functions: 6256
+Number of different functions are: 17
+afl
+Total num of functions: 118
+Number of different functions are: 4
+apache2
+Total num of functions: 7717
+Number of different functions are: 19
+aragorn
+Total num of functions: 125
+Number of different functions are: 1
+bedtools
+Total num of functions: 2057
+Number of different functions are: 2
+bonnie++
+Total num of functions: 121
+Number of different functions are: 1
+boxes
+Total num of functions: 78
+Number of different functions are: 1
+cinnamon-desktop
+Total num of functions: 567
+Number of different functions are: 1
+clustalw
+Total num of functions: 713
+Number of different functions are: 3
+concavity
+Total num of functions: 1672
+Number of different functions are: 1
+conntrack-tools
+Total num of functions: 612
+Number of different functions are: 3
+cpl-plugin-giraf
+Total num of functions: 905
+Number of different functions are: 6
+cpl-plugin-muse
+Total num of functions: 723
+Number of different functions are: 3
+cpputest
+Total num of functions: 1230
+Number of different functions are: 7
+dcraw
+Total num of functions: 223
+Number of different functions are: 2
+dialign
+Total num of functions: 104
+Number of different functions are: 2
+dialign-t
+Total num of functions: 73
+Number of different functions are: 1
+emboss
+Total num of functions: 14762
+Number of different functions are: 86
+epson-inkjet-printer-escpr
+Total num of functions: 298
+Number of different functions are: 3
+exonerate
+Total num of functions: 1278
+Number of different functions are: 8
+ffindex
+Total num of functions: 66
+Number of different functions are: 2
+flatpak
+Total num of functions: 1574
+Number of different functions are: 4
+fluidsynth
+Total num of functions: 853
+Number of different functions are: 3
+foo2zjs
+Total num of functions: 214
+Number of different functions are: 5
+gap-guava
+Total num of functions: 386
+Number of different functions are: 15
+gconf
+Total num of functions: 1048
+Number of different functions are: 1
+gdk-pixbuf
+Total num of functions: 518
+Number of different functions are: 2
+gfs2-utils
+Total num of functions: 456
+Number of different functions are: 2
+gjs
+Total num of functions: 945
+Number of different functions are: 1
+gubbins
+Total num of functions: 135
+Number of different functions are: 3
+gutenprint
+Total num of functions: 1275
+Number of different functions are: 5
+gvfs
+Total num of functions: 3728
+Number of different functions are: 8
+haproxy
+Total num of functions: 1738
+Number of different functions are: 2
+haveged
+Total num of functions: 101
+Number of different functions are: 3
+hmmer2
+Total num of functions: 415
+Number of different functions are: 8
+htslib
+Total num of functions: 1060
+Number of different functions are: 23
+ifupdown
+Total num of functions: 89
+Number of different functions are: 1
+infernal
+Total num of functions: 1955
+Number of different functions are: 52
+inform6-compiler
+Total num of functions: 411
+Number of different functions are: 4
+lib3ds
+Total num of functions: 274
+Number of different functions are: 1
+libaudio-scan-perl
+Total num of functions: 212
+Number of different functions are: 1
+libb-hooks-parser-perl
+Total num of functions: 32
+Number of different functions are: 1
+libcaca
+Total num of functions: 605
+Number of different functions are: 4
+libchewing
+Total num of functions: 232
+Number of different functions are: 2
+libcoap
+Total num of functions: 170
+Number of different functions are: 1
+libconvert-binary-c-perl
+Total num of functions: 451
+Number of different functions are: 4
+libdbd-firebird-perl
+Total num of functions: 123
+Number of different functions are: 3
+libdbd-pg-perl
+Total num of functions: 174
+Number of different functions are: 3
+libdbd-sqlite2-perl
+Total num of functions: 519
+Number of different functions are: 6
+libffi-platypus-perl
+Total num of functions: 94
+Number of different functions are: 1
+libhtml-parser-perl
+Total num of functions: 26
+Number of different functions are: 1
+libio-aio-perl
+Total num of functions: 128
+Number of different functions are: 1
+libkate
+Total num of functions: 759
+Number of different functions are: 2
+liblinear
+Total num of functions: 115
+Number of different functions are: 2
+liblist-moreutils-perl
+Total num of functions: 54
+Number of different functions are: 1
+liblucy-perl
+Total num of functions: 4735
+Number of different functions are: 1
+libmath-prime-util-gmp-perl
+Total num of functions: 212
+Number of different functions are: 1
+libmediaart
+Total num of functions: 62
+Number of different functions are: 1
+libmicrohttpd
+Total num of functions: 224
+Number of different functions are: 2
+libnetaddr-ip-perl
+Total num of functions: 32
+Number of different functions are: 2
+libnet-ssh2-perl
+Total num of functions: 128
+Number of different functions are: 1
+libocas
+Total num of functions: 75
+Number of different functions are: 3
+liboggz
+Total num of functions: 615
+Number of different functions are: 2
+libraw
+Total num of functions: 663
+Number of different functions are: 6
+libscalar-list-utils-perl
+Total num of functions: 37
+Number of different functions are: 1
+libsdl-sge
+Total num of functions: 325
+Number of different functions are: 5
+libsereal-decoder-perl
+Total num of functions: 124
+Number of different functions are: 1
+libsereal-encoder-perl
+Total num of functions: 120
+Number of different functions are: 1
+libterm-readline-gnu-perl
+Total num of functions: 200
+Number of different functions are: 2
+libtext-bibtex-perl
+Total num of functions: 220
+Number of different functions are: 2
+libtime-moment-perl
+Total num of functions: 162
+Number of different functions are: 1
+libunicode-japanese-perl
+Total num of functions: 62
+Number of different functions are: 2
+libverilog-perl
+Total num of functions: 256
+Number of different functions are: 1
+libvideo-capture-v4l-perl
+Total num of functions: 129
+Number of different functions are: 1
+libvncserver
+Total num of functions: 1405
+Number of different functions are: 7
+libyaml-syck-perl
+Total num of functions: 170
+Number of different functions are: 2
+lua-torch-sundown
+Total num of functions: 99
+Number of different functions are: 1
+mafft
+Total num of functions: 612
+Number of different functions are: 40
+minimap
+Total num of functions: 66
+Number of different functions are: 4
+mp4h
+Total num of functions: 392
+Number of different functions are: 5
+muscle
+Total num of functions: 653
+Number of different functions are: 4
+musl
+Total num of functions: 1778
+Number of different functions are: 4
+nauty
+Total num of functions: 1972
+Number of different functions are: 46
+nemo
+Total num of functions: 4013
+Number of different functions are: 3
+nftables
+Total num of functions: 628
+Number of different functions are: 1
+nginx
+Total num of functions: 3238
+Number of different functions are: 13
+njplot
+Total num of functions: 229
+Number of different functions are: 1
+onscripter
+Total num of functions: 768
+Number of different functions are: 2
+ostree
+Total num of functions: 1146
+Number of different functions are: 2
+pango1.0
+Total num of functions: 1642
+Number of different functions are: 11
+pbsim
+Total num of functions: 27
+Number of different functions are: 1
+pgbouncer
+Total num of functions: 587
+Number of different functions are: 1
+polyml
+Total num of functions: 5577
+Number of different functions are: 10
+primesieve
+Total num of functions: 309
+Number of different functions are: 0
+privoxy
+Total num of functions: 312
+Number of different functions are: 1
+rate4site
+Total num of functions: 801
+Number of different functions are: 1
+rc
+Total num of functions: 205
+Number of different functions are: 1
+screen
+Total num of functions: 559
+Number of different functions are: 6
+sextractor
+Total num of functions: 513
+Number of different functions are: 3
+sim4
+Total num of functions: 107
+Number of different functions are: 5
+smalt
+Total num of functions: 418
+Number of different functions are: 4
+spass
+Total num of functions: 1324
+Number of different functions are: 8
+staden-io-lib
+Total num of functions: 1216
+Number of different functions are: 18
+startpar
+Total num of functions: 40
+Number of different functions are: 1
+suricata
+Total num of functions: 8024
+Number of different functions are: 9
+symmetrica
+Total num of functions: 5577
+Number of different functions are: 22
+systemd-bootchart
+Total num of functions: 118
+Number of different functions are: 2
+systemd-shim
+Total num of functions: 67
+Number of different functions are: 1
+tantan
+Total num of functions: 83
+Number of different functions are: 1
+tcl-fitstcl
+Total num of functions: 142
+Number of different functions are: 1
+tigr-glimmer
+Total num of functions: 172
+Number of different functions are: 3
+tmate
+Total num of functions: 1255
+Number of different functions are: 6
+toppred
+Total num of functions: 51
+Number of different functions are: 1
+tracker
+Total num of functions: 2998
+Number of different functions are: 1
+upower
+Total num of functions: 786
+Number of different functions are: 1
+util-linux
+Total num of functions: 2992
+Number of different functions are: 4
+uudeview
+Total num of functions: 135
+Number of different functions are: 5
+vorbis-tools
+Total num of functions: 602
+Number of different functions are: 1
+vsftpd
+Total num of functions: 1074
+Number of different functions are: 1
+wcstools
+Total num of functions: 1045
+Number of different functions are: 1
+webdis
+Total num of functions: 208
+Number of different functions are: 0
+wise
+Total num of functions: 4206
+Number of different functions are: 16
+wp2x
+Total num of functions: 59
+Number of different functions are: 1
+x265
+Total num of functions: 11990
+Number of different functions are: 12
+
+total number of diff functions =  680

@@ -1,0 +1,26 @@
+gfs2-utils
+Total num of functions: 457
+Number of different functions are: 1
+libcoap
+Total num of functions: 170
+Number of different functions are: 1
+libcurses-perl
+Total num of functions: 378
+Number of different functions are: 6
+libmath-prime-util-gmp-perl
+Total num of functions: 213
+Number of different functions are: 1
+libsereal-decoder-perl
+Total num of functions: 123
+Number of different functions are: 1
+libsereal-encoder-perl
+Total num of functions: 120
+Number of different functions are: 1
+musl
+Total num of functions: 1779
+Number of different functions are: 1
+suricata
+Total num of functions: 8038
+Number of different functions are: 2
+
+total number of diff functions =  14

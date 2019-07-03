@@ -1,0 +1,134 @@
+aegean
+Total num of functions: 522
+Number of different functions are: 1
+apache2
+Total num of functions: 7742
+Number of different functions are: 4
+bedtools
+Total num of functions: 1884
+Number of different functions are: 3
+bonnie++
+Total num of functions: 121
+Number of different functions are: 2
+clustalw
+Total num of functions: 664
+Number of different functions are: 1
+cpl-plugin-muse
+Total num of functions: 722
+Number of different functions are: 1
+emboss
+Total num of functions: 14766
+Number of different functions are: 1
+gdnsd
+Total num of functions: 532
+Number of different functions are: 1
+genometools
+Total num of functions: 14556
+Number of different functions are: 40
+grep
+Total num of functions: 270
+Number of different functions are: 5
+gutenprint
+Total num of functions: 1278
+Number of different functions are: 1
+haproxy
+Total num of functions: 1743
+Number of different functions are: 2
+haveged
+Total num of functions: 102
+Number of different functions are: 2
+ifupdown
+Total num of functions: 91
+Number of different functions are: 1
+kate4
+Total num of functions: 5985
+Number of different functions are: 17
+libb-hooks-parser-perl
+Total num of functions: 32
+Number of different functions are: 1
+libcoap
+Total num of functions: 170
+Number of different functions are: 1
+libconvert-binary-c-perl
+Total num of functions: 449
+Number of different functions are: 1
+libdbd-mysql-perl
+Total num of functions: 87
+Number of different functions are: 3
+libdbd-sqlite2-perl
+Total num of functions: 525
+Number of different functions are: 1
+libhx
+Total num of functions: 227
+Number of different functions are: 1
+libraw
+Total num of functions: 660
+Number of different functions are: 2
+libsdl-sge
+Total num of functions: 323
+Number of different functions are: 1
+libversion-perl
+Total num of functions: 23
+Number of different functions are: 1
+libvncserver
+Total num of functions: 1401
+Number of different functions are: 3
+log4cxx
+Total num of functions: 3857
+Number of different functions are: 0
+mscgen
+Total num of functions: 174
+Number of different functions are: 2
+muscle
+Total num of functions: 653
+Number of different functions are: 1
+nauty
+Total num of functions: 1956
+Number of different functions are: 13
+nftables
+Total num of functions: 634
+Number of different functions are: 1
+nginx
+Total num of functions: 3254
+Number of different functions are: 2
+onscripter
+Total num of functions: 769
+Number of different functions are: 8
+pango1.0
+Total num of functions: 1639
+Number of different functions are: 2
+pgbouncer
+Total num of functions: 589
+Number of different functions are: 3
+polyml
+Total num of functions: 5557
+Number of different functions are: 2
+rate4site
+Total num of functions: 739
+Number of different functions are: 1
+snpomatic
+Total num of functions: 73
+Number of different functions are: 1
+spigot
+Total num of functions: 313
+Number of different functions are: 3
+tdb
+Total num of functions: 249
+Number of different functions are: 2
+tigr-glimmer
+Total num of functions: 159
+Number of different functions are: 2
+util-linux
+Total num of functions: 2996
+Number of different functions are: 2
+vcftools
+Total num of functions: 331
+Number of different functions are: 4
+x265
+Total num of functions: 11983
+Number of different functions are: 28
+yapet
+Total num of functions: 804
+Number of different functions are: 2
+
+total number of diff functions =  176

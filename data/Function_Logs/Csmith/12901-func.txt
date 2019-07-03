@@ -1,0 +1,107 @@
+aegean
+Total num of functions: 527
+Number of different functions are: 0
+apache2
+Total num of functions: 7740
+Number of different functions are: 0
+ebook-tools
+Total num of functions: 266
+Number of different functions are: 0
+emboss
+Total num of functions: 14757
+Number of different functions are: 2
+gap-guava
+Total num of functions: 387
+Number of different functions are: 1
+genometools
+Total num of functions: 14527
+Number of different functions are: 3
+haveged
+Total num of functions: 100
+Number of different functions are: 0
+hmmer2
+Total num of functions: 426
+Number of different functions are: 0
+infernal
+Total num of functions: 1955
+Number of different functions are: 0
+kate4
+Total num of functions: 5922
+Number of different functions are: 0
+libev-perl
+Total num of functions: 245
+Number of different functions are: 1
+libfishsound
+Total num of functions: 203
+Number of different functions are: 0
+libkate
+Total num of functions: 764
+Number of different functions are: 0
+libkinosearch1-perl
+Total num of functions: 339
+Number of different functions are: 2
+libktoblzcheck
+Total num of functions: 489
+Number of different functions are: 0
+liboggz
+Total num of functions: 609
+Number of different functions are: 0
+libsfml
+Total num of functions: 1239
+Number of different functions are: 0
+libvncserver
+Total num of functions: 1402
+Number of different functions are: 1
+lua-lgi
+Total num of functions: 430
+Number of different functions are: 0
+lua-torch-sundown
+Total num of functions: 98
+Number of different functions are: 1
+mafft
+Total num of functions: 611
+Number of different functions are: 4
+nauty
+Total num of functions: 1952
+Number of different functions are: 12
+primesieve
+Total num of functions: 303
+Number of different functions are: 1
+rc
+Total num of functions: 203
+Number of different functions are: 1
+s3ql
+Total num of functions: 221
+Number of different functions are: 10
+screen
+Total num of functions: 571
+Number of different functions are: 1
+snowball
+Total num of functions: 369
+Number of different functions are: 0
+staden-io-lib
+Total num of functions: 1217
+Number of different functions are: 2
+suricata
+Total num of functions: 8034
+Number of different functions are: 0
+util-linux
+Total num of functions: 2989
+Number of different functions are: 4
+vcftools
+Total num of functions: 331
+Number of different functions are: 2
+vorbis-tools
+Total num of functions: 598
+Number of different functions are: 0
+vsftpd
+Total num of functions: 1076
+Number of different functions are: 0
+webdis
+Total num of functions: 208
+Number of different functions are: 0
+x265
+Total num of functions: 11985
+Number of different functions are: 4
+
+total number of diff functions =  52

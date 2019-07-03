@@ -1,0 +1,29 @@
+art-nextgen-simulation-tools
+Total num of functions: 104
+Number of different functions are: 4
+boxes
+Total num of functions: 79
+Number of different functions are: 1
+inform6-compiler
+Total num of functions: 410
+Number of different functions are: 1
+libmath-prime-util-gmp-perl
+Total num of functions: 212
+Number of different functions are: 1
+lua-luv
+Total num of functions: 567
+Number of different functions are: 4
+nginx
+Total num of functions: 3237
+Number of different functions are: 1
+njplot
+Total num of functions: 229
+Number of different functions are: 1
+symmetrica
+Total num of functions: 5554
+Number of different functions are: 2
+wise
+Total num of functions: 4206
+Number of different functions are: 1
+
+total number of diff functions =  16

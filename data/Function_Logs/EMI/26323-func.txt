@@ -1,0 +1,35 @@
+389-ds-base
+Total num of functions: 6255
+Number of different functions are: 1
+apache2
+Total num of functions: 3933
+Number of different functions are: 2
+art-nextgen-simulation-tools
+Total num of functions: 114
+Number of different functions are: 1
+emboss
+Total num of functions: 14767
+Number of different functions are: 3
+libraw
+Total num of functions: 659
+Number of different functions are: 1
+libtext-bibtex-perl
+Total num of functions: 219
+Number of different functions are: 1
+musl
+Total num of functions: 1777
+Number of different functions are: 1
+nauty
+Total num of functions: 1961
+Number of different functions are: 2
+pango1.0
+Total num of functions: 1642
+Number of different functions are: 4
+tmate
+Total num of functions: 1255
+Number of different functions are: 1
+vsftpd
+Total num of functions: 537
+Number of different functions are: 1
+
+total number of diff functions =  18

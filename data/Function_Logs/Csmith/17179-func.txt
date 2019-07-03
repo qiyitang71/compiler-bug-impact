@@ -1,0 +1,8 @@
+emboss
+Total num of functions: 14766
+Number of different functions are: 6
+screen
+Total num of functions: 563
+Number of different functions are: 1
+
+total number of diff functions =  7

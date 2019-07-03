@@ -1,0 +1,14 @@
+libsdl-perl
+Total num of functions: 782
+Number of different functions are: 1
+onscripter
+Total num of functions: 769
+Number of different functions are: 1
+pgbouncer
+Total num of functions: 582
+Number of different functions are: 1
+symmetrica
+Total num of functions: 5574
+Number of different functions are: 6
+
+total number of diff functions =  9

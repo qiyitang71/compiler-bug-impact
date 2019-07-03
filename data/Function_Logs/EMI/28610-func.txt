@@ -1,0 +1,23 @@
+389-ds-base
+Total num of functions: 6259
+Number of different functions are: 1
+apache2
+Total num of functions: 7719
+Number of different functions are: 5
+exonerate
+Total num of functions: 1278
+Number of different functions are: 0
+genometools
+Total num of functions: 14492
+Number of different functions are: 1
+libcompress-bzip2-perl
+Total num of functions: 63
+Number of different functions are: 2
+liblucy-perl
+Total num of functions: 4735
+Number of different functions are: 4
+libsfml
+Total num of functions: 1226
+Number of different functions are: 2
+
+total number of diff functions =  15
