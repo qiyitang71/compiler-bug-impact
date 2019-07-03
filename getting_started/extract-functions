@@ -3,8 +3,11 @@
 
 bug_id=$1
 
-#w working directory
+# working directory
 dir="/home/user42/$bug_id"
+
+# current directory
+curr_folder="$( cd "$(dirname "$0")" ; pwd -P )"
 
 for pkg in $dir/*/; do
   # name of the application
@@ -18,7 +21,7 @@ for pkg in $dir/*/; do
   
   echo "  has different binaries"
   ################### binaries built by fixed compiler ###################
-  echo "  extract functions in fixed-func folder"
+  echo "  extracting functions in fixed-func folder ..."
   # deal with the elfs in the fixed directory
   fixed_op="$pkg"fixed-binary.csv
   fixed_nm="$pkg"fixed.nm
@@ -100,7 +103,7 @@ for pkg in $dir/*/; do
   done
   
   ################### binaries built by buggy compiler ###################
-  echo "  extract functions in buggy-func folder"
+  echo "  extracting functions in buggy-func folder ..."
   # deal with the elfs in the buggy directory
   buggy_op="$pkg"buggy-binary.csv
   buggy_nm="$pkg"buggy.nm
@@ -179,4 +182,8 @@ for pkg in $dir/*/; do
   echo " done with $app"
 done
 rm -f tmp
+
+cd $curr_folder
+./get-diff-func.sh $bug_id
+
 
