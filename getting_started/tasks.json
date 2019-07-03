@@ -1,0 +1,24 @@
+[
+   {
+        "chroot": "stretch",
+        "esttime": 170,
+        "logfile": "/tmp/afl_2.52b-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "afl",
+        "type": "rebuild-full",
+        "version": "2.36b-1"
+   },
+   {
+        "chroot": "stretch",
+        "esttime": 279,
+        "logfile": "/tmp/libraw_0.18.13-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libraw",
+        "type": "rebuild-full",
+        "version": "0.17.2-6+deb9u1"
+    }
+]
