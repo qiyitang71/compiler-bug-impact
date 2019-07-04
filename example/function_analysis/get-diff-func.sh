@@ -1,7 +1,6 @@
 #!/bin/bash
 # working directory
-folder=$1
-working_dir=/home/user42/"$folder"
+working_dir=$1
 opfile=$working_dir/$(echo $working_dir | rev | cut -d/ -f1 | rev | cut -d- -f2)".txt"
 rm -f $opfile
 javac CSVReader.java

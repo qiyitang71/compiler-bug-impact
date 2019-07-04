@@ -81,8 +81,6 @@ public class CSVReader {
                 // use comma as separator
                 String[] tmp = line.split(cvsSplitBy);
                 if (tmp.length != 3) {
-                    //System.out.println("The following line is not formatted correctly: " + line);
-                    //return;
                     continue;
                 }
                 String path = tmp[0];

@@ -4,10 +4,16 @@
 bug_id=$1
 
 # working directory
-dir="/home/user42/$bug_id"
+dir="/home/user42/compiler-bug-impact/example/results/$bug_id"
+
+if [ -d "$dir" ]; then
+   echo "Folder with bug ID seems not exist. Stopping here."
+   echo "check /home/user42/compiler-bug-impact/example/results"
+   exit 1
+ fi
 
 # current directory
-curr_folder="$( cd "$(dirname "$0")" ; pwd -P )"
+curr_folder="/home/user42/compiler-bug-impact/example/function_analysis"
 
 for pkg in $dir/*/; do
   # name of the application
@@ -184,6 +190,6 @@ done
 rm -f tmp
 
 cd $curr_folder
-./get-diff-func.sh $bug_id
+./get-diff-func.sh "$dir"
 
 
