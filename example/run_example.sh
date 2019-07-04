@@ -4,10 +4,11 @@ bug_id="26323"
 
 COMPILER=/home/user42/compilers/$bug_id
 if [ ! -d "$COMPILER" ]; then
-    echo "--> Downloading compiler for bug $bug_id..."
-    mkdir -p /home/user42/compilers/
-    cd /home/user42/compilers/
+    echo "--> Downloading compiler for bug $bug_id ..."
+    mkdir -p /home/user42/compilers
+    cd /home/user42/compilers
     wget https://gitlab.com/mmarcozz/buggy-compilers/raw/"$bug_id"/"$bug_id".zip
+    echo "--> Unzipping $bug_id"".zip ..."
     unzip -qq "$bug_id".zip
     rm "$bug_id".zip
 fi
@@ -19,5 +20,6 @@ cp -r $COMPILER/cop /srv/chroot/stretch-amd64-sbuild/home/compiler/
 cp -r $COMPILER/buggy /srv/chroot/stretch-amd64-sbuild/home/compiler/
 cp -r $COMPILER/fixed /srv/chroot/stretch-amd64-sbuild/home/compiler/
 echo "--> Starting impact analysis for bug $bug_id over package afl and libraw"
-./build/steps-llvm "$bug_id"
-
+/home/user42/compiler-bug-impact/example/build/steps-llvm "$bug_id"
+echo "--> Starting function analysis for bug $bug_id"
+/home/user42/compiler-bug-impact/example/function_analysis/extract-functions "$bug_id"

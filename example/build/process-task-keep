@@ -118,18 +118,6 @@ begin
 
       modefile_path = "/tmp/#{m}"
 
-      # chech for existence
-      if not File.file?(modefile_path)
-        if File.file?("/home/user42/cloud-scripts/modes/#{m}")
-          FileUtils::cp("/home/user42/cloud-scripts/modes/#{m}", "/tmp/#{m}")
-        else
-          raise "unable to find #{m} mode file"
-        end
-      end
-
-      # ensure the file is executable
-      system("chmod a+rx #{modefile_path}")
-
       sbuildopt += " --chroot-setup-commands=#{modefile_path}"
     end
 

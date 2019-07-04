@@ -111,7 +111,7 @@ for pkg in $dir/*/; do
         funcFile=$Fixed_DISASB_DIR"/"$index
       done
     } < lines.tmp
-    rm -f "$pkg"*.d "$pkg"*.nm "$pkg"*.tmp "$pkg"tmp
+    rm -f "$pkg"*.d "$pkg"*.nm "$pkg"*.tmp "$pkg"tmp line.tmp
   done
   
   ################### binaries built by buggy compiler ###################
@@ -195,7 +195,7 @@ for pkg in $dir/*/; do
         funcFile=$Buggy_DISASB_DIR"/"$index
       done
     } < lines.tmp
-    rm -f "$pkg"*.d "$pkg"*.nm "$pkg"*.tmp "$pkg"tmp
+    rm -f "$pkg"*.d "$pkg"*.nm "$pkg"*.tmp "$pkg"tmp line.tmp
   done
   echo " done with $app"
 done

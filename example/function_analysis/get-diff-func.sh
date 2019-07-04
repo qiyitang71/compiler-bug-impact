@@ -1,7 +1,7 @@
 #!/bin/bash
 # working directory
 working_dir=$1
-opfile=$working_dir/$(echo $working_dir | rev | cut -d/ -f1 | rev)".txt"
+opfile=$working_dir/$(echo $working_dir | rev | cut -d/ -f1 | rev)"-func.txt"
 rm -f $opfile
 javac CSVReader.java
 for dir in $working_dir/*; do
@@ -20,5 +20,9 @@ for dir in $working_dir/*; do
   java CSVReader "$dir"/buggy-binary.csv "$dir"/fixed-binary.csv >> $opfile
 done
 
-python get-data.py $opfile 
-echo "write results to $opfile"
+if [ -f "$opfile" ]; then
+  python get-data.py $opfile 
+  echo "write results to $opfile"
+else
+  echo "no different functions found"
+fi
