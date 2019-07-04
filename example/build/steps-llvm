@@ -35,7 +35,7 @@ sudo chmod +x /srv/chroot/stretch-amd64-sbuild/tmp/compiler-patched
 sudo rm -f /srv/chroot/stretch-amd64-sbuild/etc/dpkg/buildflags.conf
 
 maxtaskid=$(($(cat $working_folder/tasks.json | jq length)-1))
-mkdir "$tasks_folder"
+mkdir -p "$tasks_folder"
 {
   echo ""$(date | awk '{print $4}')" - STARTING STEPS FOR BUG "$bug_id
   sucessful_build=0
