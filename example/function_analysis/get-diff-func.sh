@@ -1,7 +1,7 @@
 #!/bin/bash
 # working directory
 working_dir=$1
-opfile=$working_dir/$(echo $working_dir | rev | cut -d/ -f1 | rev | cut -d- -f2)".txt"
+opfile=$working_dir/$(echo $working_dir | rev | cut -d/ -f1 | rev)".txt"
 rm -f $opfile
 javac CSVReader.java
 for dir in $working_dir/*; do
