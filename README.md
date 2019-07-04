@@ -47,7 +47,7 @@ cd /home/user42/compiler-bug-impact/example
 ./run_example.sh
 ```
 This script will 
-- Download the compilers (fixed, buggy and cop) corresponding to EMI bug 26323 from Gitlab if not downloaded earlier.
+- Download the compilers (fixed, buggy and cop) corresponding to EMI bug 26323 from Gitlab if not downloaded earlier
 - Install this compiler in the chroot
 - Run the steps-llvm script with compiler over two apps: afl and libraw
 - Computing the number of different functions for these two apps
