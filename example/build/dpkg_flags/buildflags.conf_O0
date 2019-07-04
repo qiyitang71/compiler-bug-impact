@@ -1,0 +1,2 @@
+SET CFLAGS -g -O0 -fstack-protector-strong -Wformat -Werror=format-security
+SET CXXFLAGS -g -O0 -fstack-protector-strong -Wformat -Werror=format-security
