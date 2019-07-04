@@ -25,7 +25,7 @@ ssh -p 2222 user42@localhost
 ```
 cd /home/user42/compiler-bug-impact/data
 ```
-Here, all the logs of compiling the 309 Debian apps are in Build_Logs and all the data of different funtions are in Function_Logs.
+Here, all the logs of compiling the 309 Debian apps are in Build_Logs and all the data of the number of different funtions are in Function_Logs.
 
 2. generate the tables in Section 5, e.g. to see table 3, simply run 
 ```
