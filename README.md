@@ -36,7 +36,7 @@ Here, all the logs of compiling the 309 Debian apps are in Build_Logs and all th
 ./displayResults.sh results/table3.csv
 ```
 
-### Small example to build Debian apps and compute the number of different functions
+### Small example to analyze the impact of one bug on two Debian apps
 
 1. go to the example directory 
 ```
