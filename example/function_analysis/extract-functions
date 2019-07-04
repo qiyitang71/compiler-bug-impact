@@ -6,7 +6,7 @@ bug_id=$1
 # working directory
 dir="/home/user42/compiler-bug-impact/example/results/$bug_id"
 
-if [ -d "$dir" ]; then
+if [ ! -d "$dir" ]; then
    echo "Folder with bug ID seems not exist. Stopping here."
    echo "check /home/user42/compiler-bug-impact/example/results"
    exit 1
