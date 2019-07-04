@@ -8,7 +8,7 @@ if [ $# -ne 1 ]
 fi
 bug_id=$1
 
-results_folder="/home/user42/example/results"
+results_folder="/home/user42/compiler-bug-impact/example/results"
 working_folder="/home/user42/compiler-bug-impact/example/build"
 tasks_folder="$results_folder/$bug_id"
 
@@ -63,8 +63,8 @@ mkdir "$tasks_folder"
     echo "    STEP 1"
     echo "    .. Building package with cop compiler (output in "$LOG_FILE")"
     # Set cop compiler for use in chroot
-    rm -rf /srv/chroot/stretch-amd64-sbuild/home/compiler/llvm-install
-    cp -r /srv/chroot/stretch-amd64-sbuild/home/compiler/cop/llvm-install /srv/chroot/stretch-amd64-sbuild/home/compiler/
+    sudo rm -rf /srv/chroot/stretch-amd64-sbuild/home/compiler/llvm-install
+    sudo cp -r /srv/chroot/stretch-amd64-sbuild/home/compiler/cop/llvm-install /srv/chroot/stretch-amd64-sbuild/home/compiler/
     # Build package with cop compiler
     sudo "$working_folder"/process-task -v -t task.tmp &> $LOG_FILE
     # Check if cop build was successfull and if so goes on with next steps
@@ -103,8 +103,8 @@ mkdir "$tasks_folder"
     LOG_FILE_BUGGY=$tasks_folder/$PACKAGE_NAME/buggy-build.log.tmp
     echo "    .. Building package with buggy compiler (output in "$LOG_FILE_BUGGY")"
     # Set buggy compiler for use in chroot
-    rm -rf /srv/chroot/stretch-amd64-sbuild/home/compiler/llvm-install
-    cp -r /srv/chroot/stretch-amd64-sbuild/home/compiler/buggy/llvm-install /srv/chroot/stretch-amd64-sbuild/home/compiler/
+    sudo rm -rf /srv/chroot/stretch-amd64-sbuild/home/compiler/llvm-install
+    sudo cp -r /srv/chroot/stretch-amd64-sbuild/home/compiler/buggy/llvm-install /srv/chroot/stretch-amd64-sbuild/home/compiler/
     # Build package with buggy compiler
     cat task.tmp | jq '.logfile="'$LOG_FILE_BUGGY'"' > task.tmp1
     mv -f task.tmp1 task.tmp
@@ -136,8 +136,8 @@ mkdir "$tasks_folder"
     LOG_FILE_FIXED=$tasks_folder/$PACKAGE_NAME/fixed-build.log.tmp
     echo "    .. Building package with fixed compiler (output in "$LOG_FILE_FIXED")"
     # Set fixed compiler for use in chroot
-    rm -rf /srv/chroot/stretch-amd64-sbuild/home/compiler/llvm-install
-    cp -r /srv/chroot/stretch-amd64-sbuild/home/compiler/fixed/llvm-install /srv/chroot/stretch-amd64-sbuild/home/compiler/
+    sudo rm -rf /srv/chroot/stretch-amd64-sbuild/home/compiler/llvm-install
+    sudo cp -r /srv/chroot/stretch-amd64-sbuild/home/compiler/fixed/llvm-install /srv/chroot/stretch-amd64-sbuild/home/compiler/
     # Build package with fixed compiler
     cat task.tmp | jq '.logfile="'$LOG_FILE_FIXED'"' > task.tmp1
     mv -f task.tmp1 task.tmp
@@ -247,5 +247,3 @@ mkdir "$tasks_folder"
 } | tee "$tasks_folder"/new-"$bug_id".txt
 rm -f $working_folder/task.tmp
 echo ""$(date | awk '{print $4}')" - STEPS FOR BUG "$bug_id" DONE";
-
-

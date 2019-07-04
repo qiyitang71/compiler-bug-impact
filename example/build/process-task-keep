@@ -31,7 +31,7 @@ end
 
 tname = task['source'] or task['package']
 
-task['keep-result'] = `mktemp -u /home/user42/tmp_results/#{tname}.XXXXXX`.chomp  
+task['keep-result'] = `mktemp -u /home/user42/compiler-bug-impact/example/tmp_results/#{tname}.XXXXXX`.chomp  
 
 if task['keep-result']
   Dir::mkdir(task['keep-result'])
