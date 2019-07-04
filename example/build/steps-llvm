@@ -22,7 +22,7 @@ if ! [ -e $working_folder/tasks.json ]; then echo "error: tasks.json was not pro
 
 rm -rf "$tasks_folder"
 rm -rf "$tmpresults_folder"
-mkdir -p  "tmpresults_folder"
+mkdir -p  "$tmpresults_folder"
 
 sudo sbuild-update -udcar stretch-amd64-sbuild > /dev/null
 
