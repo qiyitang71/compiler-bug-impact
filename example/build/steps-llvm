@@ -26,7 +26,9 @@ mkdir -p  "$results_folder"/tmp_results
 sudo sbuild-update -udcar stretch-amd64-sbuild > /dev/null
 
 # move the script of replacing gcc with our compiler to the chroot directory
-sudo mv "$working_folder"/patch_scripts/compiler-patched /srv/chroot/stretch-amd64-sbuild/tmp/
+sudo cp "$working_folder"/patch_scripts/compiler-patched /srv/chroot/stretch-amd64-sbuild/tmp/
+sudo chown user42:sbuild /srv/chroot/stretch-amd64-sbuild/tmp/compiler-patched
+sudo chmod +x /srv/chroot/stretch-amd64-sbuild/tmp/compiler-patched
 
 # delete the script which sets dpkg flags
 sudo rm -f /srv/chroot/stretch-amd64-sbuild/etc/dpkg/buildflags.conf
@@ -41,7 +43,6 @@ mkdir "$tasks_folder"
   binaries_different=0
   test_suite_aborted=0
   test_suite_different=0
-  sudo chown user42:sbuild /srv/chroot/stretch-amd64-sbuild/tmp/compiler-patched
   for i in `seq 0 $maxtaskid`;
   do
     cd $working_folder
