@@ -132,7 +132,7 @@ mkdir -p "$tasks_folder"
 
     mv "$tmpresults_folder"/$(ls "$tmpresults_folder" | head -1) $tasks_folder/$PACKAGE_NAME/buggy-packages
     
-    schroot --end-session --all-sessions
+    sudo schroot --end-session --all-sessions
 
     LOG_FILE_FIXED=$tasks_folder/$PACKAGE_NAME/fixed-build.log.tmp
     echo "    .. Building package with fixed compiler (output in "$LOG_FILE_FIXED")"
@@ -165,7 +165,7 @@ mkdir -p "$tasks_folder"
 
     mv "$tmpresults_folder"/$(ls "$tmpresults_folder" | head -1) $tasks_folder/$PACKAGE_NAME/fixed-packages
 
-    schroot --end-session --all-sessions
+    sudo schroot --end-session --all-sessions
 
     echo "    .. Comparing the binaries produced by the buggy and fixed compiler"
     # Unpack binary packages (there can be several .deb binary paxkage produced for one .dsc source package, unpacking only the root one)
