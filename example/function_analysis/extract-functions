@@ -37,6 +37,7 @@ for pkg in $dir/*/; do
   Fixed_DISASB_DIR="$pkg"fixed-disasb
   rm -f $fixed_op
   find $Fixed_DIR -type f | while read filename; do
+ 
     #file should be either [(ELF and not stripped) or (.a) ] and should exist in fixed-binaries dir
     str1=$(file $filename | grep " ELF ")
     str2=$(file $filename | grep "not stripped")
@@ -46,6 +47,7 @@ for pkg in $dir/*/; do
       continue
     fi
 
+    # ignore debug files and tmp directory
     if [[ $filename == *'.debug'* || $filename == *'tmp'* ]]; then
       continue
     fi 
@@ -55,7 +57,7 @@ for pkg in $dir/*/; do
     # check if it is in the final debian distribution directory
     num_exist=$(find $Fixed_bin_DIR -name $filename_sim| wc -l)
 
-    # there are three special cases
+    # three special cases
     if [[ $app = 'tdb' && $filename_sim = 'pytdb.inst.so' ]] || \
       [[ $app = 'talloc' && $filename_sim = 'pytalloc.so' ]] || \
       [[ $app = 'clustalw' && $filename_sim = 'clustalw2' ]]; then
@@ -123,6 +125,7 @@ for pkg in $dir/*/; do
   Buggy_DISASB_DIR="$pkg"buggy-disasb
   rm -f $buggy_op
   find $Buggy_DIR -type f | while read filename; do
+
     #file should be either [(ELF and not stripped) or (.a) ] and should exist in fixed-binaries dir
     str1=$(file $filename | grep " ELF ")
     str2=$(file $filename | grep "not stripped")
@@ -132,10 +135,11 @@ for pkg in $dir/*/; do
       continue
     fi
     
+    # ignore debug files and tmp directory
     if [[ $filename == *'.debug'* || $filename == *'tmp'* ]]; then
       continue
     fi 
-    
+
     filename_sim=$(echo $filename | rev | cut -d/ -f1 | rev)
     num_exist=$(find $Buggy_bin_DIR -name $filename_sim| wc -l)
 
