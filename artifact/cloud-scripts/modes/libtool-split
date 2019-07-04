@@ -1,8 +1,0 @@
-#!/usr/bin/sudo bash
-set -e -x
-echo deb http://aws-logs.debian.net/apt sid main >> /etc/apt/sources.list
-echo 'APT::Get::AllowUnauthenticated "1";' > /etc/apt/apt.conf.d/99allow-unauth
-apt-get update
-apt-get install -y libltdl-dev=2.4.2-1.20 libtool=2.4.2-1.20
-echo "libltdl-dev hold"|dpkg --set-selections
-echo "libtool hold"|dpkg --set-selections
