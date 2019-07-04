@@ -109,7 +109,7 @@ mkdir -p "$tasks_folder"
     # Build package with buggy compiler
     cat task.tmp | jq '.logfile="'$LOG_FILE_BUGGY'"' > task.tmp1
     mv -f task.tmp1 task.tmp
-    rm -rf "$tmpresults_folder"
+    rm -rf "$tmpresults_folder"/*
     sudo "$working_folder"/process-task-keep -v -t task.tmp &> $LOG_FILE_BUGGY
     # Check if buggy build was successfull and if so goes on with next steps
     if grep -q "DC-Status: OK" $LOG_FILE_BUGGY; then
@@ -142,7 +142,7 @@ mkdir -p "$tasks_folder"
     # Build package with fixed compiler
     cat task.tmp | jq '.logfile="'$LOG_FILE_FIXED'"' > task.tmp1
     mv -f task.tmp1 task.tmp
-    rm -rf "$tmpresults_folder"
+    rm -rf "$tmpresults_folder"/*
     sudo "$working_folder"/process-task-keep -v -t task.tmp &> $LOG_FILE_FIXED
     # Check if fixed build was successfull and if so goes on with next steps
     if grep -q "DC-Status: OK" $LOG_FILE_FIXED; then
