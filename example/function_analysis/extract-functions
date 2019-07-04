@@ -46,7 +46,7 @@ for pkg in $dir/*/; do
       continue
     fi
 
-    if [[ $filename == *"debug"* ]]; then
+    if [[ $filename == *'.debug'* || $filename == *'tmp'* ]]; then
       continue
     fi 
 
@@ -131,6 +131,10 @@ for pkg in $dir/*/; do
     if [[ ((-z "$str1")  ||  (-z "$str2"))  &&  (-z "$str3") ]]; then
       continue
     fi
+    
+    if [[ $filename == *'.debug'* || $filename == *'tmp'* ]]; then
+      continue
+    fi 
     
     filename_sim=$(echo $filename | rev | cut -d/ -f1 | rev)
     num_exist=$(find $Buggy_bin_DIR -name $filename_sim| wc -l)
