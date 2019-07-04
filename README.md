@@ -52,4 +52,6 @@ This script will
 - Run the steps-llvm script with compiler over two apps: afl and libraw
 - Computing the number of different functions for these two apps
 
+The results are saved in /home/user42/compiler-bug-impact/example/results/26323
+
 ## step-by-step evaluation
