@@ -11,6 +11,7 @@ bug_id=$1
 results_folder="/home/user42/compiler-bug-impact/example/results"
 working_folder="/home/user42/compiler-bug-impact/example/build"
 tasks_folder="$results_folder/$bug_id"
+tmpresults_folder="$results_folder"/tmp_results
 
 if [ -d "$tasks_folder" ] 
   then
@@ -20,8 +21,8 @@ fi
 if ! [ -e $working_folder/tasks.json ]; then echo "error: tasks.json was not provided"; exit 1; fi
 
 rm -rf "$tasks_folder"
-rm -rf "$results_folder"/tmp_results
-mkdir -p  "$results_folder"/tmp_results
+rm -rf "$tmpresults_folder"
+mkdir -p  "tmpresults_folder"
 
 sudo sbuild-update -udcar stretch-amd64-sbuild > /dev/null
 
@@ -108,7 +109,7 @@ mkdir "$tasks_folder"
     # Build package with buggy compiler
     cat task.tmp | jq '.logfile="'$LOG_FILE_BUGGY'"' > task.tmp1
     mv -f task.tmp1 task.tmp
-    rm -rf /home/user42/tmp_results/*
+    rm -rf "$tmpresults_folder"
     sudo "$working_folder"/process-task-keep -v -t task.tmp &> $LOG_FILE_BUGGY
     # Check if buggy build was successfull and if so goes on with next steps
     if grep -q "DC-Status: OK" $LOG_FILE_BUGGY; then
@@ -129,7 +130,7 @@ mkdir "$tasks_folder"
     rm -rf $tasks_folder/$PACKAGE_NAME/buggy-func/*.buildinfo
     rm -rf $tasks_folder/$PACKAGE_NAME/buggy-func/*.dsc
 
-    mv /home/user42/tmp_results/$(ls /home/user42/tmp_results | head -1) $tasks_folder/$PACKAGE_NAME/buggy-packages
+    mv "$tmpresults_folder"/$(ls "$tmpresults_folder" | head -1) $tasks_folder/$PACKAGE_NAME/buggy-packages
     
     schroot --end-session --all-sessions
 
@@ -141,7 +142,7 @@ mkdir "$tasks_folder"
     # Build package with fixed compiler
     cat task.tmp | jq '.logfile="'$LOG_FILE_FIXED'"' > task.tmp1
     mv -f task.tmp1 task.tmp
-    rm -rf /home/user42/tmp_results/*
+    rm -rf "$tmpresults_folder"
     sudo "$working_folder"/process-task-keep -v -t task.tmp &> $LOG_FILE_FIXED
     # Check if fixed build was successfull and if so goes on with next steps
     if grep -q "DC-Status: OK" $LOG_FILE_FIXED; then
@@ -162,7 +163,7 @@ mkdir "$tasks_folder"
     rm -rf $tasks_folder/$PACKAGE_NAME/fixed-func/*.buildinfo
     rm -rf $tasks_folder/$PACKAGE_NAME/fixed-func/*.dsc
 
-    mv /home/user42/tmp_results/$(ls /home/user42/tmp_results | head -1) $tasks_folder/$PACKAGE_NAME/fixed-packages
+    mv "$tmpresults_folder"/$(ls "$tmpresults_folder" | head -1) $tasks_folder/$PACKAGE_NAME/fixed-packages
 
     schroot --end-session --all-sessions
 
