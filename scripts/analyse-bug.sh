@@ -61,6 +61,7 @@ bugs=( ["11964"]="https://gitlab.com/mmarcozz/buggy-compilers/raw/master/11964.z
 COMPILER=/home/user42/compilers/$bug_id
 if [ ! -d "$COMPILER" ]; then
     echo "--> Downloading compiler for bug $bug_id..."
+    mkdir -p /home/user42/compilers
     cd /home/user42/compilers/
     wget ${bugs[$bug_id]}
     echo "--> Unzipping $bug_id"".zip..."

@@ -8,6 +8,9 @@ echo "Entering customization script..."
 
 rm -rf /build/test/*
 
+apt-get  --allow-unauthenticated update
+apt-get -y install dirmngr --install-recommends
+
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
 
