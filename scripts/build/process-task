@@ -1,0 +1,179 @@
+#!/usr/bin/ruby -w
+
+require 'json'
+require 'optparse'
+require 'fileutils'
+require 'pp'
+
+require_relative 'config'
+
+$verbose = false
+taskfile = nil
+options = OptionParser::new do |opts|
+  opts.banner = "Usage: ./process-task [options]"
+  opts.separator ""
+  opts.separator "Options:"
+  opts.on("-v", "--verbose", "Verbose mode") { $verbose = true }
+  opts.on("-t", "--task FILE", "specify task file") { |t| taskfile = t }
+end
+options.parse!(ARGV)
+
+if taskfile.nil?
+  puts("Must specify task file with -t.")
+  exit(1)
+end
+
+task = JSON::parse(IO::read(taskfile))
+if $verbose
+  puts "Task read:"
+  pp task
+end
+
+tname = task['source'] or task['package']
+
+if task['keep-result']
+  Dir::mkdir(task['keep-result'])
+  wdir = task['keep-result']
+else
+  wdir = `mktemp -d /tmp/build.#{tname}.XXXXXX`.chomp
+end
+Dir::chdir(wdir)
+
+log = File::new(task['logfile'], "w")
+STDOUT.reopen(log)
+STDERR.reopen(log)
+ts = Time::now
+
+res = nil
+
+begin
+  if task['type'] == 'instest'
+
+    puts "DC-Instest-Header: #{task['package']} / #{ts}"
+    puts "DC-Task: #{task.to_a.map { |e| e.join(':') }.join(' ') }"
+    cmd = "/root/instest -p #{task['package']} -c jessie-instest"
+    if task['modes'].include?('upgrade')
+      cmd = "/root/instest -p #{task['package']} -c jessie-instest -u wheezy-instest"
+    end
+    puts "DC-Instest-call: #{cmd}"
+    STDOUT.flush
+    res = system(cmd)
+
+  elsif task['type'] == 'dpkg-unpack'
+
+    puts "DC-Unpack-Header: #{task['source']} / #{ts}"
+    puts "DC-Task: #{task.to_a.map { |e| e.join(':') }.join(' ') }"
+
+    cmd = "apt-get --download-only source #{task['source']}=#{task['version']}"
+    puts "DC-Download-Task: #{cmd}"
+    STDOUT.flush
+    res = system(cmd)
+
+    if not res
+      cmd = "apt-get --download-only source #{task['source']}"
+      puts "DC-Download-Task-Force: #{cmd}"
+      STDOUT.flush
+      res = system(cmd)
+      puts "DC-Download-Task-Force-Status: OK" if res
+    end
+
+    if res
+      puts "DC-Download-Task-Status: OK"
+
+      cmd = "dpkg-source -x *.dsc"
+      puts "DC-Unpack-call: #{cmd}"
+      STDOUT.flush
+      res = system(cmd)
+
+      if res
+        puts "DC-Unpack-Call-Status: OK"
+      else
+        puts "DC-Unpack-Call-Status: Failed"
+      end
+    else
+      puts "DC-Download-Task-Status: Failed"
+    end
+
+  else
+
+    runas_user = MASTERNODE_CONFIG[:sbuild_user]
+
+    puts "DC-Build-Header: #{task['source']} #{task['version']} / #{ts}"
+    puts "DC-Task: #{task.to_a.map { |e| e.join(':') }.join(' ') }"
+
+    FileUtils::chown(runas_user, 'sbuild', wdir)
+    if task['modes'].include?('parallel')
+      ENV['DEB_BUILD_OPTIONS']='parallel=64'
+    end
+
+    sbuildopt = ''
+    runasroot = false
+
+    modes = task['modes']
+
+    modes.each do |m|
+      next if MASTERNODE_CONFIG[:pseudo_modes].include?(m)
+
+      modefile_path = "/tmp/#{m}"
+
+      sbuildopt += " --chroot-setup-commands=#{modefile_path}"
+    end
+
+    if task['chroot'] =~ /-i386$/
+       sbuildopt += " --arch i386"
+       task['chroot'].gsub!(/-i386$/, '')
+    end
+
+    if task['modes'].include?('binary-only')
+      cmd = "sbuild -j4 -n --apt-update -d #{task['chroot']} -v #{sbuildopt} #{task['source']}_#{task['version']} --build-path='/build/test/'"
+    elsif task['modes'].include?('arch-all-only')
+      cmd = "sbuild -j4 -n -A --no-arch-any --apt-update -d #{task['chroot']} -v #{sbuildopt} #{task['source']}_#{task['version']} --build-path='/build/test/'"
+    elsif task['modes'].include?('binarch-only')
+      cmd = "sbuild -j4 -n --arch-any --apt-update -d #{task['chroot']} -v #{sbuildopt} #{task['source']}_#{task['version']} --build-path='/build/test/'"
+    else
+      cmd = "sbuild -j4 -n -A -s --force-orig-source --apt-update -d #{task['chroot']} -v #{sbuildopt} #{task['source']}_#{task['version']} --build-path='/build/test/'"
+    end
+    puts "DC-Sbuild-call: su #{runas_user} -c '#{cmd}'"
+    STDOUT.flush
+    res = nil
+    if runasroot
+      res = system(cmd)
+    else
+      res = system("su #{runas_user} -c '#{cmd}'")
+    end
+  end
+  realtime = Time::now - ts
+  if res
+    puts "DC-Status: OK #{realtime}s"
+  else
+    puts "DC-Status: Failed #{realtime}s"
+  end
+
+rescue Exception => ex
+  realtime = Time::now - ts
+
+  puts "DC-Exception: #{ex.message}"
+  puts "DC-Status: Failed #{realtime}s"
+end
+
+# check esttime
+time = task['esttime'] || 1
+m = [ realtime, time ].min.to_f
+r = (realtime - time).abs.to_f
+if m < 60
+  p = 1.0
+elsif m < 200
+  p = 0.7
+elsif m < 500
+  p = 0.4
+else
+  p = 0.1
+end
+if (r/m) >= p
+  puts "DC-Time-Estimation: #{realtime} versus expected #{time} (r/m: #{r/m} ; m: #{m})"
+end
+
+if not task['keep-result']
+  Dir::chdir("/")
+  FileUtils::rm_rf(wdir)
+end

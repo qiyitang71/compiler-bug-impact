@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# gcc-4.4 libraries are required
+# to take care of three really old bugs 11964, 11977 & 12189
+
+set -x
+echo "Entering customization script..."
+
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
+
+echo "deb http://us.archive.ubuntu.com/ubuntu/ trusty universe" >>  /etc/apt/sources.list
+echo "deb-src http://us.archive.ubuntu.com/ubuntu/ trusty universe" >> /etc/apt/sources.list
+echo "deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe" >> /etc/apt/sources.list
+echo "deb-src http://us.archive.ubuntu.com/ubuntu/ trusty-updates universe" >> /etc/apt/sources.list
+
+apt-get  --allow-unauthenticated update
+apt-get -y install libtinfo5
+
+apt-get -y install --allow-unauthenticated -y gcc-4.4
+apt-get -y install --allow-unauthenticated -y g++-4.4
+apt-get -y install g++-multilib
+
+sed -i 's/.*universe//p' /etc/apt/sources.list
+
+FOLDER=/home/compiler
+
+echo "Replace clang, clang++, gcc, g++ & cpp by our compiler"
+VERSIONS="6 4.4"
+cd /usr/bin
+for VERSION in $VERSIONS; do
+    rm -f g++-$VERSION gcc-$VERSION cpp-$VERSION
+    ln -s $FOLDER/llvm-install/bin/clang++ g++-$VERSION
+    ln -s $FOLDER/llvm-install/bin/clang gcc-$VERSION
+    ln -s $FOLDER/llvm-install/bin/clang cpp-$VERSION
+    echo "gcc-$VERSION hold"|dpkg --set-selections
+    echo "g++-$VERSION hold"|dpkg --set-selections
+done
+rm -f gcc
+ln -s $FOLDER/llvm-install/bin/clang gcc
+echo "gcc hold"|dpkg --set-selections
+rm -f g++
+ln -s $FOLDER/llvm-install/bin/clang++ g++
+echo "g++ hold"|dpkg --set-selections
+rm -f cpp
+ln -s $FOLDER/llvm-install/bin/clang cpp
+rm -f clang
+ln -s $FOLDER/llvm-install/bin/clang clang
+echo "clang hold"|dpkg --set-selections
+rm -f clang++
+ln -s $FOLDER/llvm-install/bin/clang++ clang++
+echo "clang++ hold"|dpkg --set-selections
+cd -
+

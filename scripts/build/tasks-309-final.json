@@ -1,0 +1,3401 @@
+[
+    {
+        "chroot": "stretch",
+        "esttime": 1024,
+        "logfile": "/tmp/389-ds-base_1.3.8.2-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "389-ds-base",
+        "type": "rebuild-full",
+        "version": "1.3.5.17-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 1036,
+        "logfile": "/tmp/emboss_6.6.0+dfsg-6_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "emboss",
+        "type": "rebuild-full",
+        "version": "6.6.0+dfsg-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 1459,
+        "logfile": "/tmp/genometools_1.5.10+ds-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "genometools",
+        "type": "rebuild-full",
+        "version": "1.5.9+ds-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 1055,
+        "logfile": "/tmp/gnome-photos_3.28.0-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gnome-photos",
+        "type": "rebuild-full",
+        "version": "3.22.5-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 925,
+        "logfile": "/tmp/kate4_4.14.3-5_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "kate4",
+        "type": "rebuild-full",
+        "version": "4:4.14.3-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 919,
+        "logfile": "/tmp/libcaca_0.99.beta19-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcaca",
+        "type": "rebuild-full",
+        "version": "0.99.beta19-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 1121,
+        "logfile": "/tmp/libgdata_0.17.9-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libgdata",
+        "type": "rebuild-full",
+        "version": "0.17.6-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 1123,
+        "logfile": "/tmp/libproxy_0.4.15-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libproxy",
+        "type": "rebuild-full",
+        "version": "0.4.14-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 901,
+        "logfile": "/tmp/pango1.0_1.42.1-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "pango1.0",
+        "type": "rebuild-full",
+        "version": "1.40.5-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 402,
+        "logfile": "/tmp/aegean_0.15.2+dfsg-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "aegean",
+        "type": "rebuild-full",
+        "version": "0.15.2+dfsg-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 170,
+        "logfile": "/tmp/afl_2.52b-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "afl",
+        "type": "rebuild-full",
+        "version": "2.36b-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 277,
+        "logfile": "/tmp/amap-align_2.2+git20080214.600fc29+dfsg-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "amap-align",
+        "type": "rebuild-full",
+        "version": "2.2-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 457,
+        "logfile": "/tmp/bedtools_2.27.1+dfsg-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "bedtools",
+        "type": "rebuild-full",
+        "version": "2.26.0+dfsg-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 29,
+        "logfile": "/tmp/bonnie++_1.97.3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "bonnie++",
+        "type": "rebuild-full",
+        "version": "1.97.3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 31,
+        "logfile": "/tmp/boxes_1.2-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "boxes",
+        "type": "rebuild-full",
+        "version": "1.1.2-5"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 805,
+        "logfile": "/tmp/cinnamon-desktop_3.6.2-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "cinnamon-desktop",
+        "type": "rebuild-full",
+        "version": "3.2.4-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 32,
+        "logfile": "/tmp/cjet_0.8.9-7_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "cjet",
+        "type": "rebuild-full",
+        "version": "0.8.9-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 289,
+        "logfile": "/tmp/concavity_0.1+dfsg.1-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "concavity",
+        "type": "rebuild-full",
+        "version": "0.1+dfsg.1-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 51,
+        "logfile": "/tmp/conntrack-tools_1.4.5-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "conntrack-tools",
+        "type": "rebuild-full",
+        "version": "1:1.4.4+snapshot20161117-5"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 453,
+        "logfile": "/tmp/cpl-plugin-giraf_2.16.3+dfsg-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "cpl-plugin-giraf",
+        "type": "rebuild-full",
+        "version": "2.15+dfsg-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 464,
+        "logfile": "/tmp/cpl-plugin-hawki_2.4.2+dfsg-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "cpl-plugin-hawki",
+        "type": "rebuild-full",
+        "version": "1.8.21+dfsg-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 175,
+        "logfile": "/tmp/cpl-plugin-muse_2.4.1+dfsg-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "cpl-plugin-muse",
+        "type": "rebuild-full",
+        "version": "1.6.2+dfsg-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 244,
+        "logfile": "/tmp/cunit_2.1-3-dfsg-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "cunit",
+        "type": "rebuild-full",
+        "version": "2.1-3-dfsg-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 31,
+        "logfile": "/tmp/dialign_2.2.1-9_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "dialign",
+        "type": "rebuild-full",
+        "version": "2.2.1-8"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 348,
+        "logfile": "/tmp/epson-inkjet-printer-escpr_1.6.21-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "epson-inkjet-printer-escpr",
+        "type": "rebuild-full",
+        "version": "1.6.11-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 808,
+        "logfile": "/tmp/fence-agents_4.2.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "fence-agents",
+        "type": "rebuild-full",
+        "version": "4.0.25-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 26,
+        "logfile": "/tmp/ffindex_0.9.9.7-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "ffindex",
+        "type": "rebuild-full",
+        "version": "0.9.9.7-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 200,
+        "logfile": "/tmp/fitscut_1.4.4-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "fitscut",
+        "type": "rebuild-full",
+        "version": "1.4.4-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 357,
+        "logfile": "/tmp/foo2zjs_20171202dfsg0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "foo2zjs",
+        "type": "rebuild-full",
+        "version": "20160902dfsg0-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 692,
+        "logfile": "/tmp/gdk-pixbuf_2.36.12-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gdk-pixbuf",
+        "type": "rebuild-full",
+        "version": "2.36.5-2+deb9u2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 322,
+        "logfile": "/tmp/gdnsd_2.4.0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gdnsd",
+        "type": "rebuild-full",
+        "version": "2.2.4-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 35,
+        "logfile": "/tmp/gl2ps_1.4.0+dfsg1-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gl2ps",
+        "type": "rebuild-full",
+        "version": "1.3.9-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 396,
+        "logfile": "/tmp/haproxy_1.8.12-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "haproxy",
+        "type": "rebuild-full",
+        "version": "1.7.5-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 309,
+        "logfile": "/tmp/haveged_1.9.1-6_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "haveged",
+        "type": "rebuild-full",
+        "version": "1.9.1-5+deb9u1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 476,
+        "logfile": "/tmp/infernal_1.1.2-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "infernal",
+        "type": "rebuild-full",
+        "version": "1.1.2-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 250,
+        "logfile": "/tmp/inform6-compiler_6.33-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "inform6-compiler",
+        "type": "rebuild-full",
+        "version": "6.33-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 30,
+        "logfile": "/tmp/libalgorithm-diff-xs-perl_0.04-5_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libalgorithm-diff-xs-perl",
+        "type": "rebuild-full",
+        "version": "0.04-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 33,
+        "logfile": "/tmp/libalgorithm-lbfgs-perl_0.16-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libalgorithm-lbfgs-perl",
+        "type": "rebuild-full",
+        "version": "0.16-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 191,
+        "logfile": "/tmp/libaudio-scan-perl_1.00-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libaudio-scan-perl",
+        "type": "rebuild-full",
+        "version": "0.96-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 27,
+        "logfile": "/tmp/libautobox-perl_3.0.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libautobox-perl",
+        "type": "rebuild-full",
+        "version": "2.84-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 31,
+        "logfile": "/tmp/libb-utils-perl_0.27-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libb-utils-perl",
+        "type": "rebuild-full",
+        "version": "0.27-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 206,
+        "logfile": "/tmp/libchewing_0.5.1-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libchewing",
+        "type": "rebuild-full",
+        "version": "0.5.1-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 28,
+        "logfile": "/tmp/libclass-load-xs-perl_0.10-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libclass-load-xs-perl",
+        "type": "rebuild-full",
+        "version": "0.09-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 292,
+        "logfile": "/tmp/libcompress-bzip2-perl_2.26-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcompress-bzip2-perl",
+        "type": "rebuild-full",
+        "version": "2.25-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 276,
+        "logfile": "/tmp/libcompress-raw-lzma-perl_2.082-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcompress-raw-lzma-perl",
+        "type": "rebuild-full",
+        "version": "2.069-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 40,
+        "logfile": "/tmp/libconfig-augeas-perl_1.000-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libconfig-augeas-perl",
+        "type": "rebuild-full",
+        "version": "1.000-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 216,
+        "logfile": "/tmp/libcpanel-json-xs-perl_4.04-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcpanel-json-xs-perl",
+        "type": "rebuild-full",
+        "version": "3.0225-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 27,
+        "logfile": "/tmp/libcrypt-rijndael-perl_1.13-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcrypt-rijndael-perl",
+        "type": "rebuild-full",
+        "version": "1.13-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 419,
+        "logfile": "/tmp/libcsfml_2.4-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcsfml",
+        "type": "rebuild-full",
+        "version": "2.3-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 273,
+        "logfile": "/tmp/libcurses-perl_1.36-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcurses-perl",
+        "type": "rebuild-full",
+        "version": "1.36-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 33,
+        "logfile": "/tmp/libdata-dump-streamer-perl_2.40-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdata-dump-streamer-perl",
+        "type": "rebuild-full",
+        "version": "2.40-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 32,
+        "logfile": "/tmp/libdata-uuid-libuuid-perl_0.05-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdata-uuid-libuuid-perl",
+        "type": "rebuild-full",
+        "version": "0.05-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 254,
+        "logfile": "/tmp/libdbd-firebird-perl_1.31-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdbd-firebird-perl",
+        "type": "rebuild-full",
+        "version": "1.24-1+deb9u1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 303,
+        "logfile": "/tmp/libdbd-pg-perl_3.7.4-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdbd-pg-perl",
+        "type": "rebuild-full",
+        "version": "3.5.3-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 278,
+        "logfile": "/tmp/libdbd-sqlite2-perl_0.37-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdbd-sqlite2-perl",
+        "type": "rebuild-full",
+        "version": "2:0.37-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 385,
+        "logfile": "/tmp/libdevel-nytprof-perl_6.06+dfsg-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdevel-nytprof-perl",
+        "type": "rebuild-full",
+        "version": "6.04+dfsg-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 30,
+        "logfile": "/tmp/libdevel-pragma-perl_1.1.0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdevel-pragma-perl",
+        "type": "rebuild-full",
+        "version": "1.1.0-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 293,
+        "logfile": "/tmp/libevent-perl_1.26-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libevent-perl",
+        "type": "rebuild-full",
+        "version": "1.26-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 251,
+        "logfile": "/tmp/libev-perl_4.22-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libev-perl",
+        "type": "rebuild-full",
+        "version": "4.22-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 211,
+        "logfile": "/tmp/libffi-platypus-perl_0.50-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libffi-platypus-perl",
+        "type": "rebuild-full",
+        "version": "0.45-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 29,
+        "logfile": "/tmp/libgeo-ip-perl_1.51-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libgeo-ip-perl",
+        "type": "rebuild-full",
+        "version": "1.50-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 60,
+        "logfile": "/tmp/libhat-trie_0.1.2-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libhat-trie",
+        "type": "rebuild-full",
+        "version": "0.0~git25f9e946-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 30,
+        "logfile": "/tmp/libhtml-parser-perl_3.72-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libhtml-parser-perl",
+        "type": "rebuild-full",
+        "version": "3.72-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 33,
+        "logfile": "/tmp/libimage-seek-perl_0.06-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libimage-seek-perl",
+        "type": "rebuild-full",
+        "version": "0.06-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 40,
+        "logfile": "/tmp/libinline-python-perl_0.56-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libinline-python-perl",
+        "type": "rebuild-full",
+        "version": "0.52-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 365,
+        "logfile": "/tmp/libkate_0.4.1-8_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libkate",
+        "type": "rebuild-full",
+        "version": "0.4.1-7"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 314,
+        "logfile": "/tmp/libktoblzcheck_1.49-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libktoblzcheck",
+        "type": "rebuild-full",
+        "version": "1.48-2.1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 34,
+        "logfile": "/tmp/liblinux-prctl-perl_1.6.0-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "liblinux-prctl-perl",
+        "type": "rebuild-full",
+        "version": "1.6.0-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 164,
+        "logfile": "/tmp/libmath-gsl-perl_0.39-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libmath-gsl-perl",
+        "type": "rebuild-full",
+        "version": "0.39-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 29,
+        "logfile": "/tmp/libmath-vector-real-xs-perl_0.10-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libmath-vector-real-xs-perl",
+        "type": "rebuild-full",
+        "version": "0.10-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 333,
+        "logfile": "/tmp/libmoose-perl_2.2011-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libmoose-perl",
+        "type": "rebuild-full",
+        "version": "2.1807-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 173,
+        "logfile": "/tmp/libnetaddr-ip-perl_4.079+dfsg-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libnetaddr-ip-perl",
+        "type": "rebuild-full",
+        "version": "4.079+dfsg-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 41,
+        "logfile": "/tmp/libnet-interface-perl_1.016-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libnet-interface-perl",
+        "type": "rebuild-full",
+        "version": "1.016-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 27,
+        "logfile": "/tmp/libnet-pcap-perl_0.18-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libnet-pcap-perl",
+        "type": "rebuild-full",
+        "version": "0.18-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 34,
+        "logfile": "/tmp/libnet-ssh2-perl_0.69-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libnet-ssh2-perl",
+        "type": "rebuild-full",
+        "version": "0.63-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 29,
+        "logfile": "/tmp/libnet-tclink-perl_3.4.0-9_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libnet-tclink-perl",
+        "type": "rebuild-full",
+        "version": "3.4.0-9"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 30,
+        "logfile": "/tmp/libpackage-stash-xs-perl_0.28-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libpackage-stash-xs-perl",
+        "type": "rebuild-full",
+        "version": "0.28-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 114,
+        "logfile": "/tmp/libpoe-filter-ssl-perl_0.41-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libpoe-filter-ssl-perl",
+        "type": "rebuild-full",
+        "version": "0.30-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 37,
+        "logfile": "/tmp/libposix-2008-perl_0.16-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libposix-2008-perl",
+        "type": "rebuild-full",
+        "version": "0.04-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 282,
+        "logfile": "/tmp/libr3_1.3.4-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libr3",
+        "type": "rebuild-full",
+        "version": "1.3.4-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 63,
+        "logfile": "/tmp/libscalar-list-utils-perl_1.50-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libscalar-list-utils-perl",
+        "type": "rebuild-full",
+        "version": "1:1.47-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 28,
+        "logfile": "/tmp/libscalar-util-numeric-perl_0.40-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libscalar-util-numeric-perl",
+        "type": "rebuild-full",
+        "version": "0.40-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 861,
+        "logfile": "/tmp/libsecret_0.18.6-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libsecret",
+        "type": "rebuild-full",
+        "version": "0.18.5-3.1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 32,
+        "logfile": "/tmp/libsereal-decoder-perl_4.005+ds-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libsereal-decoder-perl",
+        "type": "rebuild-full",
+        "version": "3.015-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 31,
+        "logfile": "/tmp/libterm-readkey-perl_2.37-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libterm-readkey-perl",
+        "type": "rebuild-full",
+        "version": "2.37-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 33,
+        "logfile": "/tmp/libterm-readline-gnu-perl_1.35-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libterm-readline-gnu-perl",
+        "type": "rebuild-full",
+        "version": "1.35-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 28,
+        "logfile": "/tmp/libtext-qrcode-perl_0.05-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libtext-qrcode-perl",
+        "type": "rebuild-full",
+        "version": "0.05-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 36,
+        "logfile": "/tmp/libunicode-japanese-perl_0.49-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libunicode-japanese-perl",
+        "type": "rebuild-full",
+        "version": "0.49-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 290,
+        "logfile": "/tmp/libverilog-perl_3.452-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libverilog-perl",
+        "type": "rebuild-full",
+        "version": "3.422-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 35,
+        "logfile": "/tmp/libversion-perl_0.9924-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libversion-perl",
+        "type": "rebuild-full",
+        "version": "1:0.9917-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 447,
+        "logfile": "/tmp/libvirt-glib_1.0.0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libvirt-glib",
+        "type": "rebuild-full",
+        "version": "1.0.0-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 27,
+        "logfile": "/tmp/libyaml-syck-perl_1.30-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libyaml-syck-perl",
+        "type": "rebuild-full",
+        "version": "1.29-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 27,
+        "logfile": "/tmp/linuxinfo_2.5.0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "linuxinfo",
+        "type": "rebuild-full",
+        "version": "2.4.4-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 335,
+        "logfile": "/tmp/log4cxx_0.10.0-13_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "log4cxx",
+        "type": "rebuild-full",
+        "version": "0.10.0-12"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 255,
+        "logfile": "/tmp/mafft_7.402-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "mafft",
+        "type": "rebuild-full",
+        "version": "7.307-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 40,
+        "logfile": "/tmp/mbuffer_20180625+ds1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "mbuffer",
+        "type": "rebuild-full",
+        "version": "20161115-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 145,
+        "logfile": "/tmp/miniasm_0.2+dfsg-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "miniasm",
+        "type": "rebuild-full",
+        "version": "0.2+dfsg-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 397,
+        "logfile": "/tmp/mscgen_0.20-11_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "mscgen",
+        "type": "rebuild-full",
+        "version": "0.20-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 303,
+        "logfile": "/tmp/muscle_3.8.31+dfsg-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "muscle",
+        "type": "rebuild-full",
+        "version": "1:3.8.31+dfsg-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 439,
+        "logfile": "/tmp/onscripter_20180409-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "onscripter",
+        "type": "rebuild-full",
+        "version": "20161102-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 561,
+        "logfile": "/tmp/ostree_2018.7-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "ostree",
+        "type": "rebuild-full",
+        "version": "2016.15-5"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 45,
+        "logfile": "/tmp/pbsim_1.0.3-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "pbsim",
+        "type": "rebuild-full",
+        "version": "1.0.3-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 421,
+        "logfile": "/tmp/pgagent_4.0.0-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "pgagent",
+        "type": "rebuild-full",
+        "version": "3.4.1-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 217,
+        "logfile": "/tmp/pgbouncer_1.8.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "pgbouncer",
+        "type": "rebuild-full",
+        "version": "1.7.2-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 383,
+        "logfile": "/tmp/phyml_3.3.20180621-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "phyml",
+        "type": "rebuild-full",
+        "version": "3:3.2.0+dfsg-7"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 342,
+        "logfile": "/tmp/polyml_5.7.1-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "polyml",
+        "type": "rebuild-full",
+        "version": "5.6-8"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 672,
+        "logfile": "/tmp/primesieve_7.0+ds-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "primesieve",
+        "type": "rebuild-full",
+        "version": "5.7.2+ds-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 325,
+        "logfile": "/tmp/probcons_1.12-12_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "probcons",
+        "type": "rebuild-full",
+        "version": "1.12-11"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 300,
+        "logfile": "/tmp/radvd_2.17-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "radvd",
+        "type": "rebuild-full",
+        "version": "1:2.15-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 49,
+        "logfile": "/tmp/resolv-wrapper_1.1.5-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "resolv-wrapper",
+        "type": "rebuild-full",
+        "version": "1.1.5-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 872,
+        "logfile": "/tmp/samba_4.8.2+dfsg-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "samba",
+        "type": "rebuild-full",
+        "version": "2:4.5.12+dfsg-2+deb9u3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 434,
+        "logfile": "/tmp/seqprep_1.3.2-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "seqprep",
+        "type": "rebuild-full",
+        "version": "1.3.2-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 283,
+        "logfile": "/tmp/sextractor_2.19.5+dfsg-6_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "sextractor",
+        "type": "rebuild-full",
+        "version": "2.19.5+dfsg-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 269,
+        "logfile": "/tmp/smalt_0.7.6-7_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "smalt",
+        "type": "rebuild-full",
+        "version": "0.7.6-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 255,
+        "logfile": "/tmp/apache2_2.4.33-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "apache2",
+        "type": "rebuild-full",
+        "version": "2.4.25-3+deb9u6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 717,
+        "logfile": "/tmp/audiocd-kio_17.08.3-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "audiocd-kio",
+        "type": "rebuild-full",
+        "version": "4:16.08.3-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 368,
+        "logfile": "/tmp/cpputest_3.8-7_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "cpputest",
+        "type": "rebuild-full",
+        "version": "3.8-5"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 306,
+        "logfile": "/tmp/gdisk_1.0.3-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gdisk",
+        "type": "rebuild-full",
+        "version": "1.0.1-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 389,
+        "logfile": "/tmp/glib-networking_2.56.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "glib-networking",
+        "type": "rebuild-full",
+        "version": "2.50.0-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 268,
+        "logfile": "/tmp/grep_3.1-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "grep",
+        "type": "rebuild-full",
+        "version": "2.27-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 840,
+        "logfile": "/tmp/gutenprint_5.2.13-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gutenprint",
+        "type": "rebuild-full",
+        "version": "5.2.11-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 249,
+        "logfile": "/tmp/lib3ds_1.3.0-9_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "lib3ds",
+        "type": "rebuild-full",
+        "version": "1.3.0-9"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 205,
+        "logfile": "/tmp/s3ql_2.28+dfsg-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "s3ql",
+        "type": "rebuild-full",
+        "version": "2.21+dfsg-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 358,
+        "logfile": "/tmp/screen_4.6.2-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "screen",
+        "type": "rebuild-full",
+        "version": "4.5.0-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 285,
+        "logfile": "/tmp/spamassassin_3.4.1-8_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "spamassassin",
+        "type": "rebuild-full",
+        "version": "3.4.2-1~deb9u1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 736,
+        "logfile": "/tmp/symmetrica_2.0+ds-5_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "symmetrica",
+        "type": "rebuild-full",
+        "version": "2.0+ds-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 233,
+        "logfile": "/tmp/yapet_1.0-9_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "yapet",
+        "type": "rebuild-full",
+        "version": "1.0-9"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 38,
+        "logfile": "/tmp/aragorn_1.2.38-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "aragorn",
+        "type": "rebuild-full",
+        "version": "1.2.38-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 37,
+        "logfile": "/tmp/aribas_1.64-6_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "aribas",
+        "type": "rebuild-full",
+        "version": "1.64-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 305,
+        "logfile": "/tmp/arpack++_2.3-9_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "arpack++",
+        "type": "rebuild-full",
+        "version": "2.3-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 638,
+        "logfile": "/tmp/art-nextgen-simulation-tools_20160605+dfsg-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "art-nextgen-simulation-tools",
+        "type": "rebuild-full",
+        "version": "20160605+dfsg-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 646,
+        "logfile": "/tmp/bliss_0.73-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "bliss",
+        "type": "rebuild-full",
+        "version": "0.73-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 31,
+        "logfile": "/tmp/boxshade_3.3.1-11_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "boxshade",
+        "type": "rebuild-full",
+        "version": "3.3.1-10"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 24,
+        "logfile": "/tmp/c2esp_27-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "c2esp",
+        "type": "rebuild-full",
+        "version": "27-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 212,
+        "logfile": "/tmp/clustalw_2.1+lgpl-6_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "clustalw",
+        "type": "rebuild-full",
+        "version": "2.1+lgpl-5"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 24,
+        "logfile": "/tmp/deal_3.1.9-9_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "deal",
+        "type": "rebuild-full",
+        "version": "3.1.9-8"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 31,
+        "logfile": "/tmp/delta_2006.08.03-8_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "delta",
+        "type": "rebuild-full",
+        "version": "2006.08.03-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 280,
+        "logfile": "/tmp/esorex_3.13.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "esorex",
+        "type": "rebuild-full",
+        "version": "3.12.3-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 200,
+        "logfile": "/tmp/flatpak_0.99.3-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "flatpak",
+        "type": "rebuild-full",
+        "version": "0.8.9-0+deb9u1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 387,
+        "logfile": "/tmp/freeglut_2.8.1-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "freeglut",
+        "type": "rebuild-full",
+        "version": "2.8.1-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 506,
+        "logfile": "/tmp/velvet_1.2.10+dfsg1-5_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "velvet",
+        "type": "rebuild-full",
+        "version": "1.2.10+dfsg1-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 277,
+        "logfile": "/tmp/util-linux_2.32-0.1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "util-linux",
+        "type": "rebuild-full",
+        "version": "2.29.2-1+deb9u1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 301,
+        "logfile": "/tmp/tracker_2.0.3-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "tracker",
+        "type": "rebuild-full",
+        "version": "1.10.5-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 313,
+        "logfile": "/tmp/dcraw_9.27-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "dcraw",
+        "type": "rebuild-full",
+        "version": "9.27-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 314,
+        "logfile": "/tmp/dialign-t_1.0.2-11_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "dialign-t",
+        "type": "rebuild-full",
+        "version": "1.0.2-9"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 33,
+        "logfile": "/tmp/ebook-tools_0.2.2-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "ebook-tools",
+        "type": "rebuild-full",
+        "version": "0.2.2-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 499,
+        "logfile": "/tmp/exonerate_2.4.0-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "exonerate",
+        "type": "rebuild-full",
+        "version": "2.4.0-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 366,
+        "logfile": "/tmp/fluidsynth_1.1.11-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "fluidsynth",
+        "type": "rebuild-full",
+        "version": "1.1.6-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 710,
+        "logfile": "/tmp/gap-guava_3.13+ds-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gap-guava",
+        "type": "rebuild-full",
+        "version": "3.13+ds-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 918,
+        "logfile": "/tmp/gconf_3.2.6-4.1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gconf",
+        "type": "rebuild-full",
+        "version": "3.2.6-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 605,
+        "logfile": "/tmp/gfs2-utils_3.2.0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gfs2-utils",
+        "type": "rebuild-full",
+        "version": "3.1.9-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 894,
+        "logfile": "/tmp/gjs_1.52.3-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gjs",
+        "type": "rebuild-full",
+        "version": "1.46.0-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 522,
+        "logfile": "/tmp/glfw3_3.2.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "glfw3",
+        "type": "rebuild-full",
+        "version": "3.2.1-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 528,
+        "logfile": "/tmp/gmp-ecm_7.0.4+ds-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gmp-ecm",
+        "type": "rebuild-full",
+        "version": "7.0.4+ds-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 499,
+        "logfile": "/tmp/gubbins_2.3.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gubbins",
+        "type": "rebuild-full",
+        "version": "2.2.0-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 1158,
+        "logfile": "/tmp/gvfs_1.36.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "gvfs",
+        "type": "rebuild-full",
+        "version": "1.30.4-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 48,
+        "logfile": "/tmp/hitch_1.4.4-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "hitch",
+        "type": "rebuild-full",
+        "version": "1.4.4-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 260,
+        "logfile": "/tmp/hmmer2_2.3.2+dfsg-5_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "hmmer2",
+        "type": "rebuild-full",
+        "version": "2.3.2-13"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 338,
+        "logfile": "/tmp/htslib_1.7-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "htslib",
+        "type": "rebuild-full",
+        "version": "1.3.2-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 28,
+        "logfile": "/tmp/ifupdown_0.8.34_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "ifupdown",
+        "type": "rebuild-full",
+        "version": "0.8.19"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 28,
+        "logfile": "/tmp/ioping_1.0-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "ioping",
+        "type": "rebuild-full",
+        "version": "1.0-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 174,
+        "logfile": "/tmp/ipset_6.34-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "ipset",
+        "type": "rebuild-full",
+        "version": "6.30-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 28,
+        "logfile": "/tmp/libacpi_0.2-4.1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libacpi",
+        "type": "rebuild-full",
+        "version": "0.2-4.1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 30,
+        "logfile": "/tmp/libai-fann-perl_0.10-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libai-fann-perl",
+        "type": "rebuild-full",
+        "version": "0.10-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 244,
+        "logfile": "/tmp/libapp-stacktrace-perl_0.09-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libapp-stacktrace-perl",
+        "type": "rebuild-full",
+        "version": "0.09-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 27,
+        "logfile": "/tmp/libauthen-tacacsplus-perl_0.26-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libauthen-tacacsplus-perl",
+        "type": "rebuild-full",
+        "version": "0.26-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 31,
+        "logfile": "/tmp/libbareword-filehandles-perl_0.006-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libbareword-filehandles-perl",
+        "type": "rebuild-full",
+        "version": "0.004-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 28,
+        "logfile": "/tmp/libb-hooks-op-check-perl_0.22-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libb-hooks-op-check-perl",
+        "type": "rebuild-full",
+        "version": "0.19-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 27,
+        "logfile": "/tmp/libb-hooks-parser-perl_0.19-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libb-hooks-parser-perl",
+        "type": "rebuild-full",
+        "version": "0.17-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 292,
+        "logfile": "/tmp/libbit-vector-perl_7.4-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libbit-vector-perl",
+        "type": "rebuild-full",
+        "version": "7.4-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 29,
+        "logfile": "/tmp/libbsd-resource-perl_1.2911-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libbsd-resource-perl",
+        "type": "rebuild-full",
+        "version": "1.2910-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 176,
+        "logfile": "/tmp/libcache-fastmmap-perl_1.47-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcache-fastmmap-perl",
+        "type": "rebuild-full",
+        "version": "1.44-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 366,
+        "logfile": "/tmp/libcairo-perl_1.106-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcairo-perl",
+        "type": "rebuild-full",
+        "version": "1.106-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 28,
+        "logfile": "/tmp/libcdb-file-perl_0.99-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcdb-file-perl",
+        "type": "rebuild-full",
+        "version": "0.99-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 425,
+        "logfile": "/tmp/libcoap_4.1.2-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcoap",
+        "type": "rebuild-full",
+        "version": "4.1.2-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 35,
+        "logfile": "/tmp/libcompress-raw-bzip2-perl_2.081-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcompress-raw-bzip2-perl",
+        "type": "rebuild-full",
+        "version": "2.069-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 27,
+        "logfile": "/tmp/libcompress-raw-zlib-perl_2.081-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcompress-raw-zlib-perl",
+        "type": "rebuild-full",
+        "version": "2.069-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 263,
+        "logfile": "/tmp/libconvert-binary-c-perl_0.78-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libconvert-binary-c-perl",
+        "type": "rebuild-full",
+        "version": "0.78-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 24,
+        "logfile": "/tmp/libcoro-perl_6.514-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcoro-perl",
+        "type": "rebuild-full",
+        "version": "6.511-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 31,
+        "logfile": "/tmp/libcrypt-unixcrypt-xs-perl_0.11-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libcrypt-unixcrypt-xs-perl",
+        "type": "rebuild-full",
+        "version": "0.11-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 34,
+        "logfile": "/tmp/libdata-messagepack-perl_1.00-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdata-messagepack-perl",
+        "type": "rebuild-full",
+        "version": "1.00-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 29,
+        "logfile": "/tmp/libdata-peek-perl_0.48-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdata-peek-perl",
+        "type": "rebuild-full",
+        "version": "0.46-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 33,
+        "logfile": "/tmp/libdate-calc-xs-perl_6.4-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdate-calc-xs-perl",
+        "type": "rebuild-full",
+        "version": "6.4-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 323,
+        "logfile": "/tmp/libdbd-mysql-perl_4.046-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdbd-mysql-perl",
+        "type": "rebuild-full",
+        "version": "4.041-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 24,
+        "logfile": "/tmp/libdbd-odbc-perl_1.58-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdbd-odbc-perl",
+        "type": "rebuild-full",
+        "version": "1.56-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 347,
+        "logfile": "/tmp/libdbd-sqlite3-perl_1.58-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdbd-sqlite3-perl",
+        "type": "rebuild-full",
+        "version": "1.54-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 315,
+        "logfile": "/tmp/libdbi-perl_1.641-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdbi-perl",
+        "type": "rebuild-full",
+        "version": "1.636-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 27,
+        "logfile": "/tmp/libdevel-size-perl_0.82-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdevel-size-perl",
+        "type": "rebuild-full",
+        "version": "0.80-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 350,
+        "logfile": "/tmp/libdevice-cdio-perl_2.0.0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libdevice-cdio-perl",
+        "type": "rebuild-full",
+        "version": "0.3.0-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 33,
+        "logfile": "/tmp/libencode-detect-perl_1.01-5_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libencode-detect-perl",
+        "type": "rebuild-full",
+        "version": "1.01-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 33,
+        "logfile": "/tmp/libfile-libmagic-perl_1.16-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libfile-libmagic-perl",
+        "type": "rebuild-full",
+        "version": "1.15-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 31,
+        "logfile": "/tmp/libfilter-perl_1.58-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libfilter-perl",
+        "type": "rebuild-full",
+        "version": "1.57-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 291,
+        "logfile": "/tmp/libfishsound_1.0.0-7_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libfishsound",
+        "type": "rebuild-full",
+        "version": "1.0.0-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 589,
+        "logfile": "/tmp/libg3d_0.0.8-24_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libg3d",
+        "type": "rebuild-full",
+        "version": "0.0.8-22"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": null,
+        "logfile": "/tmp/libgepub_0.6.0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libgepub",
+        "type": "rebuild-full",
+        "version": "0.4-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 338,
+        "logfile": "/tmp/libglib-object-introspection-perl_0.045-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libglib-object-introspection-perl",
+        "type": "rebuild-full",
+        "version": "0.042-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": null,
+        "logfile": "/tmp/libgnome-games-support_1.4.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libgnome-games-support",
+        "type": "rebuild-full",
+        "version": "1.2.1-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 31,
+        "logfile": "/tmp/libhash-storediterator-perl_0.008-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libhash-storediterator-perl",
+        "type": "rebuild-full",
+        "version": "0.008-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 27,
+        "logfile": "/tmp/libhttp-parser-xs-perl_0.17-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libhttp-parser-xs-perl",
+        "type": "rebuild-full",
+        "version": "0.17-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 294,
+        "logfile": "/tmp/libhx_3.22-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libhx",
+        "type": "rebuild-full",
+        "version": "3.22-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 33,
+        "logfile": "/tmp/libio-aio-perl_4.40-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libio-aio-perl",
+        "type": "rebuild-full",
+        "version": "4.34-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 257,
+        "logfile": "/tmp/libkinosearch1-perl_1.01-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libkinosearch1-perl",
+        "type": "rebuild-full",
+        "version": "1.01-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 437,
+        "logfile": "/tmp/liblinear_2.1.0+dfsg-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "liblinear",
+        "type": "rebuild-full",
+        "version": "2.1.0+dfsg-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 24,
+        "logfile": "/tmp/liblinux-epoll-perl_0.015-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "liblinux-epoll-perl",
+        "type": "rebuild-full",
+        "version": "0.012-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 145,
+        "logfile": "/tmp/liblinux-fd-perl_0.011-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "liblinux-fd-perl",
+        "type": "rebuild-full",
+        "version": "0.011-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 32,
+        "logfile": "/tmp/liblist-moreutils-perl_0.416-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "liblist-moreutils-perl",
+        "type": "rebuild-full",
+        "version": "0.416-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 377,
+        "logfile": "/tmp/liblucy-perl_0.3.3-8_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "liblucy-perl",
+        "type": "rebuild-full",
+        "version": "0.3.3-7"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 30,
+        "logfile": "/tmp/libmath-int64-perl_0.54-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libmath-int64-perl",
+        "type": "rebuild-full",
+        "version": "0.54-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 294,
+        "logfile": "/tmp/libmath-prime-util-gmp-perl_0.50-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libmath-prime-util-gmp-perl",
+        "type": "rebuild-full",
+        "version": "0.41-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 31,
+        "logfile": "/tmp/libmath-random-isaac-xs-perl_1.004-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libmath-random-isaac-xs-perl",
+        "type": "rebuild-full",
+        "version": "1.004-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 528,
+        "logfile": "/tmp/libmediaart_1.9.4-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libmediaart",
+        "type": "rebuild-full",
+        "version": "1.9.0-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 46,
+        "logfile": "/tmp/libmemcached-libmemcached-perl_1.001801+dfsg-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libmemcached-libmemcached-perl",
+        "type": "rebuild-full",
+        "version": "1.001801+dfsg-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 400,
+        "logfile": "/tmp/libmicrohttpd_0.9.59-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libmicrohttpd",
+        "type": "rebuild-full",
+        "version": "0.9.51-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 32,
+        "logfile": "/tmp/libnet-cups-perl_0.64-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libnet-cups-perl",
+        "type": "rebuild-full",
+        "version": "0.63-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 896,
+        "logfile": "/tmp/libnotify_0.7.7-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libnotify",
+        "type": "rebuild-full",
+        "version": "0.7.7-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 305,
+        "logfile": "/tmp/libocas_0.97+dfsg-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libocas",
+        "type": "rebuild-full",
+        "version": "0.97+dfsg-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 307,
+        "logfile": "/tmp/liboggz_1.1.1-6_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "liboggz",
+        "type": "rebuild-full",
+        "version": "1.1.1-5"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 653,
+        "logfile": "/tmp/libosinfo_1.1.0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libosinfo",
+        "type": "rebuild-full",
+        "version": "1.0.0-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 32,
+        "logfile": "/tmp/libparams-validate-perl_1.29-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libparams-validate-perl",
+        "type": "rebuild-full",
+        "version": "1.26-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 33,
+        "logfile": "/tmp/libperlio-utf8-strict-perl_0.007-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libperlio-utf8-strict-perl",
+        "type": "rebuild-full",
+        "version": "0.006-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 272,
+        "logfile": "/tmp/libpipeline_1.5.0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libpipeline",
+        "type": "rebuild-full",
+        "version": "1.4.1-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 28,
+        "logfile": "/tmp/libposix-strptime-perl_0.13-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libposix-strptime-perl",
+        "type": "rebuild-full",
+        "version": "0.13-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 25,
+        "logfile": "/tmp/libproc-processtable-perl_0.55-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libproc-processtable-perl",
+        "type": "rebuild-full",
+        "version": "0.53-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 279,
+        "logfile": "/tmp/libraw_0.18.13-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libraw",
+        "type": "rebuild-full",
+        "version": "0.17.2-6+deb9u1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": null,
+        "logfile": "/tmp/libref-util-perl_0.204-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libref-util-perl",
+        "type": "rebuild-full",
+        "version": "0.113-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 446,
+        "logfile": "/tmp/libsdl-perl_2.548-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libsdl-perl",
+        "type": "rebuild-full",
+        "version": "2.546-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 324,
+        "logfile": "/tmp/libsdl-sge_030809dfsg-7_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libsdl-sge",
+        "type": "rebuild-full",
+        "version": "030809dfsg-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 263,
+        "logfile": "/tmp/libsereal-encoder-perl_4.005+ds-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libsereal-encoder-perl",
+        "type": "rebuild-full",
+        "version": "3.015-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 524,
+        "logfile": "/tmp/libsfml_2.5.0+dfsg-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libsfml",
+        "type": "rebuild-full",
+        "version": "2.4.1+dfsg-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 32,
+        "logfile": "/tmp/libsignatures-perl_0.13-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libsignatures-perl",
+        "type": "rebuild-full",
+        "version": "0.13-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 45,
+        "logfile": "/tmp/libsnl_0.2.1.svn.18-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libsnl",
+        "type": "rebuild-full",
+        "version": "0.2.1.svn.18-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 308,
+        "logfile": "/tmp/libsoxr_0.1.2-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libsoxr",
+        "type": "rebuild-full",
+        "version": "0.1.2-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 32,
+        "logfile": "/tmp/libsub-identify-perl_0.14-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libsub-identify-perl",
+        "type": "rebuild-full",
+        "version": "0.12-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 25,
+        "logfile": "/tmp/libsub-name-perl_0.21-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libsub-name-perl",
+        "type": "rebuild-full",
+        "version": "0.21-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 266,
+        "logfile": "/tmp/libtext-bibtex-perl_0.85-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libtext-bibtex-perl",
+        "type": "rebuild-full",
+        "version": "0.78-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 492,
+        "logfile": "/tmp/libtext-bidi-perl_2.12-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libtext-bidi-perl",
+        "type": "rebuild-full",
+        "version": "2.12-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 215,
+        "logfile": "/tmp/libtext-csv-xs-perl_1.36-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libtext-csv-xs-perl",
+        "type": "rebuild-full",
+        "version": "1.26-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 295,
+        "logfile": "/tmp/libtfbs-perl_0.7.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libtfbs-perl",
+        "type": "rebuild-full",
+        "version": "0.7.0+dfsg-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 31,
+        "logfile": "/tmp/libtime-moment-perl_0.44-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libtime-moment-perl",
+        "type": "rebuild-full",
+        "version": "0.41-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 33,
+        "logfile": "/tmp/libvideo-capture-v4l-perl_0.902-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libvideo-capture-v4l-perl",
+        "type": "rebuild-full",
+        "version": "0.902-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 267,
+        "logfile": "/tmp/libvncserver_0.9.11+dfsg-1.1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libvncserver",
+        "type": "rebuild-full",
+        "version": "0.9.11+dfsg-1+deb9u1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": null,
+        "logfile": "/tmp/libwww-form-urlencoded-xs-perl_0.25-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libwww-form-urlencoded-xs-perl",
+        "type": "rebuild-full",
+        "version": "0.23-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 244,
+        "logfile": "/tmp/libx11-xcb-perl_0.17-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libx11-xcb-perl",
+        "type": "rebuild-full",
+        "version": "0.16-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 361,
+        "logfile": "/tmp/libxml-libxml-perl_2.0132+dfsg-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libxml-libxml-perl",
+        "type": "rebuild-full",
+        "version": "2.0128+dfsg-1+deb9u1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 27,
+        "logfile": "/tmp/libxml-libxslt-perl_1.96-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libxml-libxslt-perl",
+        "type": "rebuild-full",
+        "version": "1.95-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 38,
+        "logfile": "/tmp/libyaml-libyaml-perl_0.72+repack-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "libyaml-libyaml-perl",
+        "type": "rebuild-full",
+        "version": "0.63-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 690,
+        "logfile": "/tmp/lua-lgi_0.9.2-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "lua-lgi",
+        "type": "rebuild-full",
+        "version": "0.9.1-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": null,
+        "logfile": "/tmp/lua-luv_1.9.1-0-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "lua-luv",
+        "type": "rebuild-full",
+        "version": "1.9.1-0-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": null,
+        "logfile": "/tmp/lua-torch-sundown_0~20161027-g4324669-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "lua-torch-sundown",
+        "type": "rebuild-full",
+        "version": "0~20160829-g17ea705-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 30,
+        "logfile": "/tmp/minimap_0.2-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "minimap",
+        "type": "rebuild-full",
+        "version": "0.2-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 270,
+        "logfile": "/tmp/mininet_2.2.2-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "mininet",
+        "type": "rebuild-full",
+        "version": "2.2.1-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 327,
+        "logfile": "/tmp/mod-gearman_1.5.5-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "mod-gearman",
+        "type": "rebuild-full",
+        "version": "1.5.5-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 255,
+        "logfile": "/tmp/mp4h_1.3.1-17_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "mp4h",
+        "type": "rebuild-full",
+        "version": "1.3.1-16"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 204,
+        "logfile": "/tmp/musl_1.1.19-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "musl",
+        "type": "rebuild-full",
+        "version": "1.1.16-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 545,
+        "logfile": "/tmp/nauty_2.6r10+ds-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "nauty",
+        "type": "rebuild-full",
+        "version": "2.6r7+ds-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 34,
+        "logfile": "/tmp/ncompress_4.2.4.4-20_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "ncompress",
+        "type": "rebuild-full",
+        "version": "4.2.4.4-16"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 234,
+        "logfile": "/tmp/nemo_3.6.5-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "nemo",
+        "type": "rebuild-full",
+        "version": "3.2.2-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 278,
+        "logfile": "/tmp/nftables_0.9.0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "nftables",
+        "type": "rebuild-full",
+        "version": "0.7-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 563,
+        "logfile": "/tmp/nginx_1.13.12-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "nginx",
+        "type": "rebuild-full",
+        "version": "1.10.3-1+deb9u1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 425,
+        "logfile": "/tmp/njplot_2.4-7_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "njplot",
+        "type": "rebuild-full",
+        "version": "2.4-7"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 45,
+        "logfile": "/tmp/nordlicht_0.4.5-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "nordlicht",
+        "type": "rebuild-full",
+        "version": "0.4.5-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 201,
+        "logfile": "/tmp/nss-mdns_0.14.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "nss-mdns",
+        "type": "rebuild-full",
+        "version": "0.10-8"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": null,
+        "logfile": "/tmp/open-isns_0.97-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "open-isns",
+        "type": "rebuild-full",
+        "version": "0.97-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 537,
+        "logfile": "/tmp/pdb2pqr_2.1.1+dfsg-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "pdb2pqr",
+        "type": "rebuild-full",
+        "version": "2.1.1+dfsg-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 30,
+        "logfile": "/tmp/pgpdump_0.33-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "pgpdump",
+        "type": "rebuild-full",
+        "version": "0.31-0.2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 30,
+        "logfile": "/tmp/php-horde-lz4_1.0.10-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "php-horde-lz4",
+        "type": "rebuild-full",
+        "version": "1.0.10-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 40,
+        "logfile": "/tmp/pristine-tar_1.44_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "pristine-tar",
+        "type": "rebuild-full",
+        "version": "1.38"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 750,
+        "logfile": "/tmp/privoxy_3.0.26-6_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "privoxy",
+        "type": "rebuild-full",
+        "version": "3.0.26-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 372,
+        "logfile": "/tmp/procenv_0.50-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "procenv",
+        "type": "rebuild-full",
+        "version": "0.43-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 303,
+        "logfile": "/tmp/python-coverage_4.5.1+dfsg.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "python-coverage",
+        "type": "rebuild-full",
+        "version": "4.2+dfsg.1-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 125,
+        "logfile": "/tmp/rate4site_3.0.0-5_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "rate4site",
+        "type": "rebuild-full",
+        "version": "3.0.0-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 307,
+        "logfile": "/tmp/rc_1.7.4-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "rc",
+        "type": "rebuild-full",
+        "version": "1.7.4-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 296,
+        "logfile": "/tmp/ruby-uconv_0.6.1-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "ruby-uconv",
+        "type": "rebuild-full",
+        "version": "0.6.1-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 30,
+        "logfile": "/tmp/runlim_1.10-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "runlim",
+        "type": "rebuild-full",
+        "version": "1.10-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 205,
+        "logfile": "/tmp/scscp-imcce_1.0.3+ds-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "scscp-imcce",
+        "type": "rebuild-full",
+        "version": "1.0.2+ds-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 30,
+        "logfile": "/tmp/sim4_0.0.20121010-5_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "sim4",
+        "type": "rebuild-full",
+        "version": "0.0.20121010-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 316,
+        "logfile": "/tmp/simage_1.7.1~2c958a6.dfsg-5_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "simage",
+        "type": "rebuild-full",
+        "version": "1.7.1~2c958a6.dfsg-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 526,
+        "logfile": "/tmp/simplejson_3.15.0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "simplejson",
+        "type": "rebuild-full",
+        "version": "3.10.0-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 28,
+        "logfile": "/tmp/since_1.1-6_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "since",
+        "type": "rebuild-full",
+        "version": "1.1-6"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 272,
+        "logfile": "/tmp/snowball_0+svn585-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "snowball",
+        "type": "rebuild-full",
+        "version": "0+svn585-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 44,
+        "logfile": "/tmp/snpomatic_1.0-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "snpomatic",
+        "type": "rebuild-full",
+        "version": "1.0-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 298,
+        "logfile": "/tmp/snp-sites_2.4.0-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "snp-sites",
+        "type": "rebuild-full",
+        "version": "2.3.2-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 263,
+        "logfile": "/tmp/spass_3.7-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "spass",
+        "type": "rebuild-full",
+        "version": "3.7-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": null,
+        "logfile": "/tmp/spigot_0.2017-01-15.gdad1bbc6-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "spigot",
+        "type": "rebuild-full",
+        "version": "0.2017-01-15.gdad1bbc6-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 76,
+        "logfile": "/tmp/spl-linux_0.7.9-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "spl-linux",
+        "type": "rebuild-full",
+        "version": "0.6.5.9-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 87,
+        "logfile": "/tmp/staden-io-lib_1.14.9-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "staden-io-lib",
+        "type": "rebuild-full",
+        "version": "1.14.8-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 34,
+        "logfile": "/tmp/startpar_0.59-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "startpar",
+        "type": "rebuild-full",
+        "version": "0.59-3.1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 407,
+        "logfile": "/tmp/suricata_4.0.5-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "suricata",
+        "type": "rebuild-full",
+        "version": "3.2.1-1+deb9u1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 534,
+        "logfile": "/tmp/svn-all-fast-export_1.0.10+git20160822-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "svn-all-fast-export",
+        "type": "rebuild-full",
+        "version": "1.0.10+git20160822-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 114,
+        "logfile": "/tmp/systemd-bootchart_233-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "systemd-bootchart",
+        "type": "rebuild-full",
+        "version": "231-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 364,
+        "logfile": "/tmp/systemd-shim_10-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "systemd-shim",
+        "type": "rebuild-full",
+        "version": "10-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 340,
+        "logfile": "/tmp/talloc_2.1.14-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "talloc",
+        "type": "rebuild-full",
+        "version": "2.1.8-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 38,
+        "logfile": "/tmp/tantan_13-5_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "tantan",
+        "type": "rebuild-full",
+        "version": "13-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 353,
+        "logfile": "/tmp/tcl-fitstcl_2.4-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "tcl-fitstcl",
+        "type": "rebuild-full",
+        "version": "2.4-3"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 167,
+        "logfile": "/tmp/tdb_1.3.15-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "tdb",
+        "type": "rebuild-full",
+        "version": "1.3.11-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 188,
+        "logfile": "/tmp/tigr-glimmer_3.02b-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "tigr-glimmer",
+        "type": "rebuild-full",
+        "version": "3.02b-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 253,
+        "logfile": "/tmp/tmate_2.2.1-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "tmate",
+        "type": "rebuild-full",
+        "version": "2.2.1-1"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 77,
+        "logfile": "/tmp/toppred_1.10-6_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "toppred",
+        "type": "rebuild-full",
+        "version": "1.10-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 603,
+        "logfile": "/tmp/upower_0.99.8-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "upower",
+        "type": "rebuild-full",
+        "version": "0.99.4-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 648,
+        "logfile": "/tmp/uudeview_0.5.20-10_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "uudeview",
+        "type": "rebuild-full",
+        "version": "0.5.20-9"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 332,
+        "logfile": "/tmp/vcftools_0.1.15-1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "vcftools",
+        "type": "rebuild-full",
+        "version": "0.1.14+dfsg-4"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 1208,
+        "logfile": "/tmp/viennacl_1.7.1+dfsg1-5_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "viennacl",
+        "type": "rebuild-full",
+        "version": "1.7.1+dfsg1-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 318,
+        "logfile": "/tmp/vorbis-tools_1.4.0-10.1_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "vorbis-tools",
+        "type": "rebuild-full",
+        "version": "1.4.0-10"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 30,
+        "logfile": "/tmp/vsftpd_3.0.3-9_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "vsftpd",
+        "type": "rebuild-full",
+        "version": "3.0.3-8"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 223,
+        "logfile": "/tmp/wcstools_3.9.5-3_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "wcstools",
+        "type": "rebuild-full",
+        "version": "3.9.4-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 38,
+        "logfile": "/tmp/webdis_0.1.2+dfsg-2_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "webdis",
+        "type": "rebuild-full",
+        "version": "0.1.2+dfsg-2"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 671,
+        "logfile": "/tmp/wise_2.4.1-20_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "wise",
+        "type": "rebuild-full",
+        "version": "2.4.1-19"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 27,
+        "logfile": "/tmp/wp2x_2.5-mhi-13_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "wp2x",
+        "type": "rebuild-full",
+        "version": "2.5-mhi-13"
+    },
+    {
+        "chroot": "stretch",
+        "esttime": 344,
+        "logfile": "/tmp/x265_2.8-4_unstable.log",
+        "modes": [
+            "compiler-patched"
+        ],
+        "source": "x265",
+        "type": "rebuild-full",
+        "version": "2.1-2"
+    }
+]

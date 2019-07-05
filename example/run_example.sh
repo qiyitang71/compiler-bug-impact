@@ -20,6 +20,6 @@ cp -r $COMPILER/cop /srv/chroot/stretch-amd64-sbuild/home/compiler/
 cp -r $COMPILER/buggy /srv/chroot/stretch-amd64-sbuild/home/compiler/
 cp -r $COMPILER/fixed /srv/chroot/stretch-amd64-sbuild/home/compiler/
 echo "--> Starting impact analysis for bug $bug_id over package afl and libraw"
-/home/user42/compiler-bug-impact/example/build/steps-llvm "$bug_id"
+/home/user42/compiler-bug-impact/scripts/build/steps-llvm-example "$bug_id"
 echo "--> Starting function analysis for bug $bug_id"
-/home/user42/compiler-bug-impact/example/function_analysis/extract-functions "$bug_id"
+/home/user42/compiler-bug-impact/scripts/function_analysis/extract-functions-example "$bug_id"
