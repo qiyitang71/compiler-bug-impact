@@ -6,7 +6,7 @@ if [ $# -ne 1 ]
     exit 1
 fi
 bug_id=$1
-if ! grep -q '^"$bug_id"$' bug_list; then
+if ! grep -q "^$bug_id$" bug_list; then
     echo "'$bug_id' is not a valid BUGID"
     exit 1
 fi

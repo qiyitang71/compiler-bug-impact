@@ -2,6 +2,8 @@
 set -x
 echo "Entering customization script..."
 
+rm -rf /build/test/*
+
 apt-get update
 apt-get -y install libtinfo5
 apt-get -y install g++-multilib
