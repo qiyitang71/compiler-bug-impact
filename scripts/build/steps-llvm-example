@@ -3,13 +3,13 @@
 
 if [ $# -ne 1 ]
   then
-    echo "No arguments supplied. Usage is ./steps-llvm bugid"
+    echo "No arguments supplied. Usage is ./steps-llvm-example bugid"
     exit 1
 fi
 bug_id=$1
 
 results_folder="/home/user42/compiler-bug-impact/example/results"
-working_folder="/home/user42/compiler-bug-impact/example/build"
+working_folder="/home/user42/compiler-bug-impact/scripts/build"
 tasks_folder="$results_folder/$bug_id"
 tmpresults_folder=/home/user42/tmp_results
 

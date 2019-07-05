@@ -13,7 +13,7 @@ if [ ! -d "$dir" ]; then
  fi
 
 # current directory
-curr_folder="/home/user42/compiler-bug-impact/example/function_analysis"
+curr_folder="/home/user42/compiler-bug-impact/scripts/function_analysis"
 
 for pkg in $dir/*/; do
   # name of the application
