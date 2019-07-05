@@ -1,7 +1,7 @@
 # Study on the impact of fuzzer-found compiler bugs
 ## Getting started
 
-### Download the virtual machine
+### Download the virtual machine (~1 GB)
 
 Download the VM [compiler_bugs.ova](https://drive.google.com/file/d/1mubw_cEIkMzWVeBGIHBAn826-sdtu81u/view?usp=sharing)
 
