@@ -88,7 +88,7 @@ The /home/user42/compiler-bug-impact/scripts folder also contains an analyse-bug
 ```
 ./analyse-bug.sh $bug_id
 ```
-NOTE: We do not expect you to run this script since the script will run for a long time (~1 week on our virtual machine and cloud machine) for each bug and you need about ?GB free disk space for each additional bug. 
+NOTE: We do not expect you to run this script since the script will run for a long time (~1 week on our virtual machine and cloud machine) for each bug and you need about 20GB free disk space to store the results of some bugs. 
 
 ### Remove the VM
 ```
