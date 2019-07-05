@@ -9,6 +9,9 @@ Make sure you have at least 20 GB disk space to run the following example.
 
 ### start the virtual machine 
 1. Install the Oracle VirtualBox
+
+For Windows, Linux, Macintosh and Solaris, downloaded from www.virtualbox.org. For Ubuntu Linux, you can
+alternatively install it by:
 ```
 sudo apt install virtualbox
 ```
@@ -52,6 +55,9 @@ cd /home/user42/compiler-bug-impact/example
 ```
 ./run_example.sh
 ```
+
+NOTE: You will have to enter the sudo password "user42user42" after several minutes of downloading and installing the compilers.
+
 This script will 
 - Download the compilers (fixed, buggy and cop) corresponding to EMI bug 26323 from Gitlab if not downloaded earlier
 - Install this compiler in the chroot
