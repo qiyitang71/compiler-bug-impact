@@ -1,6 +1,11 @@
 # Study on the impact of fuzzer-found compiler bugs
 ## Getting started
 
+### Download the virtual machine
+
+Download the VM [compiler_bugs.ova](https://drive.google.com/file/d/1mubw_cEIkMzWVeBGIHBAn826-sdtu81u/view?usp=sharing) 
+Make sure you have about 20 GB disk space to run the example.
+
 ### start the virtual machine 
 1. Install the Oracle VirtualBox
 ```
