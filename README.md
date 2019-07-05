@@ -83,7 +83,7 @@ grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 
 (to be continued ...)
 
-## our experiments
+## Our experiments
 The /home/user42/compiler-bug-impact/scripts folder also contains an analyse-bug.sh script that analyses the impact a specified bug on our selection of 309 Debian applications. The bug has to be one of our 45 selected bugs listed in /home/user42/compiler-bug-impact/scripts/bug_list. 
 ```
 ./analyse-bug.sh $bug_id
