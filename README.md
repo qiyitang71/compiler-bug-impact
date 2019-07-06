@@ -104,21 +104,28 @@ The revision number for a bug is in the second column of /home/user42/compiler-b
 
 NOTE:
 
-For LLVM with version < 3.8, we also need to download compiler-rt (uncomment the part which takes care of compiler-rt).
+For LLVM version < 3.8, we need to download compiler-rt. Simply uncomment the part in the script which takes care of compiler-rt.
 
-For bug 20189, as the fixing patch was incorporated in two contiguous revisions of the compiler sources, the revision number for the buggy compiler should be $revision-2 instead of $revision-1. (see the script to (un)comment the appropriate part)
+For bug 20189, as the fixing patch was incorporated in two contiguous revisions of the compiler sources, the revision number for the buggy compiler should be $revision-2 instead of $revision-1. See the script to (un)comment the appropriate part.
 
-For bug 27903, as explained in section 3.1, its fixes were applied together with other code modifications and/or via a series of non-contiguous compiler revisions. In the source code of the buggy compiler of this bug, we change line 61 from `cl::init(false), cl::Hidden,` to `cl::init(true), cl::Hidden,`
+For bug 27903, as explained in section 3.1, its fixes were applied together with other code modifications and/or via a series of non-contiguous compiler revisions. In the source code of the buggy compiler of this bug, we need to modify line 61 from `cl::init(false), cl::Hidden,` to `cl::init(true), cl::Hidden,` to turn on the buggy optimization.
 
 3. build the three compilers for each of the bug 
 
 ```
 ./build-compiler.sh $bug_id
 ```
-You need to copy the warning-laden fixing patch (part 1) to /home/user/$bug_id and then rename the file as patch.txt. Then the script `build-compiler.sh` will apply the warning-laden fixing patch to the fixed compiler, build the buggy, fixed and the warning-laden/cop compilers.
+We need to copy the warning-laden fixing patch (part 1) to the folder /home/user/$bug_id and rename the file as patch.txt. The script `build-compiler.sh` will apply the warning-laden fixing patch to the fixed compiler, build the buggy, fixed and the warning-laden/cop compilers.
 
+NOTE from the LLVM release websites, LLVM starts to introduce CMake from LLVM 3.1. For older versions, we use GNU make to build the compilers. Again, (un)comment the appropriate part in the script to take care of this.
 
+### Set up the chroot environment
 
+As explained in section 2.4, a chroot jail is required as a customised and isolated build environment to build our Debian apps. 
+`
+cd /home/user42/compiler-bug-impact/scripts/chroot
+./chroot.sh
+`
 
 ### Analyse the impact of the 45 selected bugs on our selection of 309 Debian apps
 
@@ -126,7 +133,7 @@ The /home/user42/compiler-bug-impact/scripts folder also contains an analyse-bug
 ```
 ./analyse-bug.sh $bug_id
 ```
-NOTE: We do not expect you to run this script since the script will run for a long time (~1 week on our virtual machine and cloud machine) for each bug and you need about 20GB free disk space to store the results of some bugs. 
+NOTE: We do not expect you to run this script since the script will run for a long time (on our virtual machine and cloud machine) for some bugs and you need about 20GB free disk space to store the results of some bugs. 
 
 ### Remove the VM
 ```
