@@ -2,7 +2,7 @@
 
 if [ $# -ne 1 ]
   then
-    echo "No arguments supplied. Usage is ./analyse-bug BUGID, e.g. ./analyse-bug 19636"
+    echo "No arguments supplied. Usage is ./run_example_bug.sh BUGID, e.g. ./run_example_bug.sh 19636"
     exit 1
 fi
 bug_id=$1
@@ -77,9 +77,8 @@ cp -r $COMPILER/buggy /srv/chroot/stretch-amd64-sbuild/home/compiler/
 cp -r $COMPILER/fixed /srv/chroot/stretch-amd64-sbuild/home/compiler/  
 echo "--> Starting impact analysis for bug $bug_id over the selected packages"
 rm -f /home/user42/compiler-bug-impact/scripts/build/tasks.json
-cp /home/user42/compiler-bug-impact/scripts/build/tasks-full.json /home/user42/compiler-bug-impact/scripts/build/tasks.json 
-/home/user42/compiler-bug-impact/scripts/build/steps-llvm "$bug_id"
+cp /home/user42/compiler-bug-impact/scripts/build/tasks-small.json /home/user42/compiler-bug-impact/scripts/build/tasks.json 
+/home/user42/compiler-bug-impact/scripts/build/steps-llvm-example "$bug_id"
 echo "--> Starting function analysis for bug $bug_id"
-/home/user42/compiler-bug-impact/scripts/function_analysis/extract-functions "$bug_id"
-echo "--> Results available in the /home/user42/compiler-bug-impact/results/$bug_id/"
-
+/home/user42/compiler-bug-impact/scripts/function_analysis/extract-functions-example "$bug_id"
+echo "--> Results available in the /home/user42/compiler-bug-impact/example/results/$bug_id/"
