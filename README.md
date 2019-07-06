@@ -81,11 +81,11 @@ grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 
 ## step-by-step evaluation 
 
-In this section, we show you how to do the empirical study step by step. There is no need to run any of the scripts as each step requires enormous memory/disk space/time.   
+In this section, we show you how to do the empirical study step by step. There is no need to run any of the scripts as each step requires enormous memory/disk/time. We have estimated the machine time spent to run all the experiments to around 5 months (see the end of section 4.3).  
 
 ### Prepare compilers for each bug
 
-We have built all the required compilers and you can have a look at the address to download them in /home/user42/compiler-bug-impact/scripts/analyse-bug.sh
+We have built all the required compilers and you can have a look at the addresses of them in /home/user42/compiler-bug-impact/scripts/analyse-bug.sh
 
 The detailed steps are:
 
@@ -110,14 +110,15 @@ For bug 20189, as the fixing patch was incorporated in two contiguous revisions 
 
 For bug 27903, as explained in section 3.1, its fixes were applied together with other code modifications and/or via a series of non-contiguous compiler revisions. In the source code of the buggy compiler of this bug, we need to modify line 61 from `cl::init(false), cl::Hidden,` to `cl::init(true), cl::Hidden,` to turn on the buggy optimization.
 
-3. build the three compilers for each of the bug 
+3. build the three compilers (buggy, fixed and warning-laiden/cop) for each of the bug 
 
 ```
 ./build-compiler.sh $bug_id
 ```
-We need to copy the warning-laden fixing patch (part 1) to the folder /home/user/$bug_id and rename the file as patch.txt. The script `build-compiler.sh` will apply the warning-laden fixing patch to the fixed compiler, build the buggy, fixed and the warning-laden/cop compilers.
+We need to copy the warning-laden fixing patch (part 1) to the folder /home/user/$bug_id and rename the file as patch.txt. The script `build-compiler.sh` will apply the warning-laden fixing patch to the source code of the fixed compiler. It will then build the buggy, fixed and the warning-laden/cop compilers.
 
-NOTE from the LLVM release websites, LLVM starts to introduce CMake from LLVM 3.1. For older versions, we use GNU make to build the compilers. Again, (un)comment the appropriate part in the script to take care of this.
+NOTE from the LLVM release websites, LLVM started to introduce CMake from LLVM 3.1. For older versions, we use GNU make to build the compilers. Again, (un)comment the appropriate part in the script to take care of this.
+
 
 ### Set up the chroot environment
 
@@ -129,11 +130,37 @@ cd /home/user42/compiler-bug-impact/scripts/chroot
 
 ### Analyse the impact of the 45 selected bugs on our selection of 309 Debian apps
 
-The /home/user42/compiler-bug-impact/scripts folder also contains an analyse-bug.sh script that analyses the impact a specified bug on our selection of 309 Debian applications. The bug has to be one of our 45 selected bugs listed in /home/user42/compiler-bug-impact/scripts/bug_list. 
+We have collected the logs of building the apps in /home/user42/compiler-bug-impact/data/Build_Logs and the logs of computing the different functions in /home/user42/compiler-bug-impact/data/Function_Logs.
+
+The /home/user42/compiler-bug-impact/scripts folder contains an analyse-bug.sh script that analyses the impact a specified bug on our selection of 309 Debian applications. The list of 309 Debian apps is in /home/user42/compiler-bug-impact/scripts/build/tasks-full.json. Note that the bug has to be one of our 45 selected bugs listed in /home/user42/compiler-bug-impact/scripts/bug_list. 
+
 ```
 ./analyse-bug.sh $bug_id
 ```
-NOTE: We do not expect you to run this script since the script will run for a long time (on our virtual machine and cloud machine) for some bugs and you need about 20GB free disk space to store the results of some bugs. 
+
+NOTE: The script will run for a long time for some bugs (on our virtual machine and cloud machine) and we need about 20GB free disk space to store the results of some bugs. 
+
+This scripts will: 
+
+1. put the three compilers (buggy, fixed and warning-laiden/cop) of a bug in chroot jail
+
+This first part corresponds to line 1 to line 77 of the script `analyse-bug.sh` which is downloading the prebuild compilers and installing them in the chroot jail. 
+
+2. build the apps using warning-laiden/cop, buggy and fixed compilers in the chroot jail using the Simple Build framework. Check for warning messages in the build process.
+
+3. if the binaries built by the buggy and fixed compilers are different, run the default test suites using Autopkgtest on the two binaries to check for any runtime discrepancies. 
+
+Part 2 and 3 correpond to line 81 of `analyse-bug.sh` which is 
+```
+/home/user42/compiler-bug-impact/scripts/build/steps-llvm "$bug_id"
+```
+
+4. if binaries built by the buggy and fixed compilers are different, compute the number of different functions in these two binaries.
+
+This part corresponds to line 83 of `analyse-bug.sh` which is 
+```
+/home/user42/compiler-bug-impact/scripts/function_analysis/extract-functions "$bug_id"
+```
 
 ### Remove the VM
 ```
