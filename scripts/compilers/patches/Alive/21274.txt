@@ -1,0 +1,36 @@
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-08 18:56:09.421191849 +0100
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-09 15:53:30.423658508 +0100
+@@ -11,7 +11,7 @@
+ // srem, urem, frem.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "InstCombine.h"
+ #include "llvm/Analysis/InstructionSimplify.h"
+ #include "llvm/IR/IntrinsicInst.h"
+@@ -37,10 +37,17 @@
+   // ((1 << A) >>u B) --> (1 << (A-B))
+   // Because V cannot be zero, we know that B is less than A.
+   Value *A = nullptr, *B = nullptr, *One = nullptr;
+-  if (match(V, m_LShr(m_OneUse(m_Shl(m_Value(One), m_Value(A))), m_Value(B))) &&
+-      match(One, m_One())) {
+-    A = IC.Builder->CreateSub(A, B);
+-    return IC.Builder->CreateShl(One, A);
++  if (match(V, m_LShr(m_OneUse(m_Shl(m_Value(One), m_Value(A))), m_Value(B)))) {
++    std::cout << "Optimization reached!" << std::endl ; // print msg if optimization is reached
++    if (match(One, m_One())) {
++      if (!isKnownToBeAPowerOfTwo(One, false, 0, IC.getAssumptionTracker(), CxtI, IC.getDominatorTree())){
++        std::cout << "Bug Triggered!" << std::endl; // PATCH
++      }
++      A = IC.Builder->CreateSub(A, B);
++      return IC.Builder->CreateShl(One, A);
++    } else if (isKnownToBeAPowerOfTwo(One, false, 0, IC.getAssumptionTracker(), CxtI, IC.getDominatorTree())){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
++    }
+   }
+ 
+   // (PowerOfTwo >>u B) --> isExact since shifting out the result would make it
+
+

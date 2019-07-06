@@ -1,0 +1,27 @@
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-08 16:31:20.670072296 +0100
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-09 15:32:05.646795780 +0100
+@@ -11,7 +11,7 @@
+ // srem, urem, frem.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "InstCombine.h"
+ #include "llvm/Analysis/InstructionSimplify.h"
+ #include "llvm/IR/IntrinsicInst.h"
+@@ -176,6 +176,12 @@
+       if (NewCst) {
+         BinaryOperator *Shl = BinaryOperator::CreateShl(NewOp, NewCst);
+ 
++        std::cout << "Optimization reached!" << std::endl ; // print msg if optimization is reached
++
++    if (I.hasNoSignedWrap()){
++           std::cout << "Bug Triggered!" << std::endl; // PATCH
++        }
++
+         if (I.hasNoUnsignedWrap())
+           Shl->setHasNoUnsignedWrap();
+ 
+
+

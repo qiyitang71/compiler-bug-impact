@@ -1,0 +1,26 @@
+diff -Naur llvm/lib/Transforms/Vectorize/LoopVectorize.cpp llvm-patched/lib/Transforms/Vectorize/LoopVectorize.cpp
+--- llvm/lib/Transforms/Vectorize/LoopVectorize.cpp    2018-10-22 17:01:48.010418236 +0100
++++ llvm-patched/lib/Transforms/Vectorize/LoopVectorize.cpp    2018-10-22 17:35:32.053350358 +0100
+@@ -45,7 +45,7 @@
+ //  Vectorizing Compilers.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Transforms/Vectorize/LoopVectorize.h"
+ #include "llvm/ADT/DenseMap.h"
+ #include "llvm/ADT/Hashing.h"
+@@ -5318,9 +5318,12 @@
+   // We can allow those uses, except if the SCEVs we have for them rely
+   // on predicates that only hold within the loop, since allowing the exit
+   // currently means re-using this SCEV outside the loop.
++  std::cout << "Optimization reached!" << std::endl; // PATCH
+   if (PSE.getUnionPredicate().isAlwaysTrue()) {
+     AllowedExit.insert(Phi);
+     AllowedExit.insert(Phi->getIncomingValueForBlock(TheLoop->getLoopLatch()));
++  }else{
++    std::cout << "Bug Triggered!" << std::endl; // PATCH
+   }
+ 
+   DEBUG(dbgs() << "LV: Found an induction variable.\n");
+

@@ -1,0 +1,25 @@
+diff -Naur llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp llvm-patched/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+--- llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp    2018-10-30 15:15:38.330177168 +0000
++++ llvm-patched/lib/CodeGen/SelectionDAG/DAGCombiner.cpp    2018-10-30 15:23:08.884980837 +0000
+@@ -15,7 +15,7 @@
+ // in the LLVM IR and exposed by the various codegen lowering phases.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/CodeGen/SelectionDAG.h"
+ #include "llvm/ADT/SetVector.h"
+ #include "llvm/ADT/SmallBitVector.h"
+@@ -6216,7 +6216,10 @@
+             ? DAG.getConstant(APInt::getAllOnesValue(VT.getScalarSizeInBits()),
+                               DL, VT)
+             : TLI.getConstTrueVal(DAG, VT, DL);
+-
++    std::cout << "Optimization reached!" << std::endl; // PATCH
++    if(SetCCWidth != 1){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
++    }
+     if (SDValue SCC = SimplifySelectCC(
+             DL, N0.getOperand(0), N0.getOperand(1), ExtTrueVal,
+             DAG.getConstant(0, DL, VT),
+

@@ -1,0 +1,26 @@
+diff -Naur llvm/lib/Support/APInt.cpp llvm-patched/lib/Support/APInt.cpp
+--- llvm/lib/Support/APInt.cpp    2018-10-25 23:11:35.061020380 +0100
++++ llvm-patched/lib/Support/APInt.cpp    2018-10-25 23:29:14.448545857 +0100
+@@ -11,7 +11,7 @@
+ // constant values and provide a variety of arithmetic operations on them.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #define DEBUG_TYPE "apint"
+ #include "llvm/ADT/APInt.h"
+ #include "llvm/ADT/FoldingSet.h"
+@@ -1446,7 +1446,12 @@
+   APInt signedMin = APInt::getSignedMinValue(d.getBitWidth());
+   APInt signedMax = APInt::getSignedMaxValue(d.getBitWidth());
+ 
++  std::cout << "Optimization reached!" << std::endl ; // print msg if optimization is reached
++  APInt nc_buggy = allOnes - (-d).urem(d);
+   nc = allOnes - (allOnes - d).urem(d);
++  if (nc != nc_buggy){
++    std::cout << "Bug Triggered!" << std::endl ; // PATCH;
++  }
+   p = d.getBitWidth() - 1;  // initialize p
+   q1 = signedMin.udiv(nc);  // initialize q1 = 2p/nc
+   r1 = signedMin - q1*nc;   // initialize r1 = rem(2p,nc)
+

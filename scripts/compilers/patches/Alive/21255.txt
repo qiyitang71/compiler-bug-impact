@@ -1,0 +1,76 @@
+diff -Naur llvm/include/llvm/ADT/APInt.h llvm-patched/include/llvm/ADT/APInt.h
+--- llvm/include/llvm/ADT/APInt.h    2018-10-08 23:34:50.562558569 +0100
++++ llvm-patched/include/llvm/ADT/APInt.h    2018-10-08 23:35:20.694384659 +0100
+@@ -945,7 +945,7 @@
+   APInt sdiv_ov(const APInt &RHS, bool &Overflow) const;
+   APInt smul_ov(const APInt &RHS, bool &Overflow) const;
+   APInt umul_ov(const APInt &RHS, bool &Overflow) const;
+-  APInt sshl_ov(const APInt &Amt, bool &Overflow) const;
++  APInt sshl_ov(unsigned Amt, bool &Overflow) const;
+   APInt ushl_ov(const APInt &Amt, bool &Overflow) const;
+ 
+   /// \brief Array-indexing support.
+diff -Naur llvm/lib/Support/APInt.cpp llvm-patched/lib/Support/APInt.cpp
+--- llvm/lib/Support/APInt.cpp    2018-10-08 17:04:25.122976569 +0100
++++ llvm-patched/lib/Support/APInt.cpp    2018-10-08 18:50:46.391020531 +0100
+@@ -11,7 +11,7 @@
+ // constant values and provide a variety of arithmetic operations on them.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/ADT/APInt.h"
+ #include "llvm/ADT/FoldingSet.h"
+ #include "llvm/ADT/Hashing.h"
+@@ -2064,15 +2064,16 @@
+   return Res;
+ }
+ 
+-APInt APInt::sshl_ov(const APInt &ShAmt, bool &Overflow) const {
+-  Overflow = ShAmt.uge(getBitWidth());
+-  if (Overflow)
++APInt APInt::sshl_ov(unsigned ShAmt, bool &Overflow) const {
++  Overflow = ShAmt >= getBitWidth();
++  if (Overflow){
+     return APInt(BitWidth, 0);
++  }
+ 
+   if (isNonNegative()) // Don't allow sign change.
+-    Overflow = ShAmt.uge(countLeadingZeros());
++    Overflow = ShAmt >= countLeadingZeros();
+   else
+-    Overflow = ShAmt.uge(countLeadingOnes());
++    Overflow = ShAmt >= countLeadingOnes();
+   
+   return *this << ShAmt;
+ }
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-08 17:04:36.270914017 +0100
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-09 15:46:07.107338974 +0100
+@@ -11,7 +11,7 @@
+ // srem, urem, frem.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "InstCombine.h"
+ #include "llvm/Analysis/InstructionSimplify.h"
+ #include "llvm/IR/IntrinsicInst.h"
+@@ -972,9 +972,14 @@
+         match(Op1, m_APInt(C2))) {
+       bool Overflow;
+       APInt C2ShlC1 = C2->ushl_ov(*C1, Overflow);
+-      if (!Overflow)
++      std::cout << "Optimization reached!" << std::endl ; // print msg if optimization is reached
++      if(Overflow){
++        std::cout << "Bug Triggered!" << std::endl; // PATCH
++      }
++      if (!Overflow){
+         return BinaryOperator::CreateUDiv(
+             X, ConstantInt::get(X->getType(), C2ShlC1));
++      }
+     }
+   }
+ 
+
+

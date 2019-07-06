@@ -1,0 +1,80 @@
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineCasts.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineCasts.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineCasts.cpp    2018-10-29 16:31:45.415307498 +0000
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineCasts.cpp    2018-10-30 11:48:29.359742103 +0000
+@@ -10,7 +10,7 @@
+ // This file implements the visit functions for cast operations.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "InstCombine.h"
+ #include "llvm/Analysis/ConstantFolding.h"
+ #include "llvm/IR/DataLayout.h"
+@@ -666,6 +666,7 @@
+   if (!I->hasOneUse()) return false;
+ 
+   unsigned Opc = I->getOpcode(), Tmp;
++  bool buggy_bool = false;
+   switch (Opc) {
+   case Instruction::ZExt:  // zext(zext(x)) -> zext(x).
+   case Instruction::SExt:  // zext(sext(x)) -> sext(x).
+@@ -701,15 +702,57 @@
+     return false;
+ 
+   case Instruction::Shl:
++    std::cout << "Optimization reached!" << std::endl; // PATCH
++    for (int buggy_loop = 0; buggy_loop < 1; buggy_loop++){
++      if (!CanEvaluateZExtd(I->getOperand(0), Ty, BitsToClear) ||
++          !CanEvaluateZExtd(I->getOperand(1), Ty, Tmp)){
++        buggy_bool = false;
++        break;
++      }
++      // These can all be promoted if neither operand has 'bits to clear'.
++      if (BitsToClear == 0 && Tmp == 0){
++        buggy_bool = true;
++        break;
++      }
++
++    // If the operation is an AND/OR/XOR and the bits to clear are zero in the
++    // other side, BitsToClear is ok.
++      if (Tmp == 0 &&
++          (Opc == Instruction::And || Opc == Instruction::Or ||
++           Opc == Instruction::Xor)) {
++        // We use MaskedValueIsZero here for generality, but the case we care
++        // about the most is constant RHS.
++        unsigned VSize = V->getType()->getScalarSizeInBits();
++        if (MaskedValueIsZero(I->getOperand(1),
++                              APInt::getHighBitsSet(VSize, BitsToClear))){
++          buggy_bool = true;
++          break;
++        }
++      }
++
++      // Otherwise, we don't know how to analyze this BitsToClear case yet.
++      buggy_bool = false;
++    }
++
+     // We can promote shl(x, cst) if we can promote x.  Since shl overwrites the
+     // upper bits we can reduce BitsToClear by the shift amount.
+     if (ConstantInt *Amt = dyn_cast<ConstantInt>(I->getOperand(1))) {
+-      if (!CanEvaluateZExtd(I->getOperand(0), Ty, BitsToClear))
++      if (!CanEvaluateZExtd(I->getOperand(0), Ty, BitsToClear)){
++        if(buggy_bool){
++          std::cout << "Bug Triggered!" << std::endl; // PATCH
++        }
+         return false;
++      }
+       uint64_t ShiftAmt = Amt->getZExtValue();
+       BitsToClear = ShiftAmt < BitsToClear ? BitsToClear - ShiftAmt : 0;
++      if(!buggy_bool){
++        std::cout << "Bug Triggered!" << std::endl; // PATCH
++      }
+       return true;
+     }
++    if(buggy_bool){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
++    }
+     return false;
+   case Instruction::LShr:
+     // We can promote lshr(x, cst) if we can promote x.  This requires the
+

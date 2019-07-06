@@ -1,0 +1,34 @@
+diff -Naur llvm/lib/Transforms/Scalar/SROA.cpp llvm-patched/lib/Transforms/Scalar/SROA.cpp
+--- llvm/lib/Transforms/Scalar/SROA.cpp    2018-10-25 18:50:28.632111299 +0100
++++ llvm-patched/lib/Transforms/Scalar/SROA.cpp    2018-10-25 18:55:28.273973837 +0100
+@@ -22,7 +22,7 @@
+ /// function until all opportunities for promotion have been realized.
+ ///
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #define DEBUG_TYPE "sroa"
+ #include "llvm/Transforms/Scalar.h"
+ #include "llvm/ADT/STLExtras.h"
+@@ -2669,13 +2669,17 @@
+     if (IntTy && V->getType()->isIntegerTy())
+       return rewriteIntegerStore(V, SI);
+ 
++    std::cout << "Optimization reached!" << std::endl; // PATCH
+     StoreInst *NewSI;
+     if (BeginOffset == NewAllocaBeginOffset &&
+-        EndOffset == NewAllocaEndOffset &&
+         canConvertValue(TD, V->getType(), NewAllocaTy)) {
+-      V = convertValue(TD, IRB, V, NewAllocaTy);
+-      NewSI = IRB.CreateAlignedStore(V, &NewAI, NewAI.getAlignment(),
++      if (EndOffset == NewAllocaEndOffset){
++        V = convertValue(TD, IRB, V, NewAllocaTy);
++        NewSI = IRB.CreateAlignedStore(V, &NewAI, NewAI.getAlignment(),
+                                      SI.isVolatile());
++      }else{
++        std::cout << "Bug Triggered!" << std::endl; // PATCH
++      }
+     } else {
+       Value *NewPtr = getAdjustedAllocaPtr(IRB, V->getType()->getPointerTo());
+       NewSI = IRB.CreateAlignedStore(V, NewPtr,
+

@@ -1,0 +1,30 @@
+diff -Naur llvm/lib/Transforms/Scalar/ScalarReplAggregates.cpp llvm-patched/lib/Transforms/Scalar/ScalarReplAggregates.cpp
+--- llvm/lib/Transforms/Scalar/ScalarReplAggregates.cpp    2018-10-25 14:37:25.660704371 +0100
++++ llvm-patched/lib/Transforms/Scalar/ScalarReplAggregates.cpp    2018-10-25 22:35:58.048331046 +0100
+@@ -18,7 +18,7 @@
+ // SRoA, then Mem2Reg until we run out of things to promote works well.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #define DEBUG_TYPE "scalarrepl"
+ #include "llvm/Transforms/Scalar.h"
+ #include "llvm/Constants.h"
+@@ -1404,6 +1404,7 @@
+     // the constant global instead.  This is commonly produced by the CFE by
+     // constructs like "void foo() { int A[] = {1,2,3,4,5,6,7,8,9...}; }" if 'A'
+     // is only subsequently read.
++    std::cout << "Optimization reached!" << std::endl ; // print msg if optimization is reached
+     SmallVector<Instruction *, 4> ToDelete;
+     if (MemTransferInst *Copy = isOnlyCopiedFromConstantGlobal(AI, ToDelete)) {
+       if (AI->getAlignment() <= getPointeeAlignment(Copy->getSource(), *TD)) {
+@@ -1418,6 +1419,8 @@
+         ++NumGlobals;
+         Changed = true;
+         continue;
++      }else{
++        std::cout << "Bug Triggered!" << std::endl ; // PATCH;
+       }
+     }
+ 
+

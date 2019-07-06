@@ -1,0 +1,42 @@
+diff -Naur llvm/lib/Transforms/Scalar/DeadStoreElimination.cpp llvm-patched/lib/Transforms/Scalar/DeadStoreElimination.cpp
+--- llvm/lib/Transforms/Scalar/DeadStoreElimination.cpp    2018-10-26 17:43:57.684603405 +0100
++++ llvm-patched/lib/Transforms/Scalar/DeadStoreElimination.cpp    2018-10-26 17:51:10.885854307 +0100
+@@ -14,7 +14,7 @@
+ // traversal.  Doing so would be pretty trivial.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #define DEBUG_TYPE "dse"
+ #include "llvm/Transforms/Scalar.h"
+ #include "llvm/Constants.h"
+@@ -747,6 +747,7 @@
+       continue;
+     }
+ 
++    std::cout << "Optimization reached!" << std::endl; // PATCH
+     if (CallSite CS = cast<Value>(BBI)) {
+       // Remove allocation function calls from the list of dead stack objects; 
+       // there can't be any references before the definition.
+@@ -767,8 +768,10 @@
+         AliasAnalysis::ModRefResult A =
+           AA->getModRefInfo(CS, *I, getPointerSize(*I, *AA));
+ 
+-        if (A == AliasAnalysis::ModRef || A == AliasAnalysis::Ref)
++        if (A == AliasAnalysis::ModRef || A == AliasAnalysis::Ref){
++          std::cout << "Bug Triggered!" << std::endl; // PATCH
+           LiveAllocas.push_back(*I);
++        }
+       }
+ 
+       for (SmallVector<Value*, 8>::iterator I = LiveAllocas.begin(),
+@@ -781,6 +784,8 @@
+         break;
+ 
+       continue;
++    }else if (isAllocLikeFn(BBI)){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
+     }
+ 
+     AliasAnalysis::Location LoadedLoc;
+

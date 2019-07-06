@@ -1,0 +1,28 @@
+diff -Naur llvm/lib/Transforms/Utils/SimplifyCFG.cpp llvm-patched/lib/Transforms/Utils/SimplifyCFG.cpp
+--- llvm/lib/Transforms/Utils/SimplifyCFG.cpp    2018-10-16 14:43:03.410046026 +0100
++++ llvm-patched/lib/Transforms/Utils/SimplifyCFG.cpp    2018-10-16 14:49:08.325636429 +0100
+@@ -10,7 +10,7 @@
+ // Peephole optimize the CFG.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Transforms/Utils/Local.h"
+ #include "llvm/ADT/DenseMap.h"
+ #include "llvm/ADT/STLExtras.h"
+@@ -411,6 +411,14 @@
+       if (match(ICI->getOperand(0),
+                 m_And(m_Value(RHSVal), m_ConstantInt(RHSC)))) {
+         APInt Not = ~RHSC->getValue();
++
++        std::cout << "Optimization reached!" << std::endl; // PATCH
++
++        if (Not.isPowerOf2() && !(C->getValue().isPowerOf2() &&
++            Not != C->getValue())) {
++            std::cout << "Bug Triggered!" << std::endl; // PATCH
++        }
++
+         if (Not.isPowerOf2() && C->getValue().isPowerOf2() &&
+             Not != C->getValue()) {
+           // If we already have a value for the switch, it has to match!
+

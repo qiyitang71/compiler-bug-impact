@@ -1,0 +1,38 @@
+diff -Naur llvm/lib/Analysis/ValueTracking.cpp llvm-patched/lib/Analysis/ValueTracking.cpp
+--- llvm/lib/Analysis/ValueTracking.cpp    2018-10-18 14:44:35.359554255 +0100
++++ llvm-patched/lib/Analysis/ValueTracking.cpp    2018-10-18 16:27:11.653394231 +0100
+@@ -11,7 +11,7 @@
+ // computations have.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Analysis/ValueTracking.h"
+ #include "llvm/ADT/Optional.h"
+ #include "llvm/ADT/SmallPtrSet.h"
+@@ -1743,6 +1743,24 @@
+     return false;
+ 
+   Value *X = nullptr, *Y = nullptr;
++
++  std::cout << "Optimization reached!" << std::endl; // PATCH
++
++  if (OrZero && (match(V, m_Shl(m_Value(X), m_Value())) ||
++                 match(V, m_Shr(m_Value(X), m_Value()))) &&
++                 !(match(V, m_Shl(m_Value(X), m_Value())) ||
++                 match(V, m_LShr(m_Value(X), m_Value())))){
++    std::cout << "Bug Triggered!" << std::endl; // PATCH
++  }
++
++  if (OrZero && (match(V, m_Shl(m_Value(X), m_Value())) ||
++                 match(V, m_LShr(m_Value(X), m_Value()))) &&
++                 !(match(V, m_Shl(m_Value(X), m_Value())) ||
++                 match(V, m_Shr(m_Value(X), m_Value())))){
++    std::cout << "Bug Triggered!" << std::endl; // PATCH
++  }
++
++
+   // A shift left or a logical shift right of a power of two is a power of two
+   // or zero.
+   if (OrZero && (match(V, m_Shl(m_Value(X), m_Value())) ||
+

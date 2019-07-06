@@ -1,0 +1,69 @@
+diff -Naur llvm/lib/Target/X86/X86ISelLowering.cpp llvm-patched/lib/Target/X86/X86ISelLowering.cpp
+--- llvm/lib/Target/X86/X86ISelLowering.cpp    2018-10-30 17:28:13.859340707 +0000
++++ llvm-patched/lib/Target/X86/X86ISelLowering.cpp    2018-10-31 13:19:45.168472104 +0000
+@@ -11,7 +11,7 @@
+ // selection DAG.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "X86ISelLowering.h"
+ #include "Utils/X86ShuffleDecode.h"
+ #include "X86CallingConv.h"
+@@ -30969,10 +30969,13 @@
+ /// uses of chain values.
+ static SDValue combineSetCCEFLAGS(SDValue EFLAGS, X86::CondCode &CC,
+                                   SelectionDAG &DAG) {
+-  if (CC == X86::COND_B)
+-    if (SDValue Flags = combineCarryThroughADD(EFLAGS))
++  std::cout << "Optimization reached!" << std::endl; // PATCH
++  if (CC == X86::COND_B){
++    if (SDValue Flags = combineCarryThroughADD(EFLAGS)){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
+       return Flags;
+-
++    }
++  }
+   if (SDValue R = checkBoolTestSetCCCombine(EFLAGS, CC))
+     return R;
+   return combineSetCCAtomicArith(EFLAGS, CC, DAG);
+@@ -35050,10 +35053,11 @@
+                                DAG.getConstant(1, DL, VT));
+     return DCI.CombineTo(N, Res1, CarryOut);
+   }
+-
++  std::cout << "Optimization reached!" << std::endl; // PATCH
+   if (SDValue Flags = combineCarryThroughADD(N->getOperand(2))) {
+     MVT VT = N->getSimpleValueType(0);
+     SDVTList VTs = DAG.getVTList(VT, MVT::i32);
++    std::cout << "Bug Triggered!" << std::endl; // PATCH
+     return DAG.getNode(X86ISD::ADC, SDLoc(N), VTs,
+                        N->getOperand(0), N->getOperand(1),
+                        Flags);
+@@ -35726,6 +35730,7 @@
+ SDValue X86TargetLowering::PerformDAGCombine(SDNode *N,
+                                              DAGCombinerInfo &DCI) const {
+   SelectionDAG &DAG = DCI.DAG;
++  std::cout << "Optimization reached!" << std::endl; // PATCH
+   switch (N->getOpcode()) {
+   default: break;
+   case ISD::EXTRACT_VECTOR_ELT:
+@@ -35744,7 +35749,8 @@
+   case X86ISD::CMOV:        return combineCMov(N, DAG, DCI, Subtarget);
+   case ISD::ADD:            return combineAdd(N, DAG, Subtarget);
+   case ISD::SUB:            return combineSub(N, DAG, Subtarget);
+-  case X86ISD::SBB:         return combineSBB(N, DAG);
++  case X86ISD::SBB:         std::cout << "Bug Triggered!" << std::endl; //PATCH 
++                            return combineSBB(N, DAG);
+   case X86ISD::ADC:         return combineADC(N, DAG, DCI);
+   case ISD::MUL:            return combineMul(N, DAG, DCI, Subtarget);
+   case ISD::SHL:
+@@ -35832,6 +35838,7 @@
+   case X86ISD::TESTM:       return combineTestM(N, DAG, Subtarget);
+   case X86ISD::PCMPEQ:
+   case X86ISD::PCMPGT:      return combineVectorCompare(N, DAG, Subtarget);
++  case X86ISD::ADD: std::cout << "Bug Triggered!" << std::endl; // PATCH
+   }
+ 
+   return SDValue();
+

@@ -1,0 +1,24 @@
+diff -Naur llvm/lib/Transforms/Utils/LoopUnrollRuntime.cpp llvm-patched/lib/Transforms/Utils/LoopUnrollRuntime.cpp
+--- llvm/lib/Transforms/Utils/LoopUnrollRuntime.cpp    2018-11-08 17:29:28.632236788 +0000
++++ llvm-patched/lib/Transforms/Utils/LoopUnrollRuntime.cpp    2018-11-08 17:35:45.564840027 +0000
+@@ -20,7 +20,7 @@
+ // unrolled loop.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Transforms/Utils/UnrollLoop.h"
+ #include "llvm/ADT/Statistic.h"
+ #include "llvm/Analysis/AliasAnalysis.h"
+@@ -583,6 +583,10 @@
+   BasicBlock *RemainderLoop = UseEpilogRemainder ? NewExit : PrologPreHeader;
+   BasicBlock *UnrollingLoop = UseEpilogRemainder ? NewPreHeader : PrologExit;
+   // Branch to either remainder (extra iterations) loop or unrolling loop.
++  std::cout << "Optimization reached!" << std::endl; // PATCH
++  if(UseEpilogRemainder){
++    std::cout << "Bug Triggered!" << std::endl; // PATCH
++  }
+   B.CreateCondBr(BranchVal, RemainderLoop, UnrollingLoop);
+   PreHeaderBR->eraseFromParent();
+   Function *F = Header->getParent();
+

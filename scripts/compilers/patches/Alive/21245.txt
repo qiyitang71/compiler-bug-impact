@@ -1,0 +1,38 @@
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-08 16:39:32.055322747 +0100
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-09 15:43:32.355271561 +0100
+@@ -11,7 +11,7 @@
+ // srem, urem, frem.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "InstCombine.h"
+ #include "llvm/Analysis/InstructionSimplify.h"
+ #include "llvm/IR/IntrinsicInst.h"
+@@ -761,10 +761,20 @@
+             return BO;
+           }
+         }
++        bool __res = (IsSigned && match(LHS, m_NSWShl(m_Value(X), m_APInt(C1))));
++        bool __new_had_impact = 0;
++        if (__res) {
++           __res = (*C1 != C1->getBitWidth() - 1);
++           __new_had_impact = !__res;
++        }
+ 
+-        if ((IsSigned && match(LHS, m_NSWShl(m_Value(X), m_APInt(C1))) &&
+-             *C1 != C1->getBitWidth() - 1) ||
+-            (!IsSigned && match(LHS, m_NUWShl(m_Value(X), m_APInt(C1))))) {
++        std::cout << "Optimization reached!" << std::endl ; // print msg if optimization is reached
++        if (!__res) {
++           __res = (!IsSigned && match(LHS, m_NUWShl(m_Value(X), m_APInt(C1))));
++           if (__new_had_impact && !__res) 
++             std::cout << "Bug Triggered!" << std::endl ; // PATCH;
++        }
++        if (__res) {
+           APInt Quotient(C1->getBitWidth(), /*Val=*/0ULL, IsSigned);
+           APInt C1Shifted = APInt::getOneBitSet(
+               C1->getBitWidth(), static_cast<unsigned>(C1->getLimitedValue()));
+
+

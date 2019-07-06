@@ -1,0 +1,30 @@
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineSimplifyDemanded.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineSimplifyDemanded.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineSimplifyDemanded.cpp    2018-10-29 13:01:18.858628465 +0000
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineSimplifyDemanded.cpp    2018-10-29 16:39:59.409808793 +0000
+@@ -12,7 +12,7 @@
+ //
+ //===----------------------------------------------------------------------===//
+ 
+-
++#include <iostream>
+ #include "InstCombine.h"
+ #include "llvm/IR/DataLayout.h"
+ #include "llvm/IR/IntrinsicInst.h"
+@@ -752,9 +752,15 @@
+     if (DemandedMask.isNegative() && KnownZero.isNonNegative()) {
+       APInt LHSKnownZero(BitWidth, 0), LHSKnownOne(BitWidth, 0);
+       ComputeMaskedBits(I->getOperand(0), LHSKnownZero, LHSKnownOne, Depth+1);
++      std::cout << "Optimization reached!" << std::endl; // PATCH
+       // If it's known zero, our sign bit is also zero.
+-      if (LHSKnownZero.isNegative())
++      if (LHSKnownZero.isNegative()){
++        APInt KnownZero_buggy = KnownZero | LHSKnownZero;
+         KnownZero.setBit(KnownZero.getBitWidth() - 1);
++        if(KnownZero_buggy.getBitWidth() != KnownZero.getBitWidth() || KnownZero_buggy != KnownZero ){
++          std::cout << "Bug Triggered!" << std::endl; // PATCH
++        }
++      }
+     }
+     break;
+   case Instruction::URem: {
+

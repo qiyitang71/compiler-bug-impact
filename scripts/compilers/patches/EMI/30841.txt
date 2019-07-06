@@ -1,0 +1,30 @@
+diff -Naur llvm/lib/CodeGen/SelectionDAG/TargetLowering.cpp llvm-patched/lib/CodeGen/SelectionDAG/TargetLowering.cpp
+--- llvm/lib/CodeGen/SelectionDAG/TargetLowering.cpp    2018-10-17 12:34:35.404618305 +0100
++++ llvm-patched/lib/CodeGen/SelectionDAG/TargetLowering.cpp    2018-10-18 16:14:46.132737621 +0100
+@@ -10,7 +10,7 @@
+ // This implements the TargetLowering class.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Target/TargetLowering.h"
+ #include "llvm/ADT/BitVector.h"
+ #include "llvm/ADT/STLExtras.h"
+@@ -1215,6 +1215,7 @@
+     // of the highest bit demanded of them.
+     APInt LoMask = APInt::getLowBitsSet(BitWidth,
+                                         BitWidth - NewMask.countLeadingZeros());
++    std::cout << "Optimization reached!" << std::endl; // PATCH
+     if (SimplifyDemandedBits(Op.getOperand(0), LoMask, KnownZero2,
+                              KnownOne2, TLO, Depth+1) ||
+         SimplifyDemandedBits(Op.getOperand(1), LoMask, KnownZero2,
+@@ -1231,6 +1232,7 @@
+         SDValue NewOp = TLO.DAG.getNode(Op.getOpcode(), dl, Op.getValueType(),
+                                         Op.getOperand(0), Op.getOperand(1),
+                                         &NewFlags);
++        std::cout << "Bug Triggered!" << std::endl; // PATCH
+         return TLO.CombineTo(Op, NewOp);
+       }
+       return true;
+
+

@@ -1,0 +1,34 @@
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-08 17:23:31.256540743 +0100
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-09 15:47:55.083405079 +0100
+@@ -11,7 +11,7 @@
+ // srem, urem, frem.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "InstCombine.h"
+ #include "llvm/Analysis/InstructionSimplify.h"
+ #include "llvm/IR/IntrinsicInst.h"
+@@ -1327,10 +1327,15 @@
+   {
+     const APInt *Y;
+     // X % -Y -> X % Y
+-    if (match(Op1, m_APInt(Y)) && Y->isNegative() && !Y->isMinSignedValue()) {
+-      Worklist.AddValue(I.getOperand(1));
+-      I.setOperand(1, ConstantInt::get(I.getType(), -*Y));
+-      return &I;
++    std::cout << "Optimization reached!" << std::endl ; // print msg if optimization is reached
++    if (match(Op1, m_APInt(Y)) && Y->isNegative()) {
++      if (Y->isMinSignedValue()){
++        std::cout << "Bug Triggered!" << std::endl; // PATCH
++      }else{
++        Worklist.AddValue(I.getOperand(1));
++        I.setOperand(1, ConstantInt::get(I.getType(), -*Y));
++        return &I;
++      }
+     }
+   }
+ 
+
+

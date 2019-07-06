@@ -1,0 +1,35 @@
+diff -Naur llvm/lib/Target/X86/X86FrameLowering.cpp llvm-patched/lib/Target/X86/X86FrameLowering.cpp
+--- llvm/lib/Target/X86/X86FrameLowering.cpp    2018-10-22 14:26:30.841547807 +0100
++++ llvm-patched/lib/Target/X86/X86FrameLowering.cpp    2018-10-22 14:40:43.971186133 +0100
+@@ -10,7 +10,7 @@
+ // This file contains the X86 implementation of TargetFrameLowering class.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "X86FrameLowering.h"
+ #include "X86InstrBuilder.h"
+ #include "X86InstrInfo.h"
+@@ -2446,13 +2446,21 @@
+       continue;
+ 
+     bool IsDef = false;
++    bool buggy_IsDef = false;
+     for (const MachineOperand &MO : Prev->implicit_operands()) {
++      if (MO.isReg() && MO.isDef() && MO.getReg() == Candidate) {
++        buggy_IsDef = true;
++      }
+       if (MO.isReg() && MO.isDef() &&
+           TRI->isSuperOrSubRegisterEq(MO.getReg(), Candidate)) {
+         IsDef = true;
+         break;
+       }
+     }
++    std::cout << "Optimization reached!" << std::endl; // PATCH
++    if( (buggy_IsDef && !IsDef) || (!buggy_IsDef && IsDef) ){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
++    }
+ 
+     if (IsDef)
+       continue;
+

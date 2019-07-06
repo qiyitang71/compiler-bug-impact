@@ -1,0 +1,58 @@
+diff -Naur llvm/tools/clang/lib/AST/Type.cpp llvm-patched/tools/clang/lib/AST/Type.cpp
+--- llvm/tools/clang/lib/AST/Type.cpp    2018-10-23 10:57:27.597000127 +0100
++++ llvm-patched/tools/clang/lib/AST/Type.cpp    2018-10-23 11:35:39.266482539 +0100
+@@ -10,7 +10,7 @@
+ //  This file implements type-related functionality.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "clang/AST/ASTContext.h"
+ #include "clang/AST/Attr.h"
+ #include "clang/AST/CharUnits.h"
+@@ -737,10 +737,19 @@
+ }
+ 
+ bool Type::hasSignedIntegerRepresentation() const {
+-  if (const VectorType *VT = dyn_cast<VectorType>(CanonicalType))
++  std::cout << "Optimization reached!" << std::endl; // PATCH
++  if (const VectorType *VT = dyn_cast<VectorType>(CanonicalType)){
++    if(VT->getElementType()->isSignedIntegerOrEnumerationType() != VT->getElementType()->isSignedIntegerType()){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
++    }
+     return VT->getElementType()->isSignedIntegerOrEnumerationType();
+-  else
++  }
++  else{
++    if(isSignedIntegerOrEnumerationType() != isSignedIntegerType()){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
++    }
+     return isSignedIntegerOrEnumerationType();
++  }
+ }
+ 
+ /// isUnsignedIntegerType - Return true if this is an integer type that is
+@@ -777,10 +786,19 @@
+ }
+ 
+ bool Type::hasUnsignedIntegerRepresentation() const {
+-  if (const VectorType *VT = dyn_cast<VectorType>(CanonicalType))
++  std::cout << "Optimization reached!" << std::endl; // PATCH
++  if (const VectorType *VT = dyn_cast<VectorType>(CanonicalType)){
++    if(VT->getElementType()->isUnsignedIntegerOrEnumerationType() != VT->getElementType()->isUnsignedIntegerType()){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
++    }
+     return VT->getElementType()->isUnsignedIntegerOrEnumerationType();
+-  else
++  }
++  else{
++    if(isUnsignedIntegerType() != isUnsignedIntegerOrEnumerationType()){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
++    }
+     return isUnsignedIntegerOrEnumerationType();
++  }
+ }
+ 
+ bool Type::isFloatingType() const {
+
+

@@ -1,0 +1,24 @@
+--- llvm/lib/Transforms/Utils/LoopUtils.cpp    2018-10-22 13:48:22.107570931 +0100
++++ llvm-patched/lib/Transforms/Utils/LoopUtils.cpp    2018-10-22 14:12:00.702381954 +0100
+@@ -10,7 +10,7 @@
+ // This file defines common loop utility functions.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Analysis/AliasAnalysis.h"
+ #include "llvm/Analysis/BasicAliasAnalysis.h"
+ #include "llvm/Analysis/LoopInfo.h"
+@@ -542,7 +542,11 @@
+ 
+   // Get the previous value. The previous value comes from the latch edge while
+   // the initial value comes form the preheader edge.
++  std::cout << "Optimization reached!" << std::endl; // PATCH
+   auto *Previous = dyn_cast<Instruction>(Phi->getIncomingValueForBlock(Latch));
++  if(Previous && !TheLoop->contains(Previous)){
++    std::cout << "Bug Triggered!" << std::endl; // PATCH
++  }
+   if (!Previous || !TheLoop->contains(Previous))
+     return false;
+
+

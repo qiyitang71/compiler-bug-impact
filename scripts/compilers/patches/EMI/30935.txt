@@ -1,0 +1,48 @@
+diff -Naur llvm/lib/Analysis/ScalarEvolutionExpander.cpp llvm-patched/lib/Analysis/ScalarEvolutionExpander.cpp
+--- llvm/lib/Analysis/ScalarEvolutionExpander.cpp       2018-10-18 14:26:26.917256092 +0100
++++ llvm-patched/lib/Analysis/ScalarEvolutionExpander.cpp       2018-10-18 14:42:53.438723937 +0100
+@@ -12,7 +12,7 @@
+ // expression.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Analysis/ScalarEvolutionExpander.h"
+ #include "llvm/ADT/STLExtras.h"
+ #include "llvm/ADT/SmallSet.h"
+@@ -208,6 +208,7 @@
+   DebugLoc Loc = Builder.GetInsertPoint()->getDebugLoc();
+   SCEVInsertPointGuard Guard(Builder, this);
+
++  std::cout << "Optimization reached!" << std::endl; // PATCH
+   // Only move the insertion point up when it is not a division by zero.
+   if (Opcode != Instruction::UDiv || !mayBeValueZero(RHS)) {
+     // Move the insertion point out of as many loops as we can.
+@@ -219,6 +220,8 @@
+       // Ok, move up a level.
+       Builder.SetInsertPoint(Preheader->getTerminator());
+     }
++  }else{
++    std::cout << "Bug Triggered!" << std::endl; // PATCH
+   }
+
+   // If we haven't found this binop, insert it.
+@@ -1692,6 +1695,7 @@
+       }
+       return false;
+     });
++  std::cout << "Optimization reached!" << std::endl; // PATCH
+   if (SafeToHoist) {
+     for (Loop *L = SE.LI.getLoopFor(Builder.GetInsertBlock());;
+          L = L->getParentLoop())
+@@ -1718,6 +1722,8 @@
+         }
+         break;
+       }
++  } else {
++    std::cout << "Bug Triggered!" << std::endl; // PATCH
+   }
+
+   // Check to see if we already expanded this here.
+
+

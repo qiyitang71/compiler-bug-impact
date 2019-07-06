@@ -1,0 +1,55 @@
+diff -Naur llvm/lib/Analysis/InstructionSimplify.cpp llvm-patched/lib/Analysis/InstructionSimplify.cpp
+--- llvm/lib/Analysis/InstructionSimplify.cpp    2018-10-08 16:34:37.176968929 +0100
++++ llvm-patched/lib/Analysis/InstructionSimplify.cpp    2018-10-09 15:38:54.607271752 +0100
+@@ -16,7 +16,7 @@
+ // they have not been simplified then results are correct but maybe suboptimal).
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Analysis/InstructionSimplify.h"
+ #include "llvm/ADT/SetVector.h"
+ #include "llvm/ADT/Statistic.h"
+@@ -1061,10 +1061,13 @@
+   ConstantInt *C1, *C2;
+   if (!isSigned && match(Op0, m_UDiv(m_Value(X), m_ConstantInt(C1))) &&
+       match(Op1, m_ConstantInt(C2))) {
++    std::cout << "Optimization reached!" << std::endl ; // print msg if optimization is reached
+     bool Overflow;
+     C1->getValue().umul_ov(C2->getValue(), Overflow);
+-    if (Overflow)
++    if (Overflow){
++      std::cout << "Bug Triggered!" << std::endl ; // PATCH
+       return Constant::getNullValue(Op0->getType());
++    }
+   }
+ 
+   // If the operation is with the result of a select instruction, check whether
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-08 16:34:31.013003552 +0100
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-09 15:40:13.187313219 +0100
+@@ -11,7 +11,7 @@
+ // srem, urem, frem.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "InstCombine.h"
+ #include "llvm/Analysis/InstructionSimplify.h"
+ #include "llvm/IR/IntrinsicInst.h"
+@@ -727,10 +727,13 @@
+       // (X / C1) / C2  -> X / (C1*C2)
+       if (Instruction::BinaryOps(LHS->getOpcode()) == I.getOpcode())
+         if (ConstantInt *LHSRHS = dyn_cast<ConstantInt>(LHS->getOperand(1))) {
++          std::cout << "Optimization reached!" << std::endl ; // print msg if optimization is reached
+           if (!MultiplyOverflows(RHS, LHSRHS,
+                                  I.getOpcode() == Instruction::SDiv))
+             return BinaryOperator::Create(I.getOpcode(), LHS->getOperand(0),
+                                           ConstantExpr::getMul(RHS, LHSRHS));
++      else 
++            std::cout << "Bug Triggered!" << std::endl ; // PATCH
+         }
+ 
+       Value *X;
+
+

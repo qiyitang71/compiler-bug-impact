@@ -1,0 +1,30 @@
+diff -Naur llvm/lib/Transforms/IPO/FunctionAttrs.cpp llvm-patched/lib/Transforms/IPO/FunctionAttrs.cpp
+--- llvm/lib/Transforms/IPO/FunctionAttrs.cpp    2018-10-16 15:41:05.359424032 +0100
++++ llvm-patched/lib/Transforms/IPO/FunctionAttrs.cpp    2018-10-18 17:14:37.347782699 +0100
+@@ -12,7 +12,7 @@
+ /// call-graph deducing and/or propagating function attributes.
+ ///
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Transforms/IPO/FunctionAttrs.h"
+ #include "llvm/Transforms/IPO.h"
+ #include "llvm/ADT/SCCIterator.h"
+@@ -491,6 +491,7 @@
+   AttrBuilder B;
+   B.addAttribute(Attribute::Returned);
+ 
++  std::cout << "Optimization reached!" << std::endl; // PATCH
+   // Check each function in turn, determining if an argument is always returned.
+   for (Function *F : SCCNodes) {
+     // We can infer and propagate function attributes only when we know that the
+@@ -509,6 +510,9 @@
+           // Note that stripPointerCasts should look through functions with
+           // returned arguments.
+           Value *RetVal = Ret->getReturnValue()->stripPointerCasts();
++
++          std::cout << "Bug Triggered!" << std::endl; // PATCH
++
+           if (!isa<Argument>(RetVal) || RetVal->getType() != F->getReturnType())
+             return nullptr;
+

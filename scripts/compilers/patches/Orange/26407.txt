@@ -1,0 +1,25 @@
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineCompares.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineCompares.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineCompares.cpp    2018-10-30 14:14:28.714134442 +0000
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineCompares.cpp    2018-10-30 15:05:47.443287510 +0000
+@@ -10,7 +10,7 @@
+ // This file implements the visitICmp and visitFCmp functions.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "InstCombineInternal.h"
+ #include "llvm/ADT/APSInt.h"
+ #include "llvm/ADT/SetVector.h"
+@@ -3876,7 +3876,10 @@
+             return new ICmpInst(Pred, BO0->getOperand(0),
+                                 BO1->getOperand(0));
+           }
+-
++          std::cout << "Optimization reached!" << std::endl; // PATCH
++          if (BO0->getOpcode() != Instruction::Xor && CI->isMaxValue(true)){
++            std::cout << "Bug Triggered!" << std::endl; // PATCH
++          }
+           if (BO0->getOpcode() == Instruction::Xor && CI->isMaxValue(true)) {
+             ICmpInst::Predicate Pred = I.isSigned()
+                                            ? I.getUnsignedPredicate()
+

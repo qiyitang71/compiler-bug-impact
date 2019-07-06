@@ -1,0 +1,32 @@
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineAndOrXor.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineAndOrXor.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineAndOrXor.cpp    2018-10-30 16:35:23.734316243 +0000
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineAndOrXor.cpp    2018-10-30 16:43:21.919499556 +0000
+@@ -10,7 +10,7 @@
+ // This file implements the visitAnd, visitOr, and visitXor functions.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "InstCombineInternal.h"
+ #include "llvm/Analysis/InstructionSimplify.h"
+ #include "llvm/IR/ConstantRange.h"
+@@ -1212,8 +1212,16 @@
+   // (A | ~B) & (B | ~A) --> ~(A ^ B)
+   // (~B | A) & (~A | B) --> ~(A ^ B)
+   // (~B | A) & (B | ~A) --> ~(A ^ B)
+-  if (match(Op0, m_c_Or(m_Value(A), m_Not(m_Value(B)))) &&
+-      match(Op1, m_c_Or(m_Not(m_Specific(A)), m_Specific(B))))
++  std::cout << "Optimization reached!" << std::endl; // PATCH
++  bool buggy_bool = match(Op0, m_c_Or(m_Value(A), m_Not(m_Value(B)))) &&
++      match(Op1, m_c_Or(m_Not(m_Specific(A)), m_Value(B)));
++  bool fixed_bool = match(Op0, m_c_Or(m_Value(A), m_Not(m_Value(B)))) &&
++      match(Op1, m_c_Or(m_Not(m_Specific(A)), m_Specific(B)));
++  if (buggy_bool != fixed_bool){
++    std::cout << "Bug Triggered!" << std::endl; // PATCH
++  }
++
++  if (fixed_bool)
+     return BinaryOperator::CreateNot(Builder.CreateXor(A, B));
+ 
+   return nullptr;
+

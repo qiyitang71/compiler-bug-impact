@@ -1,0 +1,29 @@
+diff -Naur llvm/lib/Analysis/ValueTracking.cpp llvm-patched/lib/Analysis/ValueTracking.cpp
+--- llvm/lib/Analysis/ValueTracking.cpp    2018-10-25 14:15:18.786211598 +0100
++++ llvm-patched/lib/Analysis/ValueTracking.cpp    2018-10-25 14:40:07.158636723 +0100
+@@ -11,7 +11,7 @@
+ // computations have.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Analysis/ValueTracking.h"
+ #include "llvm/Analysis/InstructionSimplify.h"
+ #include "llvm/Constants.h"
+@@ -691,6 +691,15 @@
+       if (P->hasConstantValue() == P)
+         break;
+ 
++      std::cout << "Optimization reached!" << std::endl; // PATCH
++      APInt KnownZero_buggy = APInt::getAllOnesValue(BitWidth);
++      APInt KnownOne_buggy = APInt::getAllOnesValue(BitWidth);
++      if(Mask.getBitWidth()!=BitWidth){
++        std::cout << "Bug Triggered!" << std::endl; // PATCH
++      }else if((KnownZero_buggy != Mask) || (KnownOne_buggy != Mask)){
++        std::cout << "Bug Triggered!" << std::endl; // PATCH
++      }
++
+       KnownZero = Mask;
+       KnownOne = Mask;
+       for (unsigned i = 0, e = P->getNumIncomingValues(); i != e; ++i) {
+

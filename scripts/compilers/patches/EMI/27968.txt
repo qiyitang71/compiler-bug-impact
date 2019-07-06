@@ -1,0 +1,32 @@
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-16 15:04:37.266053356 +0100
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineMulDivRem.cpp    2018-10-16 17:10:42.625165792 +0100
+@@ -11,7 +11,7 @@
+ // srem, urem, frem.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "InstCombineInternal.h"
+ #include "llvm/Analysis/InstructionSimplify.h"
+ #include "llvm/IR/IntrinsicInst.h"
+@@ -1379,6 +1379,7 @@
+       } else if (isa<PHINode>(Op0I)) {
+         using namespace llvm::PatternMatch;
+         const APInt *Op1Int;
++        std::cout << "Optimization reached!" << std::endl; // PATCH
+         if (match(Op1, m_APInt(Op1Int)) && !Op1Int->isMinValue() &&
+             (I.getOpcode() == Instruction::URem ||
+              !Op1Int->isMinSignedValue())) {
+@@ -1387,7 +1388,9 @@
+           // will not fault.
+           if (Instruction *NV = FoldOpIntoPhi(I))
+             return NV;
+-        }
++        }else if (Instruction *NV = FoldOpIntoPhi(I)){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
++    }
+       }
+ 
+       // See if we can fold away this rem instruction.
+

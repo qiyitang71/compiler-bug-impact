@@ -1,0 +1,37 @@
+diff -Naur llvm/lib/Target/X86/X86ISelDAGToDAG.cpp llvm-patched/lib/Target/X86/X86ISelDAGToDAG.cpp
+--- llvm/lib/Target/X86/X86ISelDAGToDAG.cpp    2018-11-05 11:14:52.044784795 +0000
++++ llvm-patched/lib/Target/X86/X86ISelDAGToDAG.cpp    2018-11-05 11:23:27.937215615 +0000
+@@ -11,7 +11,7 @@
+ // converting from a legalized dag to a X86 dag.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #define DEBUG_TYPE "x86-isel"
+ #include "X86.h"
+ #include "X86InstrBuilder.h"
+@@ -2373,13 +2373,20 @@
+     SDValue Address = StoreNode->getOperand(2);
+     SDValue Undef = StoreNode->getOperand(3);
+ 
+-    if (StoreNode->getMemOperand()->getSize() != 8 ||
++    bool buggy_bool = StoreNode->getMemOperand()->getSize() != 8 ||
+         Undef->getOpcode() != ISD::UNDEF ||
+         Chain->getOpcode() != ISD::LOAD ||
+         StoredVal->getOpcode() != X86ISD::DEC ||
+         StoredVal.getResNo() != 0 ||
+-        !StoredVal.getNode()->hasNUsesOfValue(1, 0) ||
+-        StoredVal->getOperand(0).getNode() != Chain.getNode())
++        StoredVal->getOperand(0).getNode() != Chain.getNode();
++    bool fixed_bool = buggy_bool || !StoredVal.getNode()->hasNUsesOfValue(1, 0);
++
++    std::cout << "Optimization reached!" << std::endl; // PATCH
++    if (buggy_bool != fixed_bool){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
++    }
++
++    if (fixed_bool)
+       break;
+ 
+     //OPC_CheckPredicate, 1, // Predicate_nontemporalstore
+

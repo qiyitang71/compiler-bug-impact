@@ -1,0 +1,76 @@
+diff -Naur llvm/lib/Analysis/InstructionSimplify.cpp llvm-patched/lib/Analysis/InstructionSimplify.cpp
+--- llvm/lib/Analysis/InstructionSimplify.cpp    2018-10-08 15:47:34.240749871 +0100
++++ llvm-patched/lib/Analysis/InstructionSimplify.cpp    2018-10-10 16:28:46.697964654 +0100
+@@ -16,7 +16,7 @@
+ // they have not been simplified then results are correct but maybe suboptimal).
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Analysis/InstructionSimplify.h"
+ #include "llvm/ADT/SetVector.h"
+ #include "llvm/ADT/Statistic.h"
+@@ -656,6 +656,7 @@
+ /// fold the result.  If not, this returns null.
+ static Value *SimplifySubInst(Value *Op0, Value *Op1, bool isNSW, bool isNUW,
+                               const Query &Q, unsigned MaxRecurse) {
++
+   if (Constant *CLHS = dyn_cast<Constant>(Op0))
+     if (Constant *CRHS = dyn_cast<Constant>(Op1)) {
+       Constant *Ops[] = { CLHS, CRHS };
+@@ -681,10 +682,13 @@
+   // If Y == 0, 0 - Y simplifies to 0.
+   if (BinaryOperator::isNeg(Op1)) {
+     if (const auto *BO = dyn_cast<BinaryOperator>(Op1)) {
++      std::cout << "Optimization reached!" << std::endl; // print msg if optimization reached
+       assert(BO->getOpcode() == Instruction::Sub &&
+              "Expected a subtraction operator!");
+-      if (BO->hasNoUnsignedWrap())
++      if (BO->hasNoUnsignedWrap()){
++        std::cout << "Bug Triggered!" << std::endl; // PATCH
+         return Op0;
++      }
+     }
+   }
+ 
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineAddSub.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineAddSub.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineAddSub.cpp    2018-10-08 15:47:42.200704787 +0100
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineAddSub.cpp    2018-10-10 16:26:24.521829616 +0100
+@@ -10,7 +10,7 @@
+ // This file implements the visit functions for add, fadd, sub, and fsub.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "InstCombine.h"
+ #include "llvm/ADT/STLExtras.h"
+ #include "llvm/Analysis/InstructionSimplify.h"
+@@ -1449,6 +1449,7 @@
+ 
+ 
+ Instruction *InstCombiner::visitSub(BinaryOperator &I) {
++
+   Value *Op0 = I.getOperand(0), *Op1 = I.getOperand(1);
+ 
+   if (Value *V = SimplifyVectorOp(I))
+@@ -1465,6 +1466,8 @@
+   // If this is a 'B = x-(-A)', change to B = x+A.
+   if (Value *V = dyn_castNegVal(Op1)) {
+     BinaryOperator *Res = BinaryOperator::CreateAdd(Op0, V);
++    int __orig_hasNoSignedWrap = I.hasNoSignedWrap();
++    int __orig_hasNoUnsignedWrap = I.hasNoUnsignedWrap();
+ 
+     if (const auto *BO = dyn_cast<BinaryOperator>(Op1)) {
+       assert(BO->getOpcode() == Instruction::Sub &&
+@@ -1473,6 +1476,9 @@
+         Res->setHasNoSignedWrap(true);
+     }
+ 
++    std::cout << "Optimization reached!" << std::endl; // print msg if optimization reached
++    if (Res->hasNoSignedWrap() != __orig_hasNoSignedWrap || Res->hasNoUnsignedWrap() != __orig_hasNoUnsignedWrap) std::cout << "Bug Triggered!" << std::endl; // PATCH
++
+     return Res;
+   }
+ 
+
+

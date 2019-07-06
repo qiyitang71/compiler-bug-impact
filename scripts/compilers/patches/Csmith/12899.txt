@@ -1,0 +1,34 @@
+diff -Naur llvm/lib/Analysis/MemoryDependenceAnalysis.cpp llvm-patched/lib/Analysis/MemoryDependenceAnalysis.cpp
+--- llvm/lib/Analysis/MemoryDependenceAnalysis.cpp    2018-10-25 21:26:53.498233313 +0100
++++ llvm-patched/lib/Analysis/MemoryDependenceAnalysis.cpp    2018-10-25 22:56:36.007331651 +0100
+@@ -13,7 +13,7 @@
+ // a common kind of alias information query.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #define DEBUG_TYPE "memdep"
+ #include "llvm/Analysis/MemoryDependenceAnalysis.h"
+ #include "llvm/Instructions.h"
+@@ -193,6 +193,8 @@
+                           BasicBlock::iterator ScanIt, BasicBlock *BB) {
+   unsigned Limit = BlockScanLimit;
+ 
++  std::cout << "Optimization reached!" << std::endl ; // print msg if optimization is reached
++
+   // Walk backwards through the block, looking for dependencies
+   while (ScanIt != BB->begin()) {
+     // Limit the amount of scanning we do so we don't end up with quadratic
+@@ -235,8 +237,10 @@
+ 
+     // If we could not obtain a pointer for the instruction and the instruction
+     // touches memory then assume that this is a dependency.
+-    if (MR != AliasAnalysis::NoModRef)
++    if (MR != AliasAnalysis::NoModRef){
++      std::cout << "Bug Triggered!" << std::endl ; // PATCH;
+       return MemDepResult::getClobber(Inst);
++    }
+   }
+ 
+   // No dependence found.  If this is the entry block of the function, it is
+

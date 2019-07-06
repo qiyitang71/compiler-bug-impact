@@ -1,0 +1,69 @@
+diff -Naur llvm/lib/Transforms/Scalar/GVNHoist.cpp llvm-patched/lib/Transforms/Scalar/GVNHoist.cpp
+--- llvm/lib/Transforms/Scalar/GVNHoist.cpp    2018-10-16 16:17:04.806512492 +0100
++++ llvm-patched/lib/Transforms/Scalar/GVNHoist.cpp    2018-10-17 17:35:52.229358969 +0100
+@@ -18,7 +18,7 @@
+ // 1. Scalars across calls.
+ // 2. geps when corresponding load/store cannot be hoisted.
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/ADT/DenseMap.h"
+ #include "llvm/ADT/SmallPtrSet.h"
+ #include "llvm/ADT/Statistic.h"
+@@ -287,6 +287,38 @@
+   bool hoistingFromAllPaths(const BasicBlock *HoistBB,
+                             SmallPtrSetImpl<const BasicBlock *> &WL) {
+ 
++    //buggy detect
++    bool bug_bool = false;
++
++    // Copy WL as the loop will remove elements from it.
++    SmallPtrSet<const BasicBlock *, 2> WorkList_bug(WL.begin(), WL.end());
++
++    for (auto It = df_begin(HoistBB), E = df_end(HoistBB); It != E;) {
++      // There exists a path from HoistBB to the exit of the function if we are
++      // still iterating in DF traversal and we removed all instructions from
++      // the work list.
++      if (WorkList_bug.empty()){
++        bug_bool = true;
++        break;
++      }
++
++      const BasicBlock *BB = *It;
++      if (WorkList_bug.erase(BB)) {
++        // Stop DFS traversal when BB is in the work list.
++        It.skipChildren();
++        continue;
++      }
++
++      // Check for end of function, calls that do not return, etc.
++      if (!isGuaranteedToTransferExecutionToSuccessor(BB->getTerminator())){
++        bug_bool = true;
++        break;
++      }
++
++      // Increment DFS traversal when not skipping children.
++      ++It;
++    }
++
+     // Copy WL as the loop will remove elements from it.
+     SmallPtrSet<const BasicBlock *, 2> WorkList(WL.begin(), WL.end());
+ 
+@@ -308,10 +340,15 @@
+       if (!isGuaranteedToTransferExecutionToSuccessor(BB->getTerminator()))
+         return false;
+ 
++      std::cout << "Optimization reached!" << std::endl; // PATCH
+       // When reaching the back-edge of a loop, there may be a path through the
+       // loop that does not pass through B or C before exiting the loop.
+-      if (successorDominate(BB, HoistBB))
++      if (successorDominate(BB, HoistBB)){
++        if(!bug_bool){
++          std::cout << "Bug Triggered!" << std::endl; // PATCH
++        }
+         return false;
++      }
+ 
+       // Increment DFS traversal when not skipping children.
+       ++It;
+

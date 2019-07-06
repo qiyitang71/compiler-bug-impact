@@ -1,0 +1,68 @@
+diff -Naur llvm/lib/Analysis/BasicAliasAnalysis.cpp llvm-patched/lib/Analysis/BasicAliasAnalysis.cpp
+--- llvm/lib/Analysis/BasicAliasAnalysis.cpp    2018-10-25 22:46:49.372630121 +0100
++++ llvm-patched/lib/Analysis/BasicAliasAnalysis.cpp    2018-10-25 23:13:13.609534660 +0100
+@@ -12,7 +12,7 @@
+ // globals cannot alias, etc), but does no stateful analysis.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Analysis/AliasAnalysis.h"
+ #include "llvm/Analysis/Passes.h"
+ #include "llvm/Constants.h"
+@@ -129,6 +129,37 @@
+   return Size;
+ }
+ 
++static uint64_t getObjectSize_buggy(const Value *V, const TargetData &TD) {
++  Type *AccessTy;
++  if (const GlobalVariable *GV = dyn_cast<GlobalVariable>(V)) {
++    if (!GV->hasDefinitiveInitializer())
++      return AliasAnalysis::UnknownSize;
++    AccessTy = GV->getType()->getElementType();
++  } else if (const AllocaInst *AI = dyn_cast<AllocaInst>(V)) {
++    if (!AI->isArrayAllocation())
++      AccessTy = AI->getType()->getElementType();
++    else
++      return AliasAnalysis::UnknownSize;
++  } else if (const CallInst* CI = extractMallocCall(V)) {
++    if (!isArrayMalloc(V, &TD))
++      // The size is the argument to the malloc call.
++      if (const ConstantInt* C = dyn_cast<ConstantInt>(CI->getArgOperand(0)))
++        return C->getZExtValue();
++    return AliasAnalysis::UnknownSize;
++  } else if (const Argument *A = dyn_cast<Argument>(V)) {
++    if (A->hasByValAttr())
++      AccessTy = cast<PointerType>(A->getType())->getElementType();
++    else
++      return AliasAnalysis::UnknownSize;
++  } else {
++    return AliasAnalysis::UnknownSize;
++  }
++ 
++  if (AccessTy->isSized())
++    return TD.getTypeAllocSize(AccessTy);
++  return AliasAnalysis::UnknownSize;
++}
++
+ /// isObjectSmallerThan - Return true if we can prove that the object specified
+ /// by V is smaller than Size.
+ static bool isObjectSmallerThan(const Value *V, uint64_t Size,
+@@ -136,8 +167,14 @@
+   // This function needs to use the aligned object size because we allow
+   // reads a bit past the end given sufficient alignment.
+   uint64_t ObjectSize = getObjectSize(V, TD, /*RoundToAlign*/true);
+-  
+-  return ObjectSize != AliasAnalysis::UnknownSize && ObjectSize < Size;
++  uint64_t ObjectSize_buggy = getObjectSize_buggy(V, TD);
++  bool fixed_bool = (ObjectSize != AliasAnalysis::UnknownSize) && (ObjectSize < Size);
++  bool buggy_bool = (ObjectSize_buggy != AliasAnalysis::UnknownSize) && (ObjectSize_buggy < Size);
++  std::cout << "Optimization reached!" << std::endl ; // print msg if optimization is reached
++  if(fixed_bool != buggy_bool){
++    std::cout << "Bug Triggered!" << std::endl ; // PATCH;
++  }
++  return fixed_bool;
+ }
+ 
+ /// isObjectSize - Return true if we can prove that the object specified
+

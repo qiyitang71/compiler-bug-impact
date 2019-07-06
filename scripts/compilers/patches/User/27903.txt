@@ -1,0 +1,34 @@
+diff -Naur llvm/lib/CodeGen/StackColoring.cpp llvm-patched/lib/CodeGen/StackColoring.cpp
+--- llvm/lib/CodeGen/StackColoring.cpp    2018-10-22 14:44:30.994775931 +0100
++++ llvm-patched/lib/CodeGen/StackColoring.cpp    2018-10-22 15:11:31.850667149 +0100
+@@ -20,7 +20,7 @@
+ //    spill slots.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/ADT/BitVector.h"
+ #include "llvm/ADT/DepthFirstIterator.h"
+ #include "llvm/ADT/PostOrderIterator.h"
+@@ -560,12 +560,17 @@
+   if (!MarkersFound) {
+     return 0;
+   }
+-
++  std::cout << "Optimization reached!" << std::endl; // PATCH
+   // PR27903: slots with multiple start or end lifetime ops are not
+   // safe to enable for "lifetime-start-on-first-use".
+-  for (unsigned slot = 0; slot < NumSlot; ++slot)
+-    if (NumStartLifetimes[slot] > 1 || NumEndLifetimes[slot] > 1)
++  for (unsigned slot = 0; slot < NumSlot; ++slot){
++    if (NumStartLifetimes[slot] > 1 || NumEndLifetimes[slot] > 1){
++      if(!ConservativeSlots.test(slot)){
++        std::cout << "Bug Triggered!" << std::endl; // PATCH
++      }
+       ConservativeSlots.set(slot);
++    }
++  }
+   DEBUG(dumpBV("Conservative slots", ConservativeSlots));
+ 
+   // Step 2: compute begin/end sets for each block
+

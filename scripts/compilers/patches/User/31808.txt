@@ -1,0 +1,36 @@
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineCompares.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineCompares.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineCompares.cpp    2018-10-22 16:44:01.450195874 +0100
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineCompares.cpp    2018-10-22 17:29:18.933112378 +0100
+@@ -10,7 +10,7 @@
+ // This file implements the visitICmp and visitFCmp functions.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "InstCombineInternal.h"
+ #include "llvm/ADT/APSInt.h"
+ #include "llvm/ADT/SetVector.h"
+@@ -884,9 +884,21 @@
+   if (!GEPLHS->hasAllConstantIndices())
+     return nullptr;
+ 
++  std::cout << "Optimization reached!" << std::endl; // PATCH
+   // Make sure the pointers have the same type.
+-  if (GEPLHS->getType() != RHS->getType())
++  if (GEPLHS->getType() != RHS->getType()){
++    Value *PtrBase_buggy, *Index_buggy;
++    std::tie(PtrBase_buggy, Index_buggy) = getAsConstantIndexedAddress(GEPLHS, DL);
++
++    // The set of nodes that will take part in this transformation.
++    SetVector<Value *> Nodes_buggy;
++
++    if (canRewriteGEPAsOffset(RHS, PtrBase_buggy, DL, Nodes_buggy)){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
++    }
++
+     return nullptr;
++  }
+ 
+   Value *PtrBase, *Index;
+   std::tie(PtrBase, Index) = getAsConstantIndexedAddress(GEPLHS, DL);
+

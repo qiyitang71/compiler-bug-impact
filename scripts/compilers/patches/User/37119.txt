@@ -1,0 +1,42 @@
+diff -Naur llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp llvm-patched/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+--- llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp    2018-10-22 17:43:43.887854913 +0100
++++ llvm-patched/lib/CodeGen/SelectionDAG/DAGCombiner.cpp    2018-10-22 18:24:14.238023284 +0100
+@@ -15,7 +15,7 @@
+ // in the LLVM IR and exposed by the various codegen lowering phases.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/ADT/APFloat.h"
+ #include "llvm/ADT/APInt.h"
+ #include "llvm/ADT/ArrayRef.h"
+@@ -3049,14 +3049,27 @@
+   // Helper for determining whether a value is a power-2 constant scalar or a
+   // vector of such elements.
+   auto IsPowerOfTwo = [](ConstantSDNode *C) {
++    std::cout << "Optimization reached!" << std::endl; // PATCH
++    bool buggy_bool = false;
+     if (C->isNullValue() || C->isOpaque())
+       return false;
++    if (C->getAPIntValue().isAllOnesValue()){
++      buggy_bool = true;
++    }
+     if (C->getAPIntValue().isMinSignedValue())
+       return false;
+-    if (C->getAPIntValue().isPowerOf2())
++    if (C->getAPIntValue().isPowerOf2()){
++      if(buggy_bool){
++        std::cout << "Bug Triggered!" << std::endl; // PATCH
++      }
+       return true;
+-    if ((-C->getAPIntValue()).isPowerOf2())
++    }
++    if ((-C->getAPIntValue()).isPowerOf2()){
++      if(buggy_bool){
++        std::cout << "Bug Triggered!" << std::endl; // PATCH
++      }
+       return true;
++    }
+     return false;
+   };
+

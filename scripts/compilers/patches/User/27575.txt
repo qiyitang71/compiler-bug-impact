@@ -1,0 +1,58 @@
+diff -Naur llvm/lib/Analysis/ValueTracking.cpp llvm-patched/lib/Analysis/ValueTracking.cpp
+--- llvm/lib/Analysis/ValueTracking.cpp    2018-10-25 12:34:28.848711034 +0100
++++ llvm-patched/lib/Analysis/ValueTracking.cpp    2018-10-26 18:14:39.142936292 +0100
+@@ -11,7 +11,7 @@
+ // computations have.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Analysis/ValueTracking.h"
+ #include "llvm/ADT/Optional.h"
+ #include "llvm/ADT/SmallPtrSet.h"
+@@ -3703,6 +3703,8 @@
+     return nullptr;
+   *CastOp = CI->getOpcode();
+ 
++  std::cout << "Optimization reached!" << std::endl; // PATCH
++
+   if (auto *CI2 = dyn_cast<CastInst>(V2)) {
+     // If V1 and V2 are both the same cast from the same type, we can look
+     // through V1.
+@@ -3728,15 +3730,19 @@
+ 
+   // Sophisticated constants can have values which we cannot easily reason
+   // about.  Skip them for the fp<->int case.
+-  if (isa<ConstantExpr>(C))
++  if (isa<ConstantExpr>(C)){
++    std::cout << "Bug Triggered!" << std::endl; // PATCH
+     return nullptr;
++  }
+ 
+   Constant *CastedTo = nullptr;
+ 
+   // This is only valid if the truncated value can be sign-extended
+   // back to the original value.
+-  if (isa<SExtInst>(CI) && CmpI->isSigned())
++  if (isa<SExtInst>(CI) && CmpI->isSigned()){
++    std::cout << "Bug Triggered!" << std::endl; // PATCH
+     CastedTo = ConstantExpr::getTrunc(C, CI->getSrcTy(), true);
++  }
+ 
+   if (isa<FPToUIInst>(CI))
+     CastedTo = ConstantExpr::getUIToFP(C, CI->getSrcTy(), true);
+@@ -3755,9 +3761,12 @@
+ 
+   Constant *CastedBack =
+       ConstantExpr::getCast(CI->getOpcode(), CastedTo, C->getType(), true);
++
+   // Make sure the cast doesn't lose any information.
+-  if (CastedBack != C)
++  if (CastedBack != C){
++    std::cout << "Bug Triggered!" << std::endl; // PATCH
+     return nullptr;
++  }
+ 
+   return CastedTo;
+ }
+

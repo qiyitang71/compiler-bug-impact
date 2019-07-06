@@ -1,0 +1,33 @@
+diff -Naur llvm/lib/Transforms/Vectorize/LoopVectorize.cpp llvm-patched/lib/Transforms/Vectorize/LoopVectorize.cpp
+--- llvm/lib/Transforms/Vectorize/LoopVectorize.cpp    2018-10-25 23:31:33.792584106 +0100
++++ llvm-patched/lib/Transforms/Vectorize/LoopVectorize.cpp    2018-10-26 14:28:18.881848453 +0100
+@@ -41,7 +41,7 @@
+ //  Vectorizing Compilers.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #define LV_NAME "loop-vectorize"
+ #define DEBUG_TYPE LV_NAME
+ 
+@@ -2808,6 +2808,7 @@
+       AttributeSet::FunctionIndex,
+       "no-nans-fp-math").getValueAsString() == "true";
+ 
++  std::cout << "Optimization reached!" << std::endl; // PATCH
+   // For each block in the loop.
+   for (Loop::block_iterator bb = TheLoop->block_begin(),
+        be = TheLoop->block_end(); bb != be; ++bb) {
+@@ -2869,8 +2870,10 @@
+ 
+           // Until we explicitly handle the case of an induction variable with
+           // an outside loop user we have to give up vectorizing this loop.
+-          if (hasOutsideLoopUser(TheLoop, it, AllowedExit))
++          if (hasOutsideLoopUser(TheLoop, it, AllowedExit)){
++            std::cout << "Bug Triggered!" << std::endl; // PATCH
+             return false;
++          }
+ 
+           continue;
+         }
+

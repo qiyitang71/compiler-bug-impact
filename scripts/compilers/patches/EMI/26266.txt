@@ -1,0 +1,33 @@
+diff -Naur llvm/lib/Analysis/DemandedBits.cpp llvm-patched/lib/Analysis/DemandedBits.cpp
+--- llvm/lib/Analysis/DemandedBits.cpp    2018-10-16 12:00:22.114833139 +0100
++++ llvm-patched/lib/Analysis/DemandedBits.cpp    2018-10-16 13:51:25.129837320 +0100
+@@ -18,7 +18,7 @@
+ // trunc.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "llvm/Analysis/DemandedBits.h"
+ #include "llvm/Transforms/Scalar.h"
+ #include "llvm/ADT/DenseMap.h"
+@@ -244,9 +244,19 @@
+     break;
+   case Instruction::ICmp:
+     // Count the number of leading zeroes in each operand.
++    std::cout << "Optimization reached!" << std::endl; // PATCH
++
++    ComputeKnownBits(BitWidth, I, UserI->getOperand(1));
++    auto NumLeadingZeroes_bug = std::min(KnownZero.countLeadingOnes(),
++                                     KnownZero2.countLeadingOnes());
++
+     ComputeKnownBits(BitWidth, UserI->getOperand(0), UserI->getOperand(1));
+     auto NumLeadingZeroes = std::min(KnownZero.countLeadingOnes(),
+                                      KnownZero2.countLeadingOnes());
++    if(NumLeadingZeroes_bug != NumLeadingZeroes){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
++    }
++
+     AB = ~APInt::getHighBitsSet(BitWidth, NumLeadingZeroes);
+     break;
+   }
+

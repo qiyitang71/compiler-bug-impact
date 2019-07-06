@@ -1,0 +1,38 @@
+diff -Naur llvm/lib/Target/X86/X86ISelLowering.cpp llvm-patched/lib/Target/X86/X86ISelLowering.cpp
+--- llvm/lib/Target/X86/X86ISelLowering.cpp    2018-10-22 13:42:33.765462962 +0100
++++ llvm-patched/lib/Target/X86/X86ISelLowering.cpp    2018-10-22 14:04:26.843120254 +0100
+@@ -11,7 +11,7 @@
+ // selection DAG.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #include "X86ISelLowering.h"
+ #include "Utils/X86ShuffleDecode.h"
+ #include "X86CallingConv.h"
+@@ -23450,15 +23450,23 @@
+     //   c2                            -> i32 0x00000001
+     //   (shl (and (setcc_c), c1), c2) -> i32 0x0001FFFE
+     //   (and setcc_c, (c1 << c2))     -> i32 0x0000FFFE
++    bool buggy_sign_ext = false;
++    bool buggy_zero_ext = false;
+     if (N00.getOpcode() == X86ISD::SETCC_CARRY) {
+       MaskOK = true;
+     } else if (N00.getOpcode() == ISD::SIGN_EXTEND &&
+                N00.getOperand(0).getOpcode() == X86ISD::SETCC_CARRY) {
+       MaskOK = true;
++      buggy_sign_ext = true;
+     } else if ((N00.getOpcode() == ISD::ZERO_EXTEND ||
+                 N00.getOpcode() == ISD::ANY_EXTEND) &&
+                N00.getOperand(0).getOpcode() == X86ISD::SETCC_CARRY) {
+       MaskOK = Mask.isIntN(N00.getOperand(0).getValueSizeInBits());
++      buggy_zero_ext = true;
++    }
++    std::cout << "Optimization reached!" << std::endl; // PATCH
++    if((buggy_sign_ext && MaskOK && Mask != 0 ) || (buggy_zero_ext && !MaskOK && Mask != 0 ) ){
++      std::cout << "Bug Triggered!" << std::endl; // PATCH
+     }
+     if (MaskOK && Mask != 0) {
+       SDLoc DL(N);
+
+

@@ -1,0 +1,31 @@
+diff -Naur llvm/lib/Transforms/InstCombine/InstCombineAddSub.cpp llvm-patched/lib/Transforms/InstCombine/InstCombineAddSub.cpp
+--- llvm/lib/Transforms/InstCombine/InstCombineAddSub.cpp    2018-10-08 15:18:05.830730723 +0100
++++ llvm-patched/lib/Transforms/InstCombine/InstCombineAddSub.cpp    2018-10-09 15:23:24.068525744 +0100
+@@ -17,6 +17,7 @@
+ #include "llvm/IR/DataLayout.h"
+ #include "llvm/IR/GetElementPtrTypeIterator.h"
+ #include "llvm/IR/PatternMatch.h"
++#include <iostream>
+ using namespace llvm;
+ using namespace PatternMatch;
+ 
+@@ -1554,9 +1555,14 @@
+                                   Builder->CreateNot(Y, Y->getName() + ".not"));
+ 
+     // 0 - (X sdiv C)  -> (X sdiv -C)  provided the negation doesn't overflow.
+-    if (match(Op1, m_SDiv(m_Value(X), m_Constant(C))) && match(Op0, m_Zero()) &&
+-        !C->isMinSignedValue())
+-      return BinaryOperator::CreateSDiv(X, ConstantExpr::getNeg(C));
++    if (match(Op1, m_SDiv(m_Value(X), m_Constant(C))) && match(Op0, m_Zero())) {
++        std::cout << "Optimization reached!" << std::endl ; // print msg if optimization is reached
++
++        if (!C->isMinSignedValue())
++             return BinaryOperator::CreateSDiv(X, ConstantExpr::getNeg(C));
++        else
++             std::cout << "Bug Triggered!" << std::endl ; // PATCH;
++    }
+ 
+     // 0 - (X << Y)  -> (-X << Y)   when X is freely negatable.
+     if (match(Op1, m_Shl(m_Value(X), m_Value(Y))) && match(Op0, m_Zero()))
+
+

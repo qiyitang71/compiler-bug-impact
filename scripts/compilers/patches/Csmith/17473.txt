@@ -1,0 +1,30 @@
+diff -Naur llvm/lib/Analysis/IVUsers.cpp llvm-patched/lib/Analysis/IVUsers.cpp
+--- llvm/lib/Analysis/IVUsers.cpp    2018-10-26 14:02:43.829625495 +0100
++++ llvm-patched/lib/Analysis/IVUsers.cpp    2018-10-26 14:38:15.149284351 +0100
+@@ -11,7 +11,7 @@
+ // computed from induction variables.
+ //
+ //===----------------------------------------------------------------------===//
+-
++#include <iostream>
+ #define DEBUG_TYPE "iv-users"
+ #include "llvm/Analysis/IVUsers.h"
+ #include "llvm/ADT/STLExtras.h"
+@@ -194,7 +194,7 @@
+                                    ISE, User, I,
+                                    NewUse.PostIncLoops,
+                                    *SE, *DT);
+-
++      std::cout << "Optimization reached!" << std::endl; // PATCH
+       // PostIncNormalization effectively simplifies the expression under
+       // pre-increment assumptions. Those assumptions (no wrapping) might not
+       // hold for the post-inc value. Catch such cases by making sure the
+@@ -209,6 +209,7 @@
+         if (OriginalISE != DenormalizedISE) {
+           DEBUG(dbgs() << "   DISCARDING (NORMALIZATION ISN'T INVERTIBLE): "
+                        << *ISE << '\n');
++          std::cout << "Bug Triggered!" << std::endl; // PATCH
+           IVUses.pop_back();
+           return false;
+         }
+
