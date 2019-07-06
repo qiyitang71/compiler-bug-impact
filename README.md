@@ -83,6 +83,13 @@ grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 
 (to be continued ...)
 
+## Our experiments
+The /home/user42/compiler-bug-impact/scripts folder also contains an analyse-bug.sh script that analyses the impact a specified bug on our selection of 309 Debian applications. The bug has to be one of our 45 selected bugs listed in /home/user42/compiler-bug-impact/scripts/bug_list. 
+```
+./analyse-bug.sh $bug_id
+```
+NOTE: We do not expect you to run this script since the script will run for a long time (~1 week on our virtual machine and cloud machine) for each bug and you need about 20GB free disk space to store the results of some bugs. 
+
 ### Remove the VM
 ```
 VBoxManage unregistervm --delete debian
