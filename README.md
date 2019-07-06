@@ -49,7 +49,7 @@ Here, all the logs of compiling the 309 Debian apps are in Build_Logs and all th
 ./displayResults.sh results/table3.csv
 ```
 
-### Small example to analyze the impact of EMI bug 26323 on two Debian apps
+### Small example to analyse the impact of EMI bug 26323 on two Debian apps
 
 1. Go to the example directory 
 ```
