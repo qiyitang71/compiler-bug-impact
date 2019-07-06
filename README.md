@@ -62,7 +62,7 @@ cd /home/user42/compiler-bug-impact/example
 NOTE: You will have to enter the sudo password "user42user42" after several minutes of downloading and installing the compilers.
 
 This script will 
-- Download the compilers (fixed, buggy and cop) corresponding to EMI bug 26323 from Gitlab if not downloaded earlier
+- Download the compilers (fixed, buggy and warning-laden/cop) corresponding to EMI bug 26323 from Gitlab if not downloaded earlier
 - Install this compiler in the chroot
 - Run the steps-llvm script with compiler over two apps: afl and libraw
 - Compute the number of different functions for these two apps
@@ -81,23 +81,46 @@ grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 
 ## step-by-step evaluation 
 
+In this section, we show you how to do the empirical study step by step. There is no need to run any of the scripts as each step requires enormous memory/disk space/time.   
+
 ### Prepare compilers for each bug
 
-1. Write a warning-laden fixing patch (see Section 3.1)
+We have built all the required compilers and you can have a look at the address to download them in /home/user42/compiler-bug-impact/scripts/analyse-bug.sh
+
+The detailed steps are:
+
+1. write a warning-laden fixing patch (see Section 3.1)
 
 The list of 45 bugs we consider in the paper is in /home/user42/compiler-bug-impact/scripts/bug_list. For each bug, we have to prepare a warning-laden fixing patch. These patches can be found in the folder /home/user42/compiler-bug-impact/scripts/compilers/patches. 
 
-2. Download the source code of the buggy and the fixed compiler
+2. download the source code of the buggy and the fixed compiler
 
-For each bug in the list, we download the source code of LLVM and clang by
+For each bug in the list, download the source code of LLVM and clang by
 ```
 cd /home/user42/compiler-bug-impact/scripts/compilers
 ./download-sources.sh $bug_id $revision
 ```
-The revision number for a bug is in the seciond column of /home/user42/compiler-bug-impact/scripts/compilers/revisions.txt. 
+The revision number for a bug is in the second column of /home/user42/compiler-bug-impact/scripts/compilers/revisions.txt
+
+NOTE:
+
+For LLVM with version < 3.8, we also need to download compiler-rt (uncomment the part which takes care of compiler-rt).
+
+For bug 20189, as the fixing patch was incorporated in two contiguous revisions of the compiler sources, the revision number for the buggy compiler should be $revision-2 instead of $revision-1. (see the script to (un)comment the appropriate part)
+
+For bug 27903, as explained in section 3.1, its fixes were applied together with other code modifications and/or via a series of non-contiguous compiler revisions. In the source code of the buggy compiler of this bug, we change line 61 from `cl::init(false), cl::Hidden,` to `cl::init(true), cl::Hidden,`
+
+3. build the three compilers for each of the bug 
+
+```
+./build-compiler.sh $bug_id
+```
+You need to copy the warning-laden fixing patch (part 1) to /home/user/$bug_id and then rename the file as patch.txt. Then the script `build-compiler.sh` will apply the warning-laden fixing patch to the fixed compiler, build the buggy, fixed and the warning-laden/cop compilers.
 
 
-### Analyse the impact of the  45 selected bugs on our selection of 309 Debian apps
+
+
+### Analyse the impact of the 45 selected bugs on our selection of 309 Debian apps
 
 The /home/user42/compiler-bug-impact/scripts folder also contains an analyse-bug.sh script that analyses the impact a specified bug on our selection of 309 Debian applications. The bug has to be one of our 45 selected bugs listed in /home/user42/compiler-bug-impact/scripts/bug_list. 
 ```
