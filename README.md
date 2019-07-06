@@ -162,7 +162,7 @@ This part corresponds to line 83 of `analyse-bug.sh` which is
 /home/user42/compiler-bug-impact/scripts/function_analysis/extract-functions "$bug_id"
 ```
 
-### Remove the VM
+### Remove the VM to save space
 ```
 VBoxManage unregistervm --delete debian
 ```
