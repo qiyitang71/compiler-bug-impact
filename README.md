@@ -79,11 +79,26 @@ The function log resides in ~/compiler-bug-impact/example/26323/26323-func.txt, 
 grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 ```
 
-## step-by-step evaluation
+## step-by-step evaluation 
 
-(to be continued ...)
+### Prepare compilers for each bug
 
-## Our experiments
+1. Write a warning-laden fixing patch (see Section 3.1)
+
+The list of 45 bugs we consider in the paper is in /home/user42/compiler-bug-impact/scripts/bug_list. For each bug, we have to prepare a warning-laden fixing patch. These patches can be found in the folder /home/user42/compiler-bug-impact/scripts/compilers/patches. 
+
+2. Download the source code of the buggy and the fixed compiler
+
+For each bug in the list, we download the source code of LLVM and clang by
+```
+cd /home/user42/compiler-bug-impact/scripts/compilers
+./download-sources.sh $bug_id $revision
+```
+The revision number for a bug is in the seciond column of /home/user42/compiler-bug-impact/scripts/compilers/revisions.txt. 
+
+
+### Analyse the impact of the  45 selected bugs on our selection of 309 Debian apps
+
 The /home/user42/compiler-bug-impact/scripts folder also contains an analyse-bug.sh script that analyses the impact a specified bug on our selection of 309 Debian applications. The bug has to be one of our 45 selected bugs listed in /home/user42/compiler-bug-impact/scripts/bug_list. 
 ```
 ./analyse-bug.sh $bug_id
