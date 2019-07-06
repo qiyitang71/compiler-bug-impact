@@ -1,4 +1,5 @@
 # Study on the impact of fuzzer-found compiler bugs
+
 ## Getting started
 
 ### Download the virtual machine (~1 GB)
@@ -7,7 +8,7 @@ Download the VM [compiler_bugs.ova](https://drive.google.com/file/d/1mubw_cEIkMz
 
 Make sure you have at least 20 GB disk space to run the following example.
 
-### start the virtual machine 
+### Start the virtual machine 
 
 For Windows, Linux, Macintosh and Solaris, download Oracle VirtualBox from www.virtualbox.org and import the VM.
 
@@ -33,28 +34,28 @@ ssh -p 2222 user42@localhost
 
 ### Generate the tables in Section 5
 
-1. go to the data directory
+1. Go to the data directory
 ```
 cd /home/user42/compiler-bug-impact/data
 ```
 Here, all the logs of compiling the 309 Debian apps are in Build_Logs and all the data of the number of different funtions are in Function_Logs.
 
-2. generate the tables in Section 5, e.g. to see table 3, simply run 
+2. Generate the tables in Section 5, e.g. to see table 3, simply run 
 ```
 ./genTable3.sh
 ```
-3. view the tables, e.g. to view Table 3 
+3. View the tables, e.g. to view Table 3 
 ```
 ./displayResults.sh results/table3.csv
 ```
 
 ### Small example to analyze the impact of EMI bug 26323 on two Debian apps
 
-1. go to the example directory 
+1. Go to the example directory 
 ```
 cd /home/user42/compiler-bug-impact/example
 ```
-2. run the example 
+2. Run the example 
 ```
 ./run_example.sh
 ```
@@ -81,7 +82,9 @@ grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 
 ## step-by-step evaluation 
 
-In this section, we show you how to do the empirical study step by step. There is no need to run any of the scripts as each step requires enormous memory/disk/time. We have estimated the machine time spent to run all the experiments to around 5 months (see the end of section 4.3).  
+In this section, we show you how to do the empirical study step by step. There is no need to run any of the scripts as each step requires enormous memory/disk/time. We have estimated the machine time spent to run all the experiments to around 5 months (see the end of section 4.3). 
+
+In our experiments, we collected the logs of runnning the experiments and then use them to generate tables in secion 5.
 
 ### Prepare compilers for each bug
 
@@ -89,11 +92,11 @@ We have built all the required compilers and you can have a look at the addresse
 
 The detailed steps are:
 
-1. write a warning-laden fixing patch (see Section 3.1)
+1. Write a warning-laden fixing patch (see Section 3.1)
 
 The list of 45 bugs we consider in the paper is in /home/user42/compiler-bug-impact/scripts/bug_list. For each bug, we have to prepare a warning-laden fixing patch. These patches can be found in the folder /home/user42/compiler-bug-impact/scripts/compilers/patches. 
 
-2. download the source code of the buggy and the fixed compiler
+2. Download the source code of the buggy and the fixed compiler
 
 For each bug in the list, download the source code of LLVM and clang by
 ```
@@ -110,7 +113,7 @@ For bug 20189, as the fixing patch was incorporated in two contiguous revisions 
 
 For bug 27903, as explained in section 3.1, its fixes were applied together with other code modifications and/or via a series of non-contiguous compiler revisions. In the source code of the buggy compiler of this bug, we need to modify line 61 from `cl::init(false), cl::Hidden,` to `cl::init(true), cl::Hidden,` to turn on the buggy optimization.
 
-3. build the three compilers (buggy, fixed and warning-laiden/cop) for each of the bug 
+3. Build the three compilers (buggy, fixed and warning-laiden/cop) for each of the bug 
 
 ```
 ./build-compiler.sh $bug_id
@@ -142,25 +145,19 @@ NOTE: The script will run for a long time for some bugs (on our virtual machine 
 
 This scripts will: 
 
-1. put the three compilers (buggy, fixed and warning-laiden/cop) of a bug in chroot jail
+1. Put the three compilers (buggy, fixed and warning-laiden/cop) of a bug in chroot jail
 
 This first part corresponds to line 1 to line 77 of the script `analyse-bug.sh` which is downloading the prebuild compilers and installing them in the chroot jail. 
 
-2. build the apps using warning-laiden/cop, buggy and fixed compilers in the chroot jail using the Simple Build framework. Check for warning messages in the build process.
+2. Build the apps using warning-laiden/cop, buggy and fixed compilers in the chroot jail using the Simple Build framework. Check for warning messages in the build process.
 
-3. if the binaries built by the buggy and fixed compilers are different, run the default test suites using Autopkgtest on the two binaries to check for any runtime discrepancies. 
+3. If the binaries built by the buggy and fixed compilers are different, run the default test suites using Autopkgtest on the two binaries to check for any runtime discrepancies. 
 
-Part 2 and 3 correpond to line 81 of `analyse-bug.sh` which is 
-```
-/home/user42/compiler-bug-impact/scripts/build/steps-llvm "$bug_id"
-```
+Part 2 and 3 correpond to line 81 of `analyse-bug.sh` which is running the `steps-llvm` script.
 
-4. if binaries built by the buggy and fixed compilers are different, compute the number of different functions in these two binaries.
+4. If binaries built by the buggy and fixed compilers are different, compute the number of different functions in these two binaries.
 
-This part corresponds to line 83 of `analyse-bug.sh` which is 
-```
-/home/user42/compiler-bug-impact/scripts/function_analysis/extract-functions "$bug_id"
-```
+This part corresponds to line 83 of `analyse-bug.sh` which is runnig the `extract-functions` script.
 
 ### Remove the VM to save space
 ```
