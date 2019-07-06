@@ -9,18 +9,15 @@ fi
 # argument 1 is bug id
 working_folder=/home/user42/$1
 
-#argument 2 is revision number
+# argument 2 is revision number
 revision=$2
+# for bug 20189 
+# revisionmo=$(( revision - 2 ))
 revisionmo=$(( revision - 1 ))
 
 sudo rm -rf $working_folder
 sudo mkdir $working_folder
 sudo chown user42:sbuild $working_folder
-if ! [ -e "patch.txt" ]
-  then
-   echo "No patch.txt file found. Stopping here."
-   exit 1
-fi
 rm ./compilers.log
 
 sudo echo ""$(date | awk '{print $4}')" - STARTING COMPILERS INSTALL FOR LLVMv"$revision" (output to /home/user42/compilers.log)"
@@ -30,12 +27,10 @@ sudo echo ""$(date | awk '{print $4}')" - STARTING COMPILERS INSTALL FOR LLVMv"$
 # so please uncomment the code to download compiler-rt
 
 echo "--> [1/4] "$(date | awk '{print $4}')" - DOWLOADING AND PREPARING COMPILER SOURCES "
-cp patch.txt $working_folder
 cd $working_folder
 mkdir buggy
 mkdir fixed
 mkdir cop
-mv patch.txt ./cop
 svn checkout https://llvm.org/svn/llvm-project/llvm/trunk@$revision llvm >>/home/user42/compilers.log 2>&1
 rm -rf ./llvm/.svn
 cd ./llvm/tools
