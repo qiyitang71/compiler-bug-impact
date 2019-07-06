@@ -4,6 +4,8 @@ echo "Entering customization script..."
 
 rm -rf /build/test/*
 
+sed -i "s/.*trusty.*//" /etc/apt/sources.list
+
 apt-get update
 apt-get -y install libtinfo5
 apt-get -y install g++-multilib
