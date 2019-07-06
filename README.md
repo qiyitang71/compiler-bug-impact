@@ -123,9 +123,9 @@ We need to copy the warning-laden fixing patch (part 1) to the folder /home/user
 NOTE from the LLVM release websites, LLVM started to introduce CMake from LLVM 3.1. For older versions, we use GNU make to build the compilers. Again, (un)comment the appropriate part in the script to take care of this.
 
 
-### Set up the chroot environment
+### Set up the chroot environment (Debian 9)
 
-As explained in section 2.4, a chroot jail is required as a customised and isolated build environment to build our Debian apps. 
+As explained in section 2.4, a chroot jail is required as a customised and isolated build environment to build our Debian apps.
 `
 cd /home/user42/compiler-bug-impact/scripts/chroot
 ./chroot.sh
@@ -135,7 +135,7 @@ cd /home/user42/compiler-bug-impact/scripts/chroot
 
 We have collected the logs of building the apps in /home/user42/compiler-bug-impact/data/Build_Logs and the logs of computing the different functions in /home/user42/compiler-bug-impact/data/Function_Logs.
 
-The /home/user42/compiler-bug-impact/scripts folder contains an analyse-bug.sh script that analyses the impact a specified bug on our selection of 309 Debian applications. The list of 309 Debian apps is in /home/user42/compiler-bug-impact/scripts/build/tasks-full.json. Note that the bug has to be one of our 45 selected bugs listed in /home/user42/compiler-bug-impact/scripts/bug_list. 
+The /home/user42/compiler-bug-impact/scripts folder contains an analyse-bug.sh script that analyses the impact a specified bug on our selection of 309 Debian apps. The list of 309 Debian apps is in /home/user42/compiler-bug-impact/scripts/build/tasks-full.json. Note that the bug has to be one of our 45 selected bugs listed in /home/user42/compiler-bug-impact/scripts/bug_list. 
 
 ```
 ./analyse-bug.sh $bug_id
