@@ -24,15 +24,25 @@ rm -rf "$tasks_folder"
 rm -rf "$tmpresults_folder"
 mkdir -p  "$tmpresults_folder"
 
+#update chroot
 sudo sbuild-update -udcar stretch-amd64-sbuild > /dev/null
 
-# move the script of replacing gcc with our compiler to the chroot directory
-sudo cp "$working_folder"/patch_scripts/compiler-patched /srv/chroot/stretch-amd64-sbuild/tmp/
+# move the script which replaces gcc with our compilers to chroot 
+if [[ $bug_id = '11964' || $bug_id = '11977' || $bug_id = '12189' ]]; then
+  sudo cp "$working_folder"/patch_scripts/compiler-patched-old /srv/chroot/stretch-amd64-sbuild/tmp/compiler-patched
+else
+  sudo cp "$working_folder"/patch_scripts/compiler-patched /srv/chroot/stretch-amd64-sbuild/tmp/compiler-patched
+fi
 sudo chown user42:sbuild /srv/chroot/stretch-amd64-sbuild/tmp/compiler-patched
 sudo chmod +x /srv/chroot/stretch-amd64-sbuild/tmp/compiler-patched
 
-# delete the script which sets dpkg flags
+# (un)set dpkg flags
 sudo rm -f /srv/chroot/stretch-amd64-sbuild/etc/dpkg/buildflags.conf
+if grep -q "$bug_id" "$working_folder"/dpkg-list; then
+  sudo cp "$working_folder"/dpkg_flags/buildflags.conf /srv/chroot/stretch-amd64-sbuild/etc/dpkg/buildflags.conf
+elif [[ $bug_id = '19636' || $bug_id = '28504' ]]; then
+  sudo cp "$working_folder"/dpkg_flags/buildflags.conf_O0 /srv/chroot/stretch-amd64-sbuild/etc/dpkg/buildflags.conf
+fi
 
 maxtaskid=$(($(cat $working_folder/tasks.json | jq length)-1))
 mkdir -p "$tasks_folder"
