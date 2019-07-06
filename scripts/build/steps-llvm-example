@@ -53,7 +53,7 @@ mkdir -p "$tasks_folder"
     PACKAGE_NAME=$(echo $(cat task.tmp1 | jq '.source') | cut -d'"' -f 2)
     LOG_FILE=$tasks_folder/$PACKAGE_NAME/cop-build.log
     cat task.tmp1 | jq '.logfile="'$LOG_FILE'"' > task.tmp2
-    VERSION=$(apt-cache madison $PACKAGE_NAME | awk '$7 ~ /.*Sources/' | awk '{print $3}')
+    VERSION=$(apt-cache madison $PACKAGE_NAME | awk '$7 ~ /.*Sources/' | awk '{print $3}' | head -1)
     #VERSION=$(rmadison $PACKAGE_NAME | awk '$5 ~ /^stable$/' | awk '$7 ~ /source/' | awk '{print $3}')
     cat task.tmp2 | jq '.version="'$VERSION'"' > task.tmp
     rm -f task.tmp1 task.tmp2
