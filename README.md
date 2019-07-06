@@ -82,9 +82,9 @@ grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 
 ## step-by-step evaluation 
 
-In this section, we show you how to do the empirical study step by step. There is no need to run any of the scripts as each step requires enormous memory/disk/time. We have estimated the machine time spent to run all the experiments to around 5 months (see the end of section 4.3). 
+In this section, we show you how to do the empirical study step by step. There is no need to run any of the scripts as each step requires enormous memory/disk/time. We have estimated the machine time spent in running all the experiments to around 5 months (see the end of section 4.3). 
 
-In our experiments, we collected the logs of runnning the experiments and then use them to generate tables in secion 5.
+In our experiments, we collected the logs of running the experiments and then use them to generate tables in secion 5.
 
 ### Prepare compilers for each bug
 
