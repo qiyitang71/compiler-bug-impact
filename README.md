@@ -51,6 +51,8 @@ Here, all the logs of compiling the 309 Debian apps are in Build_Logs and all th
 
 ### Small example to analyse the impact of EMI bug 26323 on two Debian apps
 
+Network access in the VM is required to run the example.
+
 1. Go to the example directory 
 ```
 cd /home/user42/compiler-bug-impact/example
