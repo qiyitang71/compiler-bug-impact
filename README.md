@@ -157,7 +157,7 @@ Part 2 and 3 correpond to line 81 of `analyse-bug.sh` which is running the `step
 
 4. If binaries built by the buggy and fixed compilers are different, compute the number of different functions in these two binaries.
 
-This part corresponds to line 83 of `analyse-bug.sh` which is runnig the `extract-functions` script.
+This part corresponds to line 83 of `analyse-bug.sh` which is running the `extract-functions` script.
 
 ### Remove the VM to save space
 ```
