@@ -170,7 +170,7 @@ cd /home/user42/compiler-bug-impact/example
 ```
 2. (Optional) Customize the Debian apps
 
-The default Debian apps are afl and libraw, but if you want to analyse the imapct on other Debian apps, you can edit `/home/user42/compiler-bug-impact/scripts/build/tasks-small.json` by choosing other Debian apps listed in 
+The default Debian apps are afl and libraw, but if you want to analyse the impact on other Debian apps, you can edit `/home/user42/compiler-bug-impact/scripts/build/tasks-small.json` by choosing other Debian apps listed in 
 `/home/user42/compiler-bug-impact/scripts/build/tasks-full.json`. 
 
 3. Run the example with bug id 
@@ -179,7 +179,6 @@ The bug id has to be one of our 45 bugs listed in /home/user42/compiler-bug-impa
 ```
 ./run_example_bug.sh 12189
 ```
-
 NOTE: You will have to enter the sudo password "user42user42" after several minutes of downloading and installing the compilers.
 
 4. Similar to the geting-started section, compare the build log and function log with the ones in the data directory (/home/user42/compiler-bug-impact/data)
