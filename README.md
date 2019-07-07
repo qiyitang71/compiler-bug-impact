@@ -81,7 +81,7 @@ The function log resides in ~/compiler-bug-impact/example/26323/26323-func.txt, 
 ```
 grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 ```
-## step-by-step evaluation 
+## Step-by-step experiments 
 
 In this section, we show you how to do the empirical study step by step. There is no need to run any of the scripts as each step requires enormous memory/disk/time. We have estimated the machine time spent in running all the experiments to around 5 months (see the end of Section 4.3). We ran the experiments on a range of VMs on servers and cloud machines. We then stored the logs of the experiments in the data directory to generate the tables in secion 5.
 
@@ -155,7 +155,7 @@ Part 2 and 3 correpond to line 81 of `analyse-bug.sh` which is running the `step
 
 This part corresponds to line 83 of `analyse-bug.sh` which is running the `extract-functions` script.
 
-## Customize your evaluation
+## Customize the evaluation
 
 In the last part of this guide, we show how to analyse the impact of other bugs (other than EMI 26323) on a customized list of Debian apps. Network access in the VM is required.
 
@@ -182,7 +182,6 @@ The bug id has to be one of our 45 bugs listed in /home/user42/compiler-bug-impa
 NOTE: You will have to enter the sudo password "user42user42" after several minutes of downloading and installing the compilers.
 
 4. Similar to the geting-started section, compare the build log and function log with the ones in the data directory (/home/user42/compiler-bug-impact/data)
-
 
 ## Remove the VM to save space
 ```
