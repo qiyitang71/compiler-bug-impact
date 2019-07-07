@@ -181,7 +181,7 @@ NOTE: You will have to enter the sudo password "user42user42" after several minu
 
 4. Similar to the geting-started section, compare the build log and function log with the ones in the data directory `/home/user42/compiler-bug-impact/data`.
 
-## Remove the VM to save space
+## Remove the VM to save space (for linux terminal users)
 ```
 VBoxManage unregistervm --delete debian
 ```
