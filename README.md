@@ -4,7 +4,7 @@
 
 ### Download the virtual machine (~1 GB)
 
-Download the VM [compiler_bugs.ova](https://drive.google.com/file/d/1mubw_cEIkMzWVeBGIHBAn826-sdtu81u/view?usp=sharing)
+Download the VM [compiler_bugs.ova](https://drive.google.com/open?id=1wAGbGWCHdPsrmPIqzcXXAWNijEB_E69h)
 
 Make sure you have at least 20 GB disk space to run the following example.
 
