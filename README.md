@@ -40,7 +40,7 @@ cd /home/user42/compiler-bug-impact/data
 ```
 Here, all the logs of compiling the 309 Debian apps are in Build_Logs and all the data of the number of different funtions are in Function_Logs.
 
-2. Generate the tables in Section 5, e.g. to see table 3, simply run 
+2. Generate the tables in Section 5, e.g. to see Table 3, simply run 
 ```
 ./genTable3.sh
 ```
@@ -84,7 +84,7 @@ grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 
 ## step-by-step evaluation 
 
-In this section, we show you how to do the empirical study step by step. There is no need to run any of the scripts as each step requires enormous memory/disk/time. We have estimated the machine time spent in running all the experiments to around 5 months (see the end of section 4.3). We ran the experiments on a range of VMs on servers and cloud machines. We then stored the logs of the experiments in the data directory to generate the tables in secion 5.
+In this section, we show you how to do the empirical study step by step. There is no need to run any of the scripts as each step requires enormous memory/disk/time. We have estimated the machine time spent in running all the experiments to around 5 months (see the end of Section 4.3). We ran the experiments on a range of VMs on servers and cloud machines. We then stored the logs of the experiments in the data directory to generate the tables in secion 5.
 
 ### Prepare compilers for each bug
 
@@ -111,7 +111,7 @@ For LLVM version < 3.8, we need to download compiler-rt. Simply uncomment the pa
 
 For bug 20189, as the fixing patch was incorporated in two contiguous revisions of the compiler sources, the revision number for the buggy compiler should be $revision-2 instead of $revision-1. See the script to (un)comment the appropriate part.
 
-For bug 27903, as explained in section 3.1, its fixes were applied together with other code modifications and/or via a series of non-contiguous compiler revisions. In the source code of the buggy compiler of this bug, we need to modify line 61 from `cl::init(false), cl::Hidden,` to `cl::init(true), cl::Hidden,` to turn on the buggy optimization.
+For bug 27903, as explained in Section 3.1, its fixes were applied together with other code modifications and/or via a series of non-contiguous compiler revisions. In the source code of the buggy compiler of this bug, we need to modify line 61 from `cl::init(false), cl::Hidden,` to `cl::init(true), cl::Hidden,` to turn on the buggy optimization.
 
 3. Build the three compilers (buggy, fixed and warning-laiden/cop) for each of the bug 
 
@@ -125,7 +125,7 @@ NOTE from the LLVM release websites, LLVM started to introduce CMake from LLVM 3
 
 ### Set up the chroot environment (Debian 9)
 
-As explained in section 2.4, a chroot jail is required as a customised and isolated build environment to build our Debian apps.
+As explained in Section 2.4, a chroot jail is required as a customised and isolated build environment to build our Debian apps.
 `
 cd /home/user42/compiler-bug-impact/scripts/chroot
 ./chroot.sh
