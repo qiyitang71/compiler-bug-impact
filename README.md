@@ -70,30 +70,30 @@ This script will
 - Run the steps-llvm script with compiler over two apps: afl and libraw
 - Compute the number of different functions for these two apps
 
-The results are saved in /home/user42/compiler-bug-impact/example/results/26323
+The results are saved in `/home/user42/compiler-bug-impact/example/results/26323`
 
-The build log resides in ~/compiler-bug-impact/example/results/26323/new-26323.txt, you can compare it with the reference build log by:
+The build log resides in `~/compiler-bug-impact/example/results/26323/new-26323.txt`, you can compare it with the reference build log by:
 ```
 grep -A4 "afl" ~/compiler-bug-impact/data/Build_Logs/EMI/new-26323.txt
 grep -A4 "libraw" ~/compiler-bug-impact/data/Build_Logs/EMI/new-26323.txt
 ```
-The function log resides in ~/compiler-bug-impact/example/26323/26323-func.txt, you can compare it with the reference function analysis log by (note that no different functions for afl):
+The function log resides in `~/compiler-bug-impact/example/26323/26323-func.txt`, you can compare it with the reference function analysis log by (note that no different functions for afl):
 ```
 grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 ```
-## Step-by-step experiments 
+## Step-by-step experiments (read-only)
 
 In this section, we show you how to do the empirical study step by step. There is NO NEED to run any of the scripts as each step requires enormous memory/disk/time. We have estimated the machine time spent in running all the experiments to around 5 months (see the end of Section 4.3). We ran the experiments on a range of VMs on servers and cloud machines. We then stored the logs of the experiments in the data directory to generate the tables in secion 5.
 
 ### Prepare compilers for each bug
 
-We have built all the required compilers and you can have a look at the addresses of them in /home/user42/compiler-bug-impact/scripts/analyse-bug.sh
+We have built all the required compilers and you can have a look at the addresses of them in `/home/user42/compiler-bug-impact/scripts/analyse-bug.sh`
 
 The detailed steps are:
 
 1. Write a warning-laden fixing patch (see Section 3.1)
 
-The list of 45 bugs we consider in the paper is in /home/user42/compiler-bug-impact/scripts/bug_list. For each bug, we have to prepare a warning-laden fixing patch. These patches can be found in the folder /home/user42/compiler-bug-impact/scripts/compilers/patches. 
+The list of 45 bugs we consider in the paper is in `/home/user42/compiler-bug-impact/scripts/bug_list`. For each bug, we have to prepare a warning-laden fixing patch. These patches can be found in the folder `/home/user42/compiler-bug-impact/scripts/compilers/patches`. 
 
 2. Download the source code of the buggy and the fixed compiler
 
@@ -102,11 +102,11 @@ For each bug in the list, download the source code of LLVM and clang by
 cd /home/user42/compiler-bug-impact/scripts/compilers
 ./download-sources.sh $bug_id $revision
 ```
-The revision number for a bug is in the second column of /home/user42/compiler-bug-impact/scripts/compilers/revisions.txt
+The revision number for a bug is in the second column of `/home/user42/compiler-bug-impact/scripts/compilers/revisions.txt`
 
 NOTE:
-- For LLVM version < 3.8, we need to download compiler-rt. Simply uncomment the part in the script which takes care of compiler-rt.
-- For bug 20189, as the fixing patch was incorporated in two contiguous revisions of the compiler sources, the revision number for the buggy compiler should be $revision-2 instead of $revision-1. See the script to (un)comment the appropriate part.
+- For LLVM version < 3.8, we also need to download compiler-rt. Simply uncomment the part in the script which takes care of compiler-rt.
+- For bug 20189, as the fixing patch was incorporated in two contiguous revisions of the compiler sources, the revision number for the buggy compiler should be `$revision-2` instead of `$revision-1`. See the script to (un)comment the appropriate part.
 - For bug 27903, as explained in Section 3.1, its fixes were applied together with other code modifications and/or via a series of non-contiguous compiler revisions. In the source code of the buggy compiler of this bug, we need to modify line 61 from `cl::init(false), cl::Hidden,` to `cl::init(true), cl::Hidden,` to turn on the buggy optimization.
 
 3. Build the three compilers (buggy, fixed and warning-laiden/cop) for each of the bug 
@@ -114,10 +114,9 @@ NOTE:
 ```
 ./build-compiler.sh $bug_id
 ```
-We need to copy the warning-laden fixing patch (part 1) to the folder /home/user/$bug_id and rename the file as patch.txt. The script `build-compiler.sh` will apply the warning-laden fixing patch to the source code of the fixed compiler. It will then build the buggy, fixed and the warning-laden/cop compilers.
+We need to copy the warning-laden fixing patch (part 1) to the folder `/home/user/$bug_id` and rename the file as patch.txt. The script `build-compiler.sh` will apply the warning-laden fixing patch to the source code of the fixed compiler. It will then build the buggy, fixed and the warning-laden/cop compilers.
 
 NOTE from the LLVM release websites, LLVM started to introduce CMake from LLVM 3.1. For older versions, we use GNU make to build the compilers. Again, (un)comment the appropriate part in the script to take care of this.
-
 
 ### Set up the chroot environment (Debian 9)
 
@@ -126,12 +125,11 @@ As explained in Section 2.4, a chroot jail is required as a customised and isola
 cd /home/user42/compiler-bug-impact/scripts/chroot
 ./chroot.sh
 `
-
 ### Analyse the impact of the 45 selected bugs on our selection of 309 Debian apps
 
-We have collected the logs of building the apps in /home/user42/compiler-bug-impact/data/Build_Logs and the logs of computing the different functions in /home/user42/compiler-bug-impact/data/Function_Logs.
+We have collected the logs of building the apps in `/home/user42/compiler-bug-impact/data/Build_Logs` and the logs of computing the different functions in `/home/user42/compiler-bug-impact/data/Function_Logs`.
 
-The /home/user42/compiler-bug-impact/scripts folder contains an analyse-bug.sh script that analyses the impact a specified bug on our selection of 309 Debian apps. The list of 309 Debian apps is in /home/user42/compiler-bug-impact/scripts/build/tasks-full.json. Note that the bug has to be one of our 45 selected bugs listed in /home/user42/compiler-bug-impact/scripts/bug_list. 
+The `/home/user42/compiler-bug-impact/scripts` folder contains an `analyse-bug.sh` script which analyses the impact a specified bug on our selection of 309 Debian apps. The list of 309 Debian apps is in `/home/user42/compiler-bug-impact/scripts/build/tasks-full.json`. Note that the bug has to be one of our 45 selected bugs listed in `/home/user42/compiler-bug-impact/scripts/bug_list`. 
 
 ```
 ./analyse-bug.sh $bug_id
@@ -175,13 +173,13 @@ The default Debian apps are afl and libraw, but if you want to analyse the impac
 
 3. Run the example with bug id 
 
-The bug id has to be one of our 45 bugs listed in /home/user42/compiler-bug-impact/scripts/bug_list, e.g., 12189.
+The bug id has to be one of our 45 bugs listed in `/home/user42/compiler-bug-impact/scripts/bug_list`, e.g., 12189.
 ```
 ./run_example_bug.sh 12189
 ```
 NOTE: You will have to enter the sudo password "user42user42" after several minutes of downloading and installing the compilers.
 
-4. Similar to the geting-started section, compare the build log and function log with the ones in the data directory (/home/user42/compiler-bug-impact/data)
+4. Similar to the geting-started section, compare the build log and function log with the ones in the data directory `/home/user42/compiler-bug-impact/data`.
 
 ## Remove the VM to save space
 ```
