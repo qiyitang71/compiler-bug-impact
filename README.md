@@ -81,7 +81,6 @@ The function log resides in ~/compiler-bug-impact/example/26323/26323-func.txt, 
 ```
 grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 ```
-
 ## step-by-step evaluation 
 
 In this section, we show you how to do the empirical study step by step. There is no need to run any of the scripts as each step requires enormous memory/disk/time. We have estimated the machine time spent in running all the experiments to around 5 months (see the end of Section 4.3). We ran the experiments on a range of VMs on servers and cloud machines. We then stored the logs of the experiments in the data directory to generate the tables in secion 5.
@@ -156,7 +155,37 @@ Part 2 and 3 correpond to line 81 of `analyse-bug.sh` which is running the `step
 
 This part corresponds to line 83 of `analyse-bug.sh` which is running the `extract-functions` script.
 
-### Remove the VM to save space
+## Customize your evaluation
+
+In the last part of this guide, we show how to analyse the impact of other bugs (other than EMI 26323) on a customized list of Debian apps. Network access in the VM is required.
+
+To save sapce, first clean up the data from the previous runs
+```
+rm -rf ~/compilers
+rm -rf ~/compiler-bug-impact/example/results
+```
+1. Go to the example directory 
+```
+cd /home/user42/compiler-bug-impact/example
+```
+2. (Optional) Customize the Debian apps
+
+The default Debian apps are afl and libraw, but if you want to analyse the imapct on other Debian apps, you can edit `/home/user42/compiler-bug-impact/scripts/build/tasks-small.json` by choosing other Debian apps listed in 
+`/home/user42/compiler-bug-impact/scripts/build/tasks-full.json`. 
+
+3. Run the example with bug id 
+
+The bug id has to be one of our 45 bugs listed in /home/user42/compiler-bug-impact/scripts/bug_list, e.g., 12189.
+```
+./run_example_bug.sh 12189
+```
+
+NOTE: You will have to enter the sudo password "user42user42" after several minutes of downloading and installing the compilers.
+
+4. Similar to the geting-started section, compare the build log and function log with the ones in the data directory (/home/user42/compiler-bug-impact/data)
+
+
+## Remove the VM to save space
 ```
 VBoxManage unregistervm --delete debian
 ```
