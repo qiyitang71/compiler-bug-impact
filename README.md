@@ -6,6 +6,15 @@
 
 Download the VM [compiler_bugs.ova](https://drive.google.com/open?id=1wAGbGWCHdPsrmPIqzcXXAWNijEB_E69h)
 
+Go to the directory of the downloaded VM and check the hash
+```
+md5sum compiler_bugs.ova
+```
+
+and the hash should be 
+```
+85031943ba031b5e7a58a1166cdf741e  compiler_bugs.ova
+```
 Make sure you have at least 20 GB disk space to run the following example.
 
 ### Start the virtual machine 
