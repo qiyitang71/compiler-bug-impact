@@ -126,7 +126,7 @@ We need to copy the warning-laden fixing patch (part 1) to the folder `/home/use
 
 NOTE:
 - From the LLVM release websites, LLVM started to introduce CMake from LLVM 3.1. For older versions, we use GNU make to build the compilers. Again, (un)comment the appropriate part in the `build-compiler.sh` script to take care of this.
-- The VM is set up to be able to build the compilers for most of the bugs but not the following ones: 11964, 11977, 12189, 12855, 12899, 12901 and 13326. The compilers corresponding to these old Csmith bugs require either gcc-4.4, g++-4.4 libraries or modifications in the source code in the Debian 9 OS.
+- The VM is set up to be able to build the compilers for most of the bugs but not the following ones: 11964, 11977, 12189, 12855, 12899, 12901 and 13326. The compilers corresponding to these old Csmith bugs require either gcc-4.4, g++-4.4 libraries or modifications in the source code of the compilers to be built successfully in the Debian 9 OS.
 
 ### Set up the chroot environment (Debian 9)
 
