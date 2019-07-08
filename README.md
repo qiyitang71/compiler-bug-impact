@@ -172,7 +172,7 @@ In the last part of this guide, we show how to analyse the impact of other bugs 
 
 Network access in the VM is required.
 
-To save sapce, first clean up the data from the previous runs
+To save space, first clean up the data from the previous runs
 ```
 rm -rf ~/compilers
 rm -rf ~/compiler-bug-impact/example/results
@@ -183,10 +183,10 @@ cd /home/user42/compiler-bug-impact/example
 ```
 2. (Optional) Customize the Debian apps
 
-The default Debian apps are afl and libraw, but if you want to analyse the impact on other Debian apps, you can edit `/home/user42/compiler-bug-impact/scripts/build/tasks-small.json` by choosing Debian apps listed in 
-`/home/user42/compiler-bug-impact/scripts/build/tasks-full.json`. 
+The default Debian apps are afl and libraw, but if you want to analyse the impact on other Debian apps, you can edit `/home/user42/compiler-bug-impact/scripts/build/tasks-small.json` by choosing any one of the Debian apps listed in 
+`/home/user42/compiler-bug-impact/scripts/build/tasks-full.json`. It is suggested to limit the total number to 2 or 3 in order to complete the evaluation in a reasonable amount of time. 
 
-3. Run the example with bug id 
+3. Run the analysis by specifying the bug id
 
 The bug id has to be one of our 45 bugs listed in `/home/user42/compiler-bug-impact/scripts/bug_list`, e.g., 12189.
 ```
@@ -194,7 +194,7 @@ The bug id has to be one of our 45 bugs listed in `/home/user42/compiler-bug-imp
 ```
 NOTE: You will have to enter the sudo password "user42user42" after several minutes of downloading and installing the compilers.
 
-4. Similar to the section of getting-started , compare the build log and function log with the ones in the data directory `/home/user42/compiler-bug-impact/data`.
+4. Similar to the section of getting-started, compare the build log and function log with the ones in the data directory `/home/user42/compiler-bug-impact/data`.
 
 ```
 grep -A4 "afl" ~/compiler-bug-impact/data/Build_Logs/Csmith/new-12189.txt
@@ -202,7 +202,7 @@ grep -A4 "libraw" ~/compiler-bug-impact/data/Build_Logs/Csmith/new-12189.txt
 grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/Csmith/12189-func.txt
 ```
 
-NOTE to find the location of the build log and function log of a particular bug, e.g. 12189
+To find the location of the build log and function log of a particular bug, e.g. 12189
 ```
 find /home/user42/compiler-bug-impact/data/ -name "new-12189.txt"
 find /home/user42/compiler-bug-impact/data/ -name "12189-func.txt" 
