@@ -26,7 +26,7 @@ sudo echo ""$(date | awk '{print $4}')" - STARTING COMPILERS INSTALL FOR LLVMv"$
 # for clang verison < 3.8.0, compiler-rt is not optional 
 # so please uncomment the code to download compiler-rt
 
-echo "--> [1/4] "$(date | awk '{print $4}')" - DOWLOADING AND PREPARING COMPILER SOURCES "
+echo "--> "$(date | awk '{print $4}')" - DOWLOADING AND PREPARING COMPILER SOURCES "
 cd $working_folder
 mkdir buggy
 mkdir fixed
