@@ -90,7 +90,7 @@ The function log resides in `~/compiler-bug-impact/example/26323/26323-func.txt`
 ```
 grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 ```
-## Step-by-step experiments (read-only)
+## Step-by-step instructions 
 
 In this section, we show you how to do the empirical study step by step. There is NO NEED to run any of the scripts as each step requires enormous memory/disk/time. We have estimated the machine time spent in running all the experiments to around 5 months (see the end of Section 4.3). We ran the experiments on a range of VMs on servers and cloud machines. We then stored the logs of the experiments in the data directory to generate the tables in secion 5.
 
@@ -125,7 +125,9 @@ NOTE:
 ```
 We need to copy the warning-laden fixing patch (part 1) to the folder `/home/user/$bug_id` and rename the file as patch.txt. The script `build-compiler.sh` will apply the warning-laden fixing patch to the source code of the fixed compiler. It will then build the buggy, fixed and the warning-laden/cop compilers.
 
-NOTE from the LLVM release websites, LLVM started to introduce CMake from LLVM 3.1. For older versions, we use GNU make to build the compilers. Again, (un)comment the appropriate part in the script to take care of this.
+NOTE:
+- From the LLVM release websites, LLVM started to introduce CMake from LLVM 3.1. For older versions, we use GNU make to build the compilers. Again, (un)comment the appropriate part in the script to take care of this.
+- The VM is set up to be able to build the compilers for most of the bugs but not the following ones: 11964, 11977, 12189, 12855, 12899, 12901 and 13326. The compilers corresponding to these old Csmith bugs require either gcc-4.4, g++-4.4 libraries or other modifications in the source code to be built in the Debian 9 OS.
 
 ### Set up the chroot environment (Debian 9)
 
@@ -134,6 +136,8 @@ As explained in Section 2.4, a chroot jail is required as a customised and isola
 cd /home/user42/compiler-bug-impact/scripts/chroot
 ./chroot.sh
 `
+The script has been run in the VM already to set up the chroot jail and please do NOT run the script again.
+
 ### Analyse the impact of the 45 selected bugs on our selection of 309 Debian apps
 
 We have collected the logs of building the apps in `/home/user42/compiler-bug-impact/data/Build_Logs` and the logs of computing the different functions in `/home/user42/compiler-bug-impact/data/Function_Logs`.
@@ -150,7 +154,7 @@ This scripts will:
 
 1. Put the three compilers (buggy, fixed and warning-laiden/cop) of a bug in chroot jail
 
-This first part corresponds to line 1 to line 77 of the script `analyse-bug.sh` which is downloading the prebuild compilers and installing them in the chroot jail. 
+This part is downloading the prebuild compilers and installing them in the chroot jail, corresponding to line 1 ~ 77 of the script `analyse-bug.sh`. 
 
 2. Build the apps using warning-laiden/cop, buggy and fixed compilers in the chroot jail using the Simple Build framework. Check for warning messages in the build process.
 
@@ -164,7 +168,9 @@ This part corresponds to line 83 of `analyse-bug.sh` which is running the `extra
 
 ## Customize the evaluation
 
-In the last part of this guide, we show how to analyse the impact of other bugs (other than EMI 26323) on a customized list of Debian apps. Network access in the VM is required.
+In the last part of this guide, we show how to analyse the impact of other bugs (other than EMI 26323) on a customized list of Debian apps. 
+
+Network access in the VM is required.
 
 To save sapce, first clean up the data from the previous runs
 ```
@@ -177,7 +183,7 @@ cd /home/user42/compiler-bug-impact/example
 ```
 2. (Optional) Customize the Debian apps
 
-The default Debian apps are afl and libraw, but if you want to analyse the impact on other Debian apps, you can edit `/home/user42/compiler-bug-impact/scripts/build/tasks-small.json` by choosing other Debian apps listed in 
+The default Debian apps are afl and libraw, but if you want to analyse the impact on other Debian apps, you can edit `/home/user42/compiler-bug-impact/scripts/build/tasks-small.json` by choosing Debian apps listed in 
 `/home/user42/compiler-bug-impact/scripts/build/tasks-full.json`. 
 
 3. Run the example with bug id 
@@ -188,7 +194,19 @@ The bug id has to be one of our 45 bugs listed in `/home/user42/compiler-bug-imp
 ```
 NOTE: You will have to enter the sudo password "user42user42" after several minutes of downloading and installing the compilers.
 
-4. Similar to the geting-started section, compare the build log and function log with the ones in the data directory `/home/user42/compiler-bug-impact/data`.
+4. Similar to the section of getting-started , compare the build log and function log with the ones in the data directory `/home/user42/compiler-bug-impact/data`.
+
+```
+grep -A4 "afl" ~/compiler-bug-impact/data/Build_Logs/Csmith/new-12189.txt
+grep -A4 "libraw" ~/compiler-bug-impact/data/Build_Logs/Csmith/new-12189.txt
+grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/Csmith/12189-func.txt
+```
+
+NOTE to find the location of the build log and function log of a particular bug, e.g. 12189
+```
+find /home/user42/compiler-bug-impact/data/ -name "new-12189.txt"
+find /home/user42/compiler-bug-impact/data/ -name "12189-func.txt" 
+```
 
 ## Remove the VM to save space (for linux terminal users)
 ```
