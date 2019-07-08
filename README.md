@@ -34,6 +34,11 @@ VBoxHeadless --startvm debian
 ```
 ssh -p 2222 user42@localhost
 ```
+5. Go to the working directory and update the git repo
+```
+cd /home/user42/compiler-bug-impact
+git pull
+```
 
 ### Generate the tables in Section 5
 
