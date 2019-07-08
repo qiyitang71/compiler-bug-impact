@@ -6,25 +6,8 @@
 
 Download the VM [compiler_bugs.ova](https://drive.google.com/open?id=1wAGbGWCHdPsrmPIqzcXXAWNijEB_E69h)
 
-Go to the directory of the downloaded VM and check the hash
+Go to the directory of the downloaded VM and use the md5 or md5sum command-line tool to generate the hash. It should be `85031943ba031b5e7a58a1166cdf741e`.
 
-On linux
-```
-md5sum compiler_bugs.ova
-```
-and the output is
-```
-85031943ba031b5e7a58a1166cdf741e  compiler_bugs.ova
-```
-
-On Mac
-```
-md5 compiler_bugs.ova
-```
-and the output is
-```
-MD5 (compiler_bugs.ova) = 85031943ba031b5e7a58a1166cdf741e
-```
 
 Make sure you have at least 20 GB disk space to run the following example.
 
