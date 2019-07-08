@@ -4,9 +4,9 @@
 
 ### Download the virtual machine (~1 GB)
 
-Download the VM [compiler_bugs.ova](https://drive.google.com/file/d/1AG0E7TfW7QH9dQNZ5ZBx6Ao5LKdSFg-B/view?usp=sharing)
+Download the VM [compiler_bugs.ova](https://drive.google.com/open?id=148_OQJw9IeHiyoqKhGLa4kdnmmNxcU2Z)
 
-Go to the directory of the downloaded VM and use the md5 or md5sum command-line tool to generate the hash. It should be ``.
+Go to the directory of the downloaded VM and use the md5 or md5sum command-line tool to generate the hash. It should be `166766d02b047dba13363535fd45467d`.
 
 
 Make sure you have at least 20 GB disk space to run the following example.
