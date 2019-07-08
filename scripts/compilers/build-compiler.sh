@@ -19,7 +19,7 @@ if ! [ -e "patch.txt" ]
    echo "No patch.txt file found. Stopping here."
    exit 1
 fi
-rm -f ./compilers.log
+rm -f /home/user42/compilers.log
 
 # COMPILING BUGGY COMPILER
 echo "--> [1/3] "$(date | awk '{print $4}')" - BUILDING BUGGY COMPILER "
