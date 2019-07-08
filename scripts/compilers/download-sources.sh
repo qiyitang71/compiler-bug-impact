@@ -18,7 +18,7 @@ revisionmo=$(( revision - 1 ))
 sudo rm -rf $working_folder
 sudo mkdir $working_folder
 sudo chown user42:sbuild $working_folder
-rm ./compilers.log
+rm -f ./compilers.log
 
 sudo echo ""$(date | awk '{print $4}')" - STARTING COMPILERS INSTALL FOR LLVMv"$revision" (output to /home/user42/compilers.log)"
 
