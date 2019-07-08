@@ -41,7 +41,7 @@ ssh -p 2222 user42@localhost
 ```
 cd /home/user42/compiler-bug-impact/data
 ```
-Here, all the logs of compiling the 309 Debian apps are in Build_Logs and all the data of the number of different funtions are in Function_Logs.
+Here, all the logs of compiling the 309 Debian apps are in Build_Logs and all the data of the number of different assembly funtions are in Function_Logs.
 
 2. Generate the tables in Section 5, e.g. to see Table 3, simply run 
 ```
@@ -71,7 +71,7 @@ This script will
 - Download the compilers (fixed, buggy and warning-laden/cop) corresponding to EMI bug 26323 from Gitlab if not downloaded earlier
 - Install this compiler in the chroot
 - Run the steps-llvm script with compiler over two apps: afl and libraw
-- Compute the number of different functions for these two apps
+- Compute the number of different assembly functions for these two apps
 
 The results are saved in `/home/user42/compiler-bug-impact/example/results/26323`
 
@@ -80,7 +80,7 @@ The build log resides in `~/compiler-bug-impact/example/results/26323/new-26323.
 grep -A4 "afl" ~/compiler-bug-impact/data/Build_Logs/EMI/new-26323.txt
 grep -A4 "libraw" ~/compiler-bug-impact/data/Build_Logs/EMI/new-26323.txt
 ```
-The function log resides in `~/compiler-bug-impact/example/26323/26323-func.txt`, you can compare it with the reference function analysis log by (note that no different functions for afl):
+The function log resides in `~/compiler-bug-impact/example/26323/26323-func.txt`, you can compare it with the reference function analysis log by (note that no different assembly functions for afl):
 ```
 grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 ```
@@ -117,24 +117,24 @@ NOTE:
 ```
 ./build-compiler.sh $bug_id
 ```
-We need to copy the warning-laden fixing patch (part 1) to the folder `/home/user/$bug_id` and rename the file as patch.txt. The script `build-compiler.sh` will apply the warning-laden fixing patch to the source code of the fixed compiler. It will then build the buggy, fixed and the warning-laden/cop compilers.
+We need to copy the warning-laden fixing patch (part 1) to the folder `/home/user/$bug_id` and rename the file as patch.txt. The script `build-compiler.sh` will apply the warning-laden fixing patch to the source code of the fixed compiler, then build the buggy, fixed and the warning-laden/cop compilers.
 
 NOTE:
-- From the LLVM release websites, LLVM started to introduce CMake from LLVM 3.1. For older versions, we use GNU make to build the compilers. Again, (un)comment the appropriate part in the script to take care of this.
-- The VM is set up to be able to build the compilers for most of the bugs but not the following ones: 11964, 11977, 12189, 12855, 12899, 12901 and 13326. The compilers corresponding to these old Csmith bugs require either gcc-4.4, g++-4.4 libraries or other modifications in the source code to be built in the Debian 9 OS.
+- From the LLVM release websites, LLVM started to introduce CMake from LLVM 3.1. For older versions, we use GNU make to build the compilers. Again, (un)comment the appropriate part in the `build-compiler.sh` script to take care of this.
+- The VM is set up to be able to build the compilers for most of the bugs but not the following ones: 11964, 11977, 12189, 12855, 12899, 12901 and 13326. The compilers corresponding to these old Csmith bugs require either gcc-4.4, g++-4.4 libraries or modifications in the source code in the Debian 9 OS.
 
 ### Set up the chroot environment (Debian 9)
 
-As explained in Section 2.4, a chroot jail is required as a customised and isolated build environment to build our Debian apps.
-`
+As explained in Section 2.4 and Section 4.3, a chroot jail is required as a customised and isolated build environment to build our Debian apps.
+```
 cd /home/user42/compiler-bug-impact/scripts/chroot
 ./chroot.sh
-`
+```
 The script has been run in the VM already to set up the chroot jail and please do NOT run the script again.
 
 ### Analyse the impact of the 45 selected bugs on our selection of 309 Debian apps
 
-We have collected the logs of building the apps in `/home/user42/compiler-bug-impact/data/Build_Logs` and the logs of computing the different functions in `/home/user42/compiler-bug-impact/data/Function_Logs`.
+We have collected the logs of building the apps in `/home/user42/compiler-bug-impact/data/Build_Logs` and the logs of computing the different assemby functions in `/home/user42/compiler-bug-impact/data/Function_Logs`.
 
 The `/home/user42/compiler-bug-impact/scripts` folder contains an `analyse-bug.sh` script which analyses the impact a specified bug on our selection of 309 Debian apps. The list of 309 Debian apps is in `/home/user42/compiler-bug-impact/scripts/build/tasks-full.json`. Note that the bug has to be one of our 45 selected bugs listed in `/home/user42/compiler-bug-impact/scripts/bug_list`. 
 
@@ -148,17 +148,23 @@ This scripts will:
 
 1. Put the three compilers (buggy, fixed and warning-laiden/cop) of a bug in chroot jail
 
-This part is downloading the prebuild compilers and installing them in the chroot jail, corresponding to line 1 ~ 77 of the script `analyse-bug.sh`. 
+This part is to download the prebuild compilers and to install them in the chroot jail, corresponding to line 1 ~ 77 of the script `analyse-bug.sh`. 
 
-2. Build the apps using warning-laiden/cop, buggy and fixed compilers in the chroot jail using the Simple Build framework. Check for warning messages in the build process.
+2. Set the warning-laiden/cop compiler as the default compiler in the chroot jail and ask Simple Build to build the app. The resulting build logs are then searched (using grep) for the warning messages. (See Section 4.3, Stage 1)
 
-3. If the binaries built by the buggy and fixed compilers are different, run the default test suites using Autopkgtest on the two binaries to check for any runtime discrepancies. 
+This corresponds to line 75 ~ 113 of `/home/user42/compiler-bug-impact/scripts/build/steps-llvm`
 
-Part 2 and 3 correpond to line 81 of `analyse-bug.sh` which is running the `steps-llvm` script.
+3. Set successively the buggy and fixed compiler as the default compiler in the chroot jail and ask Simple Build to build each time the app. The two resulting binaries are then compared bitwise using diff. (See Section 4.3, first part of Stage 2)
 
-4. If binaries built by the buggy and fixed compilers are different, compute the number of different functions in these two binaries.
+This corresponds to line 114 ~ 215 of `/home/user42/compiler-bug-impact/scripts/build/steps-llvm`
 
-This part corresponds to line 83 of `analyse-bug.sh` which is running the `extract-functions` script.
+4. If the binaries built by the buggy and fixed compilers are different, run the default test suites using Autopkgtest on the two binaries to check for any runtime discrepancies.  (See Section 4.3, Stage 3)
+
+This corresponds to line 216 ~ 257 of `/home/user42/compiler-bug-impact/scripts/build/steps-llvm`
+
+5. If binaries built by the buggy and fixed compilers are different, compute the number of different assembly functions in these two binaries. (See Section 4.3, second part of Stage 2)
+
+This corresponds to line 83 of `analyse-bug.sh` which is to run the `extract-functions` script.
 
 ## Customize the evaluation
 
