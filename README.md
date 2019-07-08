@@ -110,7 +110,7 @@ The revision number for a bug is in the second column of `/home/user42/compiler-
 NOTE:
 - For LLVM version < 3.8, we also need to download compiler-rt. Simply uncomment the part in the script which takes care of compiler-rt.
 - For bug 20189, as the fixing patch was incorporated in two contiguous revisions of the compiler sources, the revision number for the buggy compiler should be `$revision-2` instead of `$revision-1`. See the script to (un)comment the appropriate part.
-- For bug 27903, as explained in Section 3.1, its fixes were applied together with other code modifications and/or via a series of non-contiguous compiler revisions. In the source code of the buggy compiler of this bug, we need to modify line 61 from `cl::init(false), cl::Hidden,` to `cl::init(true), cl::Hidden,` to turn on the buggy optimization.
+- For bug 27903, as explained in Section 3.1, its fixes were applied together with other code modifications and/or via a series of non-contiguous compiler revisions. In the source code of the buggy compiler of this bug, we need to modify line 61 of `lib/CodeGen/StackColoring.cpp` from `cl::init(false), cl::Hidden,` to `cl::init(true), cl::Hidden,` to turn on the buggy optimization.
 
 3. Build the three compilers (buggy, fixed and warning-laiden/cop) for each of the bug 
 
