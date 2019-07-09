@@ -1,6 +1,6 @@
 # Study on the impact of fuzzer-found compiler bugs
 
-## Getting started
+## Getting Started
 
 ### Download the virtual machine (~1 GB)
 
@@ -89,7 +89,7 @@ The function log resides in `~/compiler-bug-impact/example/26323/26323-func.txt`
 ```
 grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 ```
-## Step by step instructions 
+## Step-by-Step Instructions 
 Refer to the part in the [pdf guide](artifact.pdf)
 
 ## Remove the VM to save space (for linux terminal users)
