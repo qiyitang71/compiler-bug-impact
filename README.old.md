@@ -4,7 +4,7 @@
 
 ### Download the virtual machine (~1 GB)
 
-Download the VM [compiler_bugs.ova]()
+Download the VM [compiler_bugs.ova](https://drive.google.com/open?id=12ZWST4wuWRwGfq8P1wvbs5aUWEG4YYOW)
 
 Go to the directory of the downloaded VM and use the md5 or md5sum command-line tool to generate the hash. It should be `edbd389e5607211cb5317dce87b885bf`.
 
