@@ -90,7 +90,7 @@ The function log resides in `~/compiler-bug-impact/example/26323/26323-func.txt`
 grep -A2 "libraw" ~/compiler-bug-impact/data/Function_Logs/EMI/26323-func.txt
 ```
 ## Step by step instructions 
-Refer to the part in the [pdf guide]()
+Refer to the part in the [pdf guide](artifact.pdf)
 
 ## Remove the VM to save space (for linux terminal users)
 ```
