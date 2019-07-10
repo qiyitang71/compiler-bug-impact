@@ -1,0 +1,41 @@
+nano llvm/tools/clang/lib/Driver/Driver.cpp
+nano llvm/tools/clang/lib/Frontend/InitHeaderSearch.cpp
+
+llvm/tools/clang/lib/Driver/ToolChains.cpp
+llvm/tools/clang/lib/Driver/Tools.cpp
+llvm/lib/Support/Unix/Path.inc
+
+/usr/include/x86_64-linux-gnu/c++/6/
+
+/usr/include/x86_64-linux-gnu/c++/6/32/bits/
+
+/usr/include/c++/4.4/
+
+llvm/tools/bugpoint/ToolRunner.cpp
+:131
+OS.str();
+
+llvm/tools/clang/lib/AST/ExprConstant.cpp
+:4211 
+template dyn_cast<const Expr*>()
+
+llvm/tools/clang/lib/CodeGen/CGDebugInfo.cpp
+:1650 1761
+ReplaceMap.push_back(std::make_pair(Ty.getAsOpaquePtr(), static_cast<llvm::Value*>(TC)));
+
+llvm/tools/clang/lib/Driver/ToolChains.cpp
+:2227
+//patch
+addExternCSystemInclude(DriverArgs, CC1Args, D.SysRoot + "/usr/include/c++/4.4/");
+addExternCSystemInclude(DriverArgs, CC1Args, D.SysRoot + "/usr/include/c++/4.4/x86_64-linux-gnu/");
+//comment 3 lines after
+OR
+  //patch
+  addExternCSystemInclude(DriverArgs, CC1Args, D.SysRoot + "/usr/include/x86_64-linux-gnu/c++/6/");
+
+sed -i 's/__msan_unpoison/\/\/__msan_unpoison/' ./llvm/lib/Target/X86/X86JITInfo.cpp
+sed -i 's/__msan_allocated_memory/\/\/__msan_allocated_memory/' llvm/lib/Support/Allocator.cpp
+
+sanitizer patch: https://reviews.llvm.org/D35246
+fix error:within this context S.Obj = 0; 
+http://lists.llvm.org/pipermail/llvm-bugs/2014-July/034874.html
