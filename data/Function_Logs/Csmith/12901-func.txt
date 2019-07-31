@@ -58,6 +58,9 @@ Number of different functions are: 0
 lua-torch-sundown
 Total num of functions: 98
 Number of different functions are: 1
+mafft
+Total num of functions: 611
+Number of different functions are: 4
 nauty
 Total num of functions: 1952
 Number of different functions are: 12
@@ -100,9 +103,5 @@ Number of different functions are: 0
 x265
 Total num of functions: 11985
 Number of different functions are: 4
-zsh
-Total num of functions: 3959
-Number of different functions are: 2
 
-
-total number of diff functions = 50
+total number of diff functions =  52

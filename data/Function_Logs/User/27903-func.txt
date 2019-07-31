@@ -145,12 +145,5 @@ Number of different functions are: 1
 yapet
 Total num of functions: 860
 Number of different functions are: 1
-leveldb
-Total num of functions: 626
-Number of different functions are: 1
-zsh
-Total num of functions: 3948
-Number of different functions are: 1
 
-
-total number of diff functions = 169
+total number of diff functions =  167

@@ -130,9 +130,5 @@ Number of different functions are: 28
 yapet
 Total num of functions: 804
 Number of different functions are: 2
-leveldb
-Total num of functions: 1121
-Number of different functions are: 1
 
-
-total number of diff functions = 177
+total number of diff functions =  176

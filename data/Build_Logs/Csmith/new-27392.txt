@@ -1350,18 +1350,18 @@ STEP 3
 .. Running test suites with the buggy and fixed binaries and comparing results
 .. the corresponding source package contains a valid test suite
 .. warning: no test was run successfully for at least one binary, please investigate manually
---> [95/309]  15:54:03 - PROCESSING PACKAGE zsh
+--> [95/309]  15:54:03 - PROCESSING PACKAGE mafft
 STEP 1
-.. Building package with cop compiler (output in /home/user42/compiler-bug-impact/example/results/27392/zsh/cop-build.log)
+.. Building package with cop compiler (output in /home/user42/tasks/mafft/cop-build.log)
 .. package was successfully built with cop compiler AND bug was reached
 .. bug also triggered
 STEP 2
-.. Building package with buggy compiler (output in /home/user42/compiler-bug-impact/example/results/27392/zsh/buggy-build.log.tmp)
+.. Building package with buggy compiler (output in /home/user42/tasks/mafft/buggy-build.log.tmp)
 .. package was successfully built with buggy compiler
-.. Building package with fixed compiler (output in /home/user42/compiler-bug-impact/example/results/27392/zsh/fixed-build.log.tmp)
+.. Building package with fixed compiler (output in /home/user42/tasks/mafft/fixed-build.log.tmp)
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
-.. the binaries seem different (please check details in /home/user42/compiler-bug-impact/example/results/27392/zsh/binaries-diff.txt)
+.. the binaries seem different (please check details in /home/user42/tasks/mafft/binaries-diff.txt)
 STEP 3
 .. Running test suites with the buggy and fixed binaries and comparing results
 .. the corresponding source package contains a valid test suite
@@ -4107,18 +4107,18 @@ STEP 3
 .. Running test suites with the buggy and fixed binaries and comparing results
 .. the corresponding source package contains a valid test suite
 .. no difference between the test suite runs
---> [283/309]  20:25:38 - PROCESSING PACKAGE leveldb
+--> [283/309]  20:25:38 - PROCESSING PACKAGE spass
 STEP 1
-.. Building package with cop compiler (output in /home/user42/compiler-bug-impact/example/results/27392/leveldb/cop-build.log)
+.. Building package with cop compiler (output in /home/user42/tasks/spass/cop-build.log)
 .. package was successfully built with cop compiler AND bug was reached
 .. bug also triggered
 STEP 2
-.. Building package with buggy compiler (output in /home/user42/compiler-bug-impact/example/results/27392/leveldb/buggy-build.log.tmp)
+.. Building package with buggy compiler (output in /home/user42/tasks/spass/buggy-build.log.tmp)
 .. package was successfully built with buggy compiler
-.. Building package with fixed compiler (output in /home/user42/compiler-bug-impact/example/results/27392/leveldb/fixed-build.log.tmp)
+.. Building package with fixed compiler (output in /home/user42/tasks/spass/fixed-build.log.tmp)
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
-.. the binaries seem different (please check details in /home/user42/compiler-bug-impact/example/results/27392/leveldb/binaries-diff.txt)
+.. the binaries seem different (please check details in /home/user42/tasks/spass/binaries-diff.txt)
 STEP 3
 .. Running test suites with the buggy and fixed binaries and comparing results
 .. the corresponding source package contains a valid test suite
@@ -4507,4 +4507,4 @@ STEP 3
 .. Running test suites with the buggy and fixed binaries and comparing results
 .. the corresponding source package contains a valid test suite
 .. no difference between the test suite runs
-27392 - 309 308 205 205 202 22 0
+27392 - 309 308 205 205 202 180 0

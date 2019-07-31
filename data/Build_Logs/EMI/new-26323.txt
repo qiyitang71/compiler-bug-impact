@@ -1130,15 +1130,19 @@ STEP 2
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
 .. the binaries are the same
---> [95/309]  06:05:04 - PROCESSING PACKAGE zsh
+--> [95/309]  06:05:04 - PROCESSING PACKAGE mafft
 STEP 1
-.. Building package with cop compiler (output in /home/user42/compiler-bug-impact/example/results/26323/zsh/cop-build.log)
-.. package was successfully built with cop compiler AND bug was reached
-.. bug also triggered
+.. Building package with cop compiler (output in /home/user42/tasks/mafft/cop-build.log)
+.. error: package build with cop compiler failed (and bug did not trigger)
+--> [96/309]  06:10:53 - PROCESSING PACKAGE mbuffer
+STEP 1
+.. Building package with cop compiler (output in /home/user42/tasks/mbuffer/cop-build.log)
+.. package was successfully built with cop compiler and bug was NOT reached
+.. bug did NOT trigger
 STEP 2
-.. Building package with buggy compiler (output in /home/user42/compiler-bug-impact/example/results/26323/zsh/buggy-build.log.tmp)
+.. Building package with buggy compiler (output in /home/user42/tasks/mbuffer/buggy-build.log.tmp)
 .. package was successfully built with buggy compiler
-.. Building package with fixed compiler (output in /home/user42/compiler-bug-impact/example/results/26323/zsh/fixed-build.log.tmp)
+.. Building package with fixed compiler (output in /home/user42/tasks/mbuffer/fixed-build.log.tmp)
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
 .. the binaries are the same
@@ -3387,15 +3391,15 @@ STEP 2
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
 .. the binaries are the same
---> [283/309]  01:52:17 - PROCESSING PACKAGE leveldb
+--> [283/309]  01:52:17 - PROCESSING PACKAGE spass
 STEP 1
-.. Building package with cop compiler (output in /home/user42/compiler-bug-impact/example/results/26323/leveldb/cop-build.log)
+.. Building package with cop compiler (output in /home/user42/tasks/spass/cop-build.log)
 .. package was successfully built with cop compiler AND bug was reached
 .. bug did NOT trigger
 STEP 2
-.. Building package with buggy compiler (output in /home/user42/compiler-bug-impact/example/results/26323/leveldb/buggy-build.log.tmp)
+.. Building package with buggy compiler (output in /home/user42/tasks/spass/buggy-build.log.tmp)
 .. package was successfully built with buggy compiler
-.. Building package with fixed compiler (output in /home/user42/compiler-bug-impact/example/results/26323/leveldb/fixed-build.log.tmp)
+.. Building package with fixed compiler (output in /home/user42/tasks/spass/fixed-build.log.tmp)
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
 .. the binaries are the same
@@ -3719,4 +3723,4 @@ STEP 2
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
 .. the binaries are the same
-26323 - 309 305 281 32 12 1 0
+26323 - 309 305 280 31 12 11 0

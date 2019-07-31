@@ -196,6 +196,9 @@ Number of different functions are: 23
 lua-lgi
 Total num of functions: 430
 Number of different functions are: 5
+mafft
+Total num of functions: 611
+Number of different functions are: 38
 miniasm
 Total num of functions: 69
 Number of different functions are: 1
@@ -289,6 +292,9 @@ Number of different functions are: 2
 spamassassin
 Total num of functions: 46
 Number of different functions are: 3
+spass
+Total num of functions: 1329
+Number of different functions are: 32
 spigot
 Total num of functions: 312
 Number of different functions are: 1
@@ -349,12 +355,5 @@ Number of different functions are: 1
 x265
 Total num of functions: 11990
 Number of different functions are: 82
-leveldb
-Total num of functions: 1097
-Number of different functions are: 4
-zsh
-Total num of functions: 3945
-Number of different functions are: 52
 
-
-total number of diff functions = 2094
+total number of diff functions =  2108
