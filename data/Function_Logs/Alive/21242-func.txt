@@ -85,9 +85,6 @@ Number of different functions are: 1
 libvncserver
 Total num of functions: 849
 Number of different functions are: 6
-mafft
-Total num of functions: 611
-Number of different functions are: 1
 nauty
 Total num of functions: 1957
 Number of different functions are: 16
@@ -143,4 +140,5 @@ x265
 Total num of functions: 11990
 Number of different functions are: 4
 
-total number of diff functions =  131
+
+total number of diff functions = 130

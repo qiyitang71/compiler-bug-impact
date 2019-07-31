@@ -229,9 +229,6 @@ Number of different functions are: 2
 lua-torch-sundown
 Total num of functions: 99
 Number of different functions are: 1
-mafft
-Total num of functions: 612
-Number of different functions are: 40
 minimap
 Total num of functions: 66
 Number of different functions are: 4
@@ -301,9 +298,6 @@ Number of different functions are: 5
 smalt
 Total num of functions: 418
 Number of different functions are: 4
-spass
-Total num of functions: 1324
-Number of different functions are: 8
 staden-io-lib
 Total num of functions: 1216
 Number of different functions are: 18
@@ -370,5 +364,12 @@ Number of different functions are: 1
 x265
 Total num of functions: 11990
 Number of different functions are: 12
+leveldb
+Total num of functions: 1095
+Number of different functions are: 1
+zsh
+Total num of functions: 5029
+Number of different functions are: 6
 
-total number of diff functions =  680
+
+total number of diff functions = 639

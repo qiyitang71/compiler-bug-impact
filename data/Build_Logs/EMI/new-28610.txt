@@ -1138,18 +1138,10 @@ STEP 2
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
 .. the binaries are the same
---> [95/309]  05:58:39 - PROCESSING PACKAGE mafft
+--> [95/309]  05:58:39 - PROCESSING PACKAGE zsh
 STEP 1
-.. Building package with cop compiler (output in /home/user42/tasks/mafft/cop-build.log)
-.. package was successfully built with cop compiler AND bug was reached
-.. bug also triggered
-STEP 2
-.. Building package with buggy compiler (output in /home/user42/tasks/mafft/buggy-build.log.tmp)
-.. package was successfully built with buggy compiler
-.. Building package with fixed compiler (output in /home/user42/tasks/mafft/fixed-build.log.tmp)
-.. package was successfully built with fixed compiler
-.. Comparing the binaries produced by the buggy and fixed compiler
-.. the binaries are the same
+.. Building package with cop compiler (output in /home/user42/compiler-bug-impact/example/results/28610/zsh/cop-build.log)
+.. error: package build with cop compiler failed (BUT bug triggered)
 --> [96/309]  06:06:18 - PROCESSING PACKAGE mbuffer
 STEP 1
 .. Building package with cop compiler (output in /home/user42/tasks/mbuffer/cop-build.log)
@@ -3411,18 +3403,10 @@ STEP 2
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
 .. the binaries are the same
---> [283/309]  11:55:46 - PROCESSING PACKAGE spass
+--> [283/309]  11:55:46 - PROCESSING PACKAGE leveldb
 STEP 1
-.. Building package with cop compiler (output in /home/user42/tasks/spass/cop-build.log)
-.. package was successfully built with cop compiler AND bug was reached
-.. bug also triggered
-STEP 2
-.. Building package with buggy compiler (output in /home/user42/tasks/spass/buggy-build.log.tmp)
-.. package was successfully built with buggy compiler
-.. Building package with fixed compiler (output in /home/user42/tasks/spass/fixed-build.log.tmp)
-.. package was successfully built with fixed compiler
-.. Comparing the binaries produced by the buggy and fixed compiler
-.. the binaries are the same
+.. Building package with cop compiler (output in /home/user42/compiler-bug-impact/example/results/28610/leveldb/cop-build.log)
+.. error: package build with cop compiler failed (and bug did not trigger)
 --> [284/309]  12:03:26 - PROCESSING PACKAGE spigot
 STEP 1
 .. Building package with cop compiler (output in /home/user42/tasks/spigot/cop-build.log)

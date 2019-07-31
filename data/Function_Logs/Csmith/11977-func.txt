@@ -22,9 +22,6 @@ Number of different functions are: 1
 libverilog-perl
 Total num of functions: 248
 Number of different functions are: 1
-mafft
-Total num of functions: 612
-Number of different functions are: 5
 nauty
 Total num of functions: 1954
 Number of different functions are: 1
@@ -59,4 +56,4 @@ wcstools
 Total num of functions: 1070
 Number of different functions are: 3
 
-total number of diff functions =  40
+total number of diff functions = 35

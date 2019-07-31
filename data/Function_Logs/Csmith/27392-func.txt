@@ -403,9 +403,6 @@ Number of different functions are: 2
 lua-torch-sundown
 Total num of functions: 99
 Number of different functions are: 2
-mafft
-Total num of functions: 611
-Number of different functions are: 187
 miniasm
 Total num of functions: 69
 Number of different functions are: 16
@@ -526,9 +523,6 @@ Number of different functions are: 6
 spamassassin
 Total num of functions: 46
 Number of different functions are: 1
-spass
-Total num of functions: 1323
-Number of different functions are: 26
 staden-io-lib
 Total num of functions: 1218
 Number of different functions are: 109
@@ -595,5 +589,11 @@ Number of different functions are: 183
 yapet
 Total num of functions: 860
 Number of different functions are: 5
+leveldb
+Total num of functions: 587
+Number of different functions are: 5
+zsh
+Total num of functions: 3949
+Number of different functions are: 70
 
-total number of diff functions =  5135
+total number of diff functions = 4997
