@@ -3907,4 +3907,4 @@ STEP 3
 .. Running test suites with the buggy and fixed binaries and comparing results
 .. the corresponding source package contains a valid test suite
 .. no difference between the test suite runs
-21242 - 309 309 253 151 51 49 0
+21242 - 309 309 253 151 50 2 0

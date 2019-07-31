@@ -1286,6 +1286,7 @@ STEP 2
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
 .. the binaries seem different (please check details in /home/user42/compiler-bug-impact/example/results/29031/zsh/binaries-diff.txt)
+.. the test suite runs seem to produce different outputs
 --> [96/309]  13:32:14 - PROCESSING PACKAGE mbuffer
 STEP 1
 .. Building package with cop compiler (output in /home/user42/tasks/mbuffer/cop-build.log)
@@ -4191,4 +4192,4 @@ STEP 3
 .. Running test suites with the buggy and fixed binaries and comparing results
 .. the corresponding source package contains a valid test suite
 .. no difference between the test suite runs
-29031 - 309 307 297 215 127 112 0
+29031 - 309 307 297 215 127 15 1

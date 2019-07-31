@@ -3715,4 +3715,4 @@ STEP 2
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
 .. the binaries are the same
-33706 - 309 308 259 40 4 3 0
+33706 - 309 308 259 40 4 1 0

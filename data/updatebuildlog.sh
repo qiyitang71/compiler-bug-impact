@@ -1,6 +1,10 @@
 #!/bin/bash
 
+num_total_file=309
+
 for file in $(find . -name "new-*.txt"); do
+  bugid=$(echo $file|cut -d- -f2| cut -d. -f1)
+  echo $bugid
   succ_build=$(grep "package was successfully built with cop compiler" $file | wc -l)
   bug_reached=$(grep "package was successfully built with cop compiler AND bug was reached" $file| wc -l)
   bug_triggerd=$(grep ".. bug also triggered" $file| wc -l)
@@ -9,5 +13,6 @@ for file in $(find . -name "new-*.txt"); do
   testsuite_abort2=$(grep "the corresponding source package does NOT contain a valid test suite" $file| wc -l)
   testsuite_abort=$(( testsuite_abort1+testsuite_abort2 ))
   testsuite_diff=$(grep ".. the test suite runs seem to produce different outputs" $file| wc -l)
+  sed -i '$d' $file
   echo "$bugid - $num_total_file $succ_build $bug_reached $bug_triggerd $bin_diff $testsuite_abort $testsuite_diff" >> $file
 done

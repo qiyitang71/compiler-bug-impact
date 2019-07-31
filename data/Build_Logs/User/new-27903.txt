@@ -3559,6 +3559,7 @@ STEP 2
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
 .. the binaries seem different (please check details in /home/user42/compiler-bug-impact/example/results/27903/leveldb/binaries-diff.txt)
+.. the test suite runs seem to produce different outputs
 --> [284/309]  12:15:54 - PROCESSING PACKAGE spigot
 STEP 1
 .. Building package with cop compiler (output in /home/user42/tasks/spigot/cop-build.log)
@@ -3903,4 +3904,4 @@ STEP 2
 .. package was successfully built with fixed compiler
 .. Comparing the binaries produced by the buggy and fixed compiler
 .. the binaries are the same
-27903 - 309 308 286 231 50 44 0
+27903 - 309 308 286 231 52 6 1
