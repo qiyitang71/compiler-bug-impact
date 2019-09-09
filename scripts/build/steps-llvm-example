@@ -127,7 +127,9 @@ mkdir -p "$tasks_folder"
      echo "    .. package was successfully built with buggy compiler"
     else
      echo "    .. error: package build with buggy compiler failed"
-     continue
+     if [[ $PACKAGE_NAME != 'zsh' && $PACKAGE_NAME != 'leveldb' ]]; then 
+      continue
+     fi
     fi
 
     # Save source and built package
@@ -141,8 +143,10 @@ mkdir -p "$tasks_folder"
     rm -rf $tasks_folder/$PACKAGE_NAME/buggy-func/*.buildinfo
     rm -rf $tasks_folder/$PACKAGE_NAME/buggy-func/*.dsc
 
-    mv "$tmpresults_folder"/$(ls "$tmpresults_folder" | head -1) $tasks_folder/$PACKAGE_NAME/buggy-packages
-    
+    if [[ $PACKAGE_NAME != 'zsh' && $PACKAGE_NAME != 'leveldb' ]]; then 
+     mv "$tmpresults_folder"/$(ls "$tmpresults_folder" | head -1) $tasks_folder/$PACKAGE_NAME/buggy-packages
+    fi
+
     sudo schroot --end-session --all-sessions
 
     LOG_FILE_FIXED=$tasks_folder/$PACKAGE_NAME/fixed-build.log.tmp
@@ -180,22 +184,34 @@ mkdir -p "$tasks_folder"
 
     echo "    .. Comparing the binaries produced by the buggy and fixed compiler"
     # Unpack binary packages (there can be several .deb binary paxkage produced for one .dsc source package, unpacking only the root one)
-    cd $tasks_folder/$PACKAGE_NAME/buggy-packages
-    filename=$(ls *.dsc); deb_file="${filename%.*}_amd64.deb"
-    mkdir ../buggy-binaries
-    for f in *.deb; do 
+    if [[ $PACKAGE_NAME != 'zsh' && $PACKAGE_NAME != 'leveldb' ]]; then
+     cd $tasks_folder/$PACKAGE_NAME/buggy-packages
+     filename=$(ls *.dsc); deb_file="${filename%.*}_amd64.deb"
+     mkdir ../buggy-binaries
+     for f in *.deb; do 
        dpkg -x $f ../buggy-binaries/${f%.*}
-    done
+     done
+    else
+     mkdir $tasks_folder/$PACKAGE_NAME/buggy-binaries
+    fi
+    
     cd $tasks_folder/$PACKAGE_NAME/fixed-packages
     mkdir ../fixed-binaries
     for f in *.deb; do
        dpkg -x $f ../fixed-binaries/${f%.*}
     done
+
     cd $results_folder
-    # Compare unpacked binaries and report if similar or not
+    # Compare unpacked binaries 
     DIFF_FILE_BINARIES=$tasks_folder/$PACKAGE_NAME/binaries-diff.txt
     diff -r --no-dereference $tasks_folder/$PACKAGE_NAME/buggy-binaries/ $tasks_folder/$PACKAGE_NAME/fixed-binaries/ > $DIFF_FILE_BINARIES 2>&1
 
+    # in the case of 'zsh' or 'leveldb', make buggy binaries the same as the fixed binaries so that funtion analysis could be undertaken later
+    if [[ $PACKAGE_NAME = 'zsh' ]] || [[ $PACKAGE_NAME = 'leveldb' ]]; then
+      cp -rf $tasks_folder/$PACKAGE_NAME/fixed-binaries/* $tasks_folder/$PACKAGE_NAME/buggy-binaries/
+    fi
+
+    # report if the unpacked binaries similar or not
     if [[ -s $DIFF_FILE_BINARIES ]]; then 
       binaries_different=$(( binaries_different+1 ))
       echo "    .. the binaries seem different (please check details in "$DIFF_FILE_BINARIES")"
