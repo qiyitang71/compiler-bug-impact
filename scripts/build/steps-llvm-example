@@ -112,7 +112,7 @@ mkdir -p "$tasks_folder"
     fi  
     ############################### STEP 2 ###############################
     echo "    STEP 2"
-    LOG_FILE_BUGGY=$tasks_folder/$PACKAGE_NAME/buggy-build.log.tmp
+    LOG_FILE_BUGGY=$tasks_folder/$PACKAGE_NAME/buggy-build.log
     echo "    .. Building package with buggy compiler (output in "$LOG_FILE_BUGGY")"
     # Set buggy compiler for use in chroot
     sudo rm -rf /srv/chroot/stretch-amd64-sbuild/home/compiler/llvm-install
@@ -149,7 +149,7 @@ mkdir -p "$tasks_folder"
 
     sudo schroot --end-session --all-sessions
 
-    LOG_FILE_FIXED=$tasks_folder/$PACKAGE_NAME/fixed-build.log.tmp
+    LOG_FILE_FIXED=$tasks_folder/$PACKAGE_NAME/fixed-build.log
     echo "    .. Building package with fixed compiler (output in "$LOG_FILE_FIXED")"
     # Set fixed compiler for use in chroot
     sudo rm -rf /srv/chroot/stretch-amd64-sbuild/home/compiler/llvm-install
@@ -196,6 +196,7 @@ mkdir -p "$tasks_folder"
     fi
     
     cd $tasks_folder/$PACKAGE_NAME/fixed-packages
+    filename=$(ls *.dsc); deb_file="${filename%.*}_amd64.deb"
     mkdir ../fixed-binaries
     for f in *.deb; do
        dpkg -x $f ../fixed-binaries/${f%.*}
@@ -231,7 +232,7 @@ mkdir -p "$tasks_folder"
     ############################### STEP 3 ###############################
     echo "    STEP 3"
     echo "    .. Running test suites with the buggy and fixed binaries and comparing results"
-    if grep -q "Testsuite" $tasks_folder/$PACKAGE_NAME/buggy-packages/$filename; then
+    if grep -q "Testsuite" $tasks_folder/$PACKAGE_NAME/fixed-packages/$filename; then
       echo "    .. the corresponding source package contains a valid test suite"
     else
       echo "    .. the corresponding source package does NOT contain a valid test suite"
@@ -239,6 +240,16 @@ mkdir -p "$tasks_folder"
       continue
     fi
     DIFF_FILE_TESTS=$tasks_folder/$PACKAGE_NAME/test-diff.txt
+    
+    # check whether if 'make check' fails while building the application 
+    # which implies that test suites failed while building with the buggy compiler
+    # AND test suites were successful while building with the fixed compiler
+    if grep -q "\[check\] Error" $LOG_FILE_BUGGY; then
+      test_suite_different=$(( test_suite_different+1 ))
+      echo "    .. the test suite runs seem to produce different outputs (please check details in $LOG_FILE_BUGGY)"
+      continue
+    fi
+
     # Executing the test suites
     sudo sbuild-update -udcar stretch-amd64-sbuild > /dev/null
     autopkgtest -B --summary=$tasks_folder/$PACKAGE_NAME/tests-buggy.summary  $tasks_folder/$PACKAGE_NAME/buggy-packages/*.deb $tasks_folder/$PACKAGE_NAME/buggy-packages/*.dsc -U -- schroot stretch-amd64-sbuild &> $tasks_folder/$PACKAGE_NAME/test-buggy.txt

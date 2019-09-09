@@ -19,7 +19,7 @@ for pkg in $dir/*/; do
   # name of the application
   app=$(echo $pkg | rev | cut -d"/" -f2 | rev) 
   echo "processing $app ..."
-  # check if the application different binaries
+  # check if the application has different binaries
   if [ ! -d "$pkg"/buggy-func ]; then
     echo " no different binaries; skip"
     continue
@@ -27,7 +27,7 @@ for pkg in $dir/*/; do
   
   echo "  has different binaries"
   ################### binaries built by fixed compiler ###################
-  echo "  extracting functions in fixed-func folder ..."
+  echo "  extracting functions in fixed-func folder..."
   # deal with the elfs in the fixed directory
   fixed_op="$pkg"fixed-binary.csv
   fixed_nm="$pkg"fixed.nm
@@ -115,7 +115,7 @@ for pkg in $dir/*/; do
   done
   
   ################### binaries built by buggy compiler ###################
-  echo "  extracting functions in buggy-func folder ..."
+  echo "  extracting functions in buggy-func folder..."
   # deal with the elfs in the buggy directory
   buggy_op="$pkg"buggy-binary.csv
   buggy_nm="$pkg"buggy.nm
@@ -197,10 +197,9 @@ for pkg in $dir/*/; do
     } < lines.tmp
     rm -f "$pkg"*.d "$pkg"*.nm "$pkg"*.tmp "$pkg"tmp lines.tmp
   done
-  echo " done with $app"
+  echo "done with $app"
 done
-rm -f tmp
-
+rm -rf tmp $dir/*.tmp $dir/*.d $dir/*.nm $dir/*tmp
 cd $curr_folder
 ./get-diff-func.sh "$dir"
 

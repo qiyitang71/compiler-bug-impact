@@ -3,7 +3,7 @@
 working_dir=$1
 opfile=$working_dir/$(echo $working_dir | rev | cut -d/ -f1 | rev)"-func.txt"
 rm -f $opfile
-javac CSVReader.java
+javac CSVReader.java CSVReaderSpecial.java
 for dir in $working_dir/*; do
   if  [ ! -d $dir ]; then
     continue
@@ -17,7 +17,11 @@ for dir in $working_dir/*; do
   pkg=$(echo $dir | rev | cut -d/ -f1 | rev)
   echo "collecting functions of $pkg ..."
   echo $pkg >> $opfile
-  java CSVReader "$dir"/buggy-binary.csv "$dir"/fixed-binary.csv >> $opfile
+  if [[ $pkg = 'zsh' ]] || [[ $pkg = 'leveldb' ]]; then
+    java CSVReaderSpecial "$dir"/buggy-binary.csv "$dir"/fixed-binary.csv >> $opfile
+  else
+    java CSVReader "$dir"/buggy-binary.csv "$dir"/fixed-binary.csv >> $opfile
+  fi
 done
 
 if [ -f "$opfile" ]; then
